@@ -19,25 +19,25 @@ use Illuminate\Support\Facades\Route;
 Route::view('/','login');
 
 // views de inicio 
-Route::view('login','login');
+Route::view('login','login')->name('login');
 Route::view('recuperar_password','recuperar_password')->name('recuperar_password');
-Route::view('menu_principal','menu_principal');
+Route::view('menu_principal','menu_principal')->name('menu_principal');
 
 //views de menu general
-Route::view('menu_cliente','menu_principal/menu_cliente');
-Route::view('menu_pedidos','menu_principal/menu_pedidos');
-Route::view('menu_proveedor','menu_principal/menu_proveedor');
-Route::view('menu_stock','menu_principal/menu_stock');
-Route::view('menu_usuario','menu_principal/menu_usuario');
-Route::view('menu_ventas','menu_principal/menu_ventas');
-Route::view('menu_reportes','menu_principal/nuevo_reporte');
+Route::view('menu_cliente','menu_principal/menu_cliente')->name('menu_cliente');
+Route::view('menu_pedidos','menu_principal/menu_pedidos')->name('menu_pedidos');
+Route::view('menu_proveedor','menu_principal/menu_proveedor')->name('menu_proveedor');
+Route::view('menu_stock','menu_principal/menu_stock')->name('menu_stock');
+Route::view('menu_usuario','menu_principal/menu_usuario')->name('menu_usuario');
+Route::view('menu_ventas','menu_principal/menu_ventas')->name('menu_ventas');
+Route::view('menu_reportes','menu_principal/nuevo_reporte')->name('menu_reportes');
 
 
 //views de menu cliente
-Route::view('cliente_crear','menu_principal/cliente/cliente_crear');
-Route::view('cliente_editar','menu_principal/cliente/cliente_editar');
-Route::view('cliente_eliminar','menu_principal/cliente/cliente_eliminar');
-Route::view('cliente_fiados','menu_principal/cliente/cliente_fiados');
+Route::view('cliente_crear','menu_principal/cliente/cliente_crear')->name('cliente_crear');
+Route::view('cliente_editar','menu_principal/cliente/cliente_editar')->name('cliente_editar');
+Route::view('cliente_eliminar','menu_principal/cliente/cliente_eliminar')->name('cliente_eliminar');
+Route::view('cliente_fiados','menu_principal/cliente/cliente_fiados')->name('cliente_fiados');
 
 
 //views de menu pedidos
@@ -71,10 +71,10 @@ Route::view('agregar_tipo_producto','menu_principal/stock/stock_agregar_tipo_pro
 
 
 //views de menu usuario
-Route::view('usuario_crear','menu_principal/usuario/usuario_crear');
-Route::view('usuario_editar','menu_principal/usuario/usuario_editar');
-Route::view('usuario_eliminar','menu_principal/usuario/usuario_eliminar');
-Route::view('usuario_ver_todos','menu_principal/usuario/usuario_ver_todos');
+Route::view('usuario_crear','menu_principal/usuario/usuario_crear')->name('usuario_crear');
+Route::view('usuario_editar','menu_principal/usuario/usuario_editar')->name('usuario_editar');
+Route::view('usuario_eliminar','menu_principal/usuario/usuario_eliminar')->name('usuario_eliminar');
+Route::view('usuario_ver_todos','menu_principal/usuario/usuario_ver_todos')->name('usuario_ver_todos');
 
 
 //views de menu ventas

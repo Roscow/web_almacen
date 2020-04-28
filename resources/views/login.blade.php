@@ -15,7 +15,7 @@
                 <input type="password" id="contraseña" name="contraseña">
             </li>          
             <li class="button">
-                <button type="submit">Ingresar</button>
+                <button ><a href="{{ route('menu_principal') }}"    >Ingresar</a></button>
             </li>
             <li>
                 <a href="{{ route('recuperar_password') }}" >recuperar contraseña</a>
