@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-Route::view('/','base');
+//view base --existe una base pero la direccion abre directamente en el login
+Route::view('/','login');
 
 // views de inicio 
 Route::view('login','login');
-Route::view('recuperar_password','recuperar_password');
+Route::view('recuperar_password','recuperar_password')->name('recuperar_password');
 Route::view('menu_principal','menu_principal');
 
 //views de menu general
