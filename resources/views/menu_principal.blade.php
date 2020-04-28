@@ -26,7 +26,7 @@
                 <a href="{{ route('menu_pedidos') }}">Pedidos</a>
             </li>
             <li>
-                <a href="{{ route('menu_reportes') }}">Reportes</a>                
+                <a href="{{ route('nuevo_reportes') }}">Reportes</a>                
             </li>
         </ul>    
         

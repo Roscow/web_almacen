@@ -21,4 +21,4 @@
                 <a href="{{ route('usuario_ver_todos') }}">Ver Todos</a>
             </li>                                   
         </ul>       
-@endsection
+@endsection 
