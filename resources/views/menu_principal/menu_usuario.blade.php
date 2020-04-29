@@ -3,7 +3,7 @@
 
 @section('seccion2')
     
-<h1>MENU USUARIO</h1>    
+<h1>MENU USUARIO!</h1>    
         <ul>
             <li>
                 <a href="{{ route('usuario_crear') }}" >Agregar</a>         
