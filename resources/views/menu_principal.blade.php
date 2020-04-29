@@ -12,8 +12,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">                    
       <a class="nav-item nav-link" href="{{ route('menu_cliente') }}">Cliente</a>
-      <a class="nav-item nav-link" href="{{ route('menu_usuario') }}" >Usuario</a>         
-      <a class="nav-item nav-link" href="{{ route('menu_cliente') }}">Cliente</a>
+      <a class="nav-item nav-link" href="{{ route('menu_usuario') }}" >Usuario</a>               
       <a class="nav-item nav-link" href="{{ route('menu_proveedor') }}">Proveedor</a>
       <a class="nav-item nav-link" href="{{ route('menu_ventas') }}">Venta</a>
       <a class="nav-item nav-link" href="{{ route('menu_stock') }}">Stock</a>
@@ -22,6 +21,7 @@
     </div>
   </div>
 </nav>
+
    
         <div class="container">
             @yield('seccion2')    

@@ -2,7 +2,7 @@
 
 
 @section('seccion2')
-    
+   
 <h1>MENU USUARIO!</h1>    
         <ul>
             <li>
@@ -20,5 +20,7 @@
             <li>
                 <a href="{{ route('usuario_ver_todos') }}">Ver Todos</a>
             </li>                                   
-        </ul>       
+        </ul>   
+
+         
 @endsection 
