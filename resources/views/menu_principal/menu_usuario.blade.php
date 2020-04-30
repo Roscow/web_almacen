@@ -2,8 +2,8 @@
 
 
 @section('seccion2')           
-        <!-- la seccion media de la pagina -->
-        <div class="row">
+  <!-- la seccion media de la pagina -->
+  <div class="row">
 
             <!-- el siderbar de los botones  -->
           <div class="col-2">
@@ -21,9 +21,6 @@
             <p>contenido</p>   
 
           </div>
-
-
-
       <!--para crear botones laterales-->
-    </div>
+</div>
 @endsection 

@@ -2,26 +2,43 @@
 
 
 @section('seccion2')
-    
-<h1>MENU STOCK</h1>    
-        <ul>
-            <li>
-                <a href="{{ route('menu_articulo') }}" >Menu Articulos</a>         
-            </li>  
+    <!-- la seccion media de la pagina -->
+   <div class="row">
+          <!-- el siderbar de los botones  -->
+        <div class="col-2">
+            <p>MENU PROVEEDOR</p> 
+            <div class="btn-group-vertical" role="link" aria-label="Button group with nested dropdown">
 
-            <li>
-                <a href="{{ route('menu_productos') }}">Menu Productos</a>
-            </li>
+                <!--productos desplegable-->
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu Productos
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="{{ route('producto_agregar') }}" role="button">Agregar </a>
+                    <a class="dropdown-item" href="{{ route('producto_modificar') }}" role="button">Modificar </a>      
+                    <a class="dropdown-item" href="{{ route('producto_mostrar') }}" role="button">Detalle</a>
+                    <a class="dropdown-item" href="{{ route('producto_eliminar') }}" role="button">Eliminar</a>      
+                </div> 
 
-            <li>
-                <a href="{{ route('agregar_familia_producto') }}">Nueva Familia Producto</a>
-            </li>
+                <!--articulos desplegable  (esta con problemas, me muestra el contenido del deplegable de arriba)-->
+                <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu Articulos
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                    <a class="dropdown-item" href="{{ route('articulo_agregar') }}" role="button">Agregar Articulo</a>
+                    <a class="dropdown-item" href="{{ route('articulo_eliminar') }}" role="button">Eliminar Articulo</a>                   
+                </div>
 
-            <li>
-                <a href="{{ route('agregar_tipo_producto') }}">Nuevo Tipo Producto</a>
-            </li>                                   
-        </ul> 
-        <div class="container">
-            @yield('seccion3')    
-        </div>      
+                <a class="btn btn-primary" href="{{ route('agregar_familia_producto') }}" role="button">Nueva Familia Producto</a>                    
+                <a class="btn btn-primary" href="{{ route('agregar_tipo_producto') }}"href="{{ route('proveedor_pedidos') }}" role="button">Nuevo Tipo Producto</a>                          
+            </div>
+        </div>
+
+        <!-- el espacio de contenido-->
+        <div class="col-10 border border-primary">
+            <p>contenido</p>   
+        </div> 
+   <div>
+   
+          
 @endsection
