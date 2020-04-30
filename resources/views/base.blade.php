@@ -11,14 +11,35 @@
     <title>Almacén los Yuyitos</title>
   </head>
   <body>
-    <header> cabecera </header>
+    <header>
+     
 
+
+
+
+      <div class="container">
+        <div class="card">
+            <div class="card-header">
+            <a class="navbar-brand" href="#">
+              <img src="https://cdn.icon-icons.com/icons2/943/PNG/128/shoppaymentorderbuy-29_icon-icons.com_73875.png" width="30" height="30" class="d-inline-block align-top" alt="">
+              AlMACEN LOS YUYITOS - SISTEMA DE CONTROL Y GESTION
+          </a>          
+        </div>
+     </header>
+    </div>
     <div class="container">
         @yield('seccion')    
     </div>
 
-    <footer>pie de pagina</footer>
-
+    <div class="container"> 
+    <footer>        
+        <div class="card">
+            <div class="card-header">
+                2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
+            </div>            
+        </div>
+    </footer>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
