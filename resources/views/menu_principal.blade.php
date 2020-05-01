@@ -2,6 +2,23 @@
 
 
 @section('seccion')
+<!-- datos de usuario conectado-->
+
+        <div class="card">
+            <div class="card-header">
+                <a class="navbar-brand" href="#">               
+                _USUARIO_
+               </a>      
+               <a class="navbar-brand" href="#">               
+                cerrar sesión
+               </a> 
+               <a class="navbar-brand" href="#">               
+                preferencias
+               </a>     
+        </div>        
+
+
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">MENU PRINCIPAL</a>

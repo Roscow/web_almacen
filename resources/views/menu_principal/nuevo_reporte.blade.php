@@ -4,5 +4,5 @@
 @section('seccion2')
     
     <h1>NUEVO REPORTE</h1>    
-         
+    @yield('contenido')     
 @endsection

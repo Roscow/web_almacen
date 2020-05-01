@@ -17,9 +17,8 @@
           </div>                          
 
             <!-- el espacio de contenido-->
-          <div class="col-10 border border-primary">
-            <p>contenido</p>   
-
+          <div class="col-10 border border-primary">              
+              @Yield('contenido')
           </div>
       <!--para crear botones laterales-->
 </div>

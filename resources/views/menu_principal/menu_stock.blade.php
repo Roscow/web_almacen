@@ -36,7 +36,8 @@
 
         <!-- el espacio de contenido-->
         <div class="col-10 border border-primary">
-            <p>contenido</p>   
+            <p>contenido</p> 
+            @yield('contenido')  
         </div> 
    <div>
    
