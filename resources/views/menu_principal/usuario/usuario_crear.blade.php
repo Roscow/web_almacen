@@ -42,10 +42,15 @@
     </div>
 
     <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
             <label for="inputAddress">Numero</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
         </div> 
+
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="inputAddress" placeholder="Juan">
+        </div>         
     </div>
 
     <div class="form-row">    

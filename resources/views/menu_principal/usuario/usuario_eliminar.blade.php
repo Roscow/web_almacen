@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>Eliminar ususario</h1>   
+<h1>eliminar usuario</h1>   
     <form>    
     <div class="form-row">        
         <div class="form-group col-md-4">

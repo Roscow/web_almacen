@@ -28,6 +28,10 @@
                     <a class="dropdown-item" href="{{ route('articulo_agregar') }}" role="button">Agregar Articulo</a>
                     <a class="dropdown-item" href="{{ route('articulo_eliminar') }}" role="button">Eliminar Articulo</a>                   
                 </div>
+                <!-- botones auxiliares porque no funciona el dropdown de articulos-->
+                <a class="btn btn-primary" href="{{ route('articulo_agregar') }}" role="button">Agregar articulo</a>  
+                <a class="btn btn-primary" href="{{ route('articulo_eliminar') }}" role="button">Eliminar articulo</a>  
+
 
                 <a class="btn btn-primary" href="{{ route('agregar_familia_producto') }}" role="button">Nueva Familia Producto</a>                    
                 <a class="btn btn-primary" href="{{ route('agregar_tipo_producto') }}"href="{{ route('proveedor_pedidos') }}" role="button">Nuevo Tipo Producto</a>                          

@@ -11,7 +11,7 @@
                     <a class="btn btn-primary" href="{{ route('cliente_crear') }}" role="button">Agregar</a>
                     <a class="btn btn-primary" href="{{ route('cliente_editar') }}" role="button">Editar</a>
                     <a class="btn btn-primary" href="{{ route('cliente_eliminar') }}" role="button">Eliminar</a>
-                    <a class="btn btn-primary" href="{{ route('cliente_fiados') }}" role="button">Ver Todos</a>
+                    <a class="btn btn-primary" href="{{ route('cliente_fiados') }}" role="button">Ver Fiados</a>
                 </div>             
           </div>                          
             <!-- el espacio de contenido-->
@@ -20,5 +20,7 @@
               @yield('contenido')
           </div>
       <!--para crear botones laterales-->
+      
 </div>   
+
 @endsection

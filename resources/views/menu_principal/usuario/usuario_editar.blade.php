@@ -4,7 +4,7 @@
 
 @section('contenido')
 
-    <h1>editar ususario</h1>   
+    <h1>editar usuario</h1>   
     <form>    
     <div class="form-row">        
         <div class="form-group col-md-4">
@@ -24,14 +24,14 @@
     <p>Datos usuario</p>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputAddress">Rut</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="17250874-k">
-        </div>
-
-        <div class="form-group col-md-6">
             <label for="inputEmail4">Correo</label>
             <input type="email" class="form-control" id="inputEmail4" placeholder="ejemplo@correo.cl">
-        </div>           
+        </div>   
+
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="inputAddress">
+        </div>          
     </div>
 
     <div class="form-row">
@@ -59,10 +59,11 @@
     </div>
 
     <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
             <label for="inputAddress">Numero</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
-        </div> 
+            <input type="text" class="form-control" id="inputAddress" placeholder="1231231">
+        </div>         
+
     </div>
 
     <div class="form-row">    

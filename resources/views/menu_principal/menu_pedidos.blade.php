@@ -10,7 +10,7 @@
                 <div class="btn-group-vertical" role="link" aria-label="Button group with nested dropdown">
                     <a class="btn btn-primary" href="{{ route('pedidos_agregar') }}" role="button">Nuevo Pedido</a>
                     <a class="btn btn-primary" href="{{ route('pedidos_recepcionar') }}" role="button">Recepcionar Pedido</a>
-                    <a class="btn btn-primary" href="{{ route('pedidos_ver') }} role="button">Ver Pedido</a>                    
+                    <a class="btn btn-primary" href="{{ route('pedidos_ver') }}" role="button">Ver Pedido</a>                    
                 </div>             
           </div>                          
             <!-- el espacio de contenido-->

@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<p>Todos los usuarios:</p>
+<h1> ver usuarios  </h1>
 <div class="accordion" id="accordionExample">
 
   <div class="card">

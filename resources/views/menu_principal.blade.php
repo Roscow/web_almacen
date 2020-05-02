@@ -2,6 +2,19 @@
 
 
 @section('seccion')
+<div class="container">
+<header>         
+        <div class="card">
+            <div class="card-header">
+                <a class="navbar-brand" href="#">
+                <img src="https://cdn.icon-icons.com/icons2/943/PNG/128/shoppaymentorderbuy-29_icon-icons.com_73875.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                AlMACEN LOS YUYITOS - SISTEMA DE CONTROL Y GESTION
+               </a>          
+            </div>
+        </div>
+     </header>
+<div>
+
 <!-- datos de usuario conectado-->
 
         <div class="card">
@@ -42,12 +55,14 @@
         <div class="container">
             @yield('seccion2')    
         </div>
+        <footer>              
+            <div class="card">
+                <div class="card-header">
+                    2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
+                </div>            
+            </div>       
+        </footer>
 
+        
 @endsection
-
-
-
-@section('cabecera')
-
-
-@endsection
+    
