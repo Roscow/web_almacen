@@ -12,8 +12,7 @@
                 <div class="btn-group-vertical" role="link" aria-label="Button group with nested dropdown">
                     <a class="btn btn-primary" href="{{ route('ventas_agregar') }}" role="button">Nueva venta</a>
                     <a class="btn btn-primary" href="{{ route('ventas_anular') }}" role="button">Anular venta</a>
-                    <a class="btn btn-primary" href="{{ route('ventas_ver') }}" role="button">Ver ventas</a>
-                    <a class="btn btn-primary" href="{{ route('ventas_ver_detalle') }}" role="button">Ver detalle de venta</a>
+                    <a class="btn btn-primary" href="{{ route('ventas_ver') }}" role="button">Ver ventas</a>                   
                 </div>             
           </div>                          
             <!-- el espacio de contenido-->

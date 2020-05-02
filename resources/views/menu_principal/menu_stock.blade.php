@@ -16,7 +16,7 @@
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <a class="dropdown-item" href="{{ route('producto_agregar') }}" role="button">Agregar </a>
                     <a class="dropdown-item" href="{{ route('producto_modificar') }}" role="button">Modificar </a>      
-                    <a class="dropdown-item" href="{{ route('producto_mostrar') }}" role="button">Detalle</a>
+                    <a class="dropdown-item" href="{{ route('producto_mostrar') }}" role="button">Buscar</a>
                     <a class="dropdown-item" href="{{ route('producto_eliminar') }}" role="button">Eliminar</a>      
                 </div> 
 
