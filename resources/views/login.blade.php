@@ -13,6 +13,7 @@
   <a href="{{ route('menu_principal') }}" class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar </a>
 
 <style>
+
 *{
 	box-sizing: border-box;
 }
