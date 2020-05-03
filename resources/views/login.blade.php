@@ -33,11 +33,13 @@
     height:180px;
     margin-left: 120px;
 }
+
 body{
 	font-family: arial, Helvetica, sans-serif;
 	font-size: 16px;
 	color: #fff;
 }
+
 .wrapper{
 	background-color: rgba(0,0,0,0.5);
 	margin: auto;
