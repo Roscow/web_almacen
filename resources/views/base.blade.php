@@ -16,7 +16,7 @@
 
 
     
-    <div class="container">
+    <div class="container-full-width">
         @yield('seccion')    
     </div>
 

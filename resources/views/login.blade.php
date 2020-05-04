@@ -5,17 +5,44 @@
 <div class="wrapper">
   <div class="container-logo"> 
   <div class="roundedImage">&nbsp;</div>  
-  </div >
+</div >
 	<input type="text" placeholder="Usuario">
   <input type="password" placeholder="Contraseña">
-  <a href="{{ route('recuperar_password') }}" ><font color = "white">Recuperar contraseña</font> </a>
+  <!-- Trigger the modal with a button -->
+  <a href="{{ route('recuperar_password') }}" data-toggle="modal" data-target="#myModal"><font color = "white">Recuperar contraseña?</font> </a>
 
   <a href="{{ route('menu_principal') }}" class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar </a>
 
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+		<h4 class="modal-title">Recuperar Contraseña</h4>
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		
+      </div>
+      <div class="modal-body">
+	  <input type="text" placeholder="Ej: juanita.yuyitos@gmail.com">
+	  <h6 class="modal-title">Tú nueva contraseña será enviada a tu correo electronico</h6>
+       </div>
+      <div class="modal-footer">
+	    <button type="button" class="btn btn-primary"  data-dismiss="modal">Enviar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
 <style>
-
-
-
 
 *{
 	box-sizing: border-box;
@@ -37,7 +64,6 @@
 body{
 	font-family: arial, Helvetica, sans-serif;
 	font-size: 16px;
-	color: #fff;
 }
 
 .wrapper{
