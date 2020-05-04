@@ -83,7 +83,7 @@ Route::view('ventas_anular','menu_principal/ventas/ventas_anular')->name('ventas
 Route::view('ventas_ver','menu_principal/ventas/ventas_ver')->name('ventas_ver');
 Route::view('ventas_ver_detalle','menu_principal/usuario/ventas/ventas_ver_detalle')->name('ventas_ver_detalle');
 
-
+Route::post('recupera', 'LoginController@enviarRecupera')->name('recupera');
 
 
 /* //otros views

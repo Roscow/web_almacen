@@ -3,8 +3,8 @@
 @section('seccion')
 
 <div class="wrapper">
-  <div class="container-logo"> 
-  <div class="roundedImage">&nbsp;</div>  
+  <div class="container-logo">
+  <div class="roundedImage">&nbsp;</div>
 </div >
 	<input type="text" placeholder="Usuario">
   <input type="password" placeholder="Contraseña">
@@ -19,21 +19,23 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-		<h4 class="modal-title">Recuperar Contraseña</h4>
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		
-      </div>
-      <div class="modal-body">
-	  <input type="text" placeholder="Ej: juanita.yuyitos@gmail.com">
-	  <h6 class="modal-title">Tú nueva contraseña será enviada a tu correo electronico</h6>
-       </div>
-      <div class="modal-footer">
-	    <button type="button" class="btn btn-primary"  data-dismiss="modal">Enviar</button>
-      </div>
-    </div>
+    <form id="form1" action="{{route('recupera')}}" method="POST">
+        {{ csrf_field() }}
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Recuperar Contraseña</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
 
+        </div>
+        <div class="modal-body">
+        <input id="username" name="username" type="text" placeholder="Ej: juanita.yuyitos@gmail.com">
+        <h6 class="modal-title">Tú nueva contraseña será enviada a tu correo electronico</h6>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:;" onclick="document.getElementById('form1').submit();" class="btn btn-primary" role="button" aria-pressed="true">Enviar </a>
+        </div>
+        </div>
+    </form>
   </div>
 </div>
 
@@ -50,7 +52,7 @@
     background:url(images/logo2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    
+
     overflow:hidden;
     -webkit-border-radius:100px;
     -moz-border-radius:100px;
