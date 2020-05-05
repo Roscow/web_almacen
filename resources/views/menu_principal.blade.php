@@ -2,7 +2,7 @@
 
 
 @section('seccion')
-<div class="container">
+<div class="container-full-width">
 <header>
         <div class="card">
             <div class="card-header">
