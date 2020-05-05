@@ -5,14 +5,18 @@
 <div class="wrapper">
   <div class="container-logo">
   <div class="roundedImage">&nbsp;</div>
-</div >
-	<input type="text" placeholder="Usuario">
-  <input type="password" placeholder="Contraseña">
+</div > 
+
+<form action="{{route('menu_principal')}}" method="GET">
+
+	<input type="text" placeholder="Usuario" required>
+  <input type="password" placeholder="Contraseña" required>
   <!-- Trigger the modal with a button -->
   <a href="{{ route('recuperar_password') }}" data-toggle="modal" data-target="#myModal"><font color = "white">Recuperar contraseña?</font> </a>
 
-  <a href="{{ route('menu_principal') }}" class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar </a>
-
+  <!--<a href="{{ route('menu_principal') }}" class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar </a>-->
+  <button type="submit"  class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Crear</button>
+  </form>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -28,11 +32,12 @@
 
         </div>
         <div class="modal-body">
-        <input id="username" name="username" type="text" placeholder="Ej: juanita.yuyitos@gmail.com">
+        <input id="username" name="username" type="email"  placeholder="Ej: juanita.yuyitos@gmail.com" required >
         <h6 class="modal-title">Tú nueva contraseña será enviada a tu correo electronico</h6>
         </div>
         <div class="modal-footer">
-            <a href="javascript:;" onclick="document.getElementById('form1').submit();" class="btn btn-primary" role="button" aria-pressed="true">Enviar </a>
+			<!--<a href="javascript:;" onclick="document.getElementById('form1').submit();" class="btn btn-primary" role="button" aria-pressed="true">Enviar </a>-->
+			<button type="submit" class="btn btn-primary" role="button" aria-pressed="true">Enviar </button>
         </div>
         </div>
     </form>

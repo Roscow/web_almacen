@@ -434,7 +434,7 @@
                                                             </td>
                                                             <td width="15" align="left" valign="top" style="width:15px;margin:0;padding:0;">&nbsp;</td>
                                                             <td align="left" valign="top" mc:edit="footer_sig" style="margin:0;padding-top:10px;line-height:1;">
-                                                                <h4><strong>Dueña Yuyita</strong></h4>
+                                                                <h4><strong>Juanita</strong></h4>
                                                                 <h5>Almacen Los Yuyitos </h5>
                                                             </td>
                                                         </tr>
