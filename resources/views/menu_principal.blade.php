@@ -22,7 +22,7 @@
                 <a class="navbar-brand" href="#">
                 _USUARIO_
                </a>
-               <a class="navbar-brand" href="#">
+               <a class="navbar-brand" href="#" style="float: right">
                 cerrar sesión
                </a>
                <a class="navbar-brand" href="#">
@@ -54,25 +54,6 @@
         <div class="container">
             @yield('seccion2')
         </div>
-
-
-
-        <section id="hero-container" class="position-relative text-light">
-            <div id="hero-background"></div>
-              <div id="hero-content" class="container h-100">
-                <div class="row no-gutters h-100 d-flex">
-                  <div id="hero-text" class="col-md-6 align-self-center">
-                    <h1 class="display-1 font-weight-bold mb-4">Controla tu inventario</h1>
-                    <p class="lead mb-5">Comienza a gestionar y administrar tu almacén a través de tu propio sitio web.
-                    </p>
-                  </div>
-                 <div class="col-md-6 img-container align-self-center h-100">
-                    <img src="images/logo2.jpg" id="hero-img" class="position-absolute">
-                    <img src="images/lines.svg" id="lines" class="spin position-absolute">
-                  </div>
-                </div>
-              </div>
-          </section>
 
 
         <script>
@@ -187,7 +168,7 @@
 
 
         <footer>
-            <div class="card">
+            <div class="container-full-width">
                 <div class="card-header">
                     2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
                 </div>
@@ -197,3 +178,14 @@
 
 @endsection
 
+
+
+<!--<div class="container-full-width" style="margin-top: 70px">       
+        <footer>              
+            <div class="card">
+                <div class="card-header">
+                    2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
+                </div>            
+            </div>       
+        </footer>
+</div>
