@@ -20,14 +20,14 @@
                     <a class="dropdown-item" href="{{ route('producto_eliminar') }}" role="button">Eliminar</a>      
                 </div> 
 
-                <!--articulos desplegable  (esta con problemas, me muestra el contenido del deplegable de arriba)-->
+                <!--articulos desplegable  (esta con problemas, me muestra el contenido del deplegable de arriba)
                 <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menu Articulos
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
                     <a class="dropdown-item" href="{{ route('articulo_agregar') }}" role="button">Agregar Articulo</a>
                     <a class="dropdown-item" href="{{ route('articulo_eliminar') }}" role="button">Eliminar Articulo</a>                   
-                </div>
+                </div>-->
                 <!-- botones auxiliares porque no funciona el dropdown de articulos-->
                 <a class="btn btn-primary" href="{{ route('articulo_agregar') }}" role="button">Agregar articulo</a>  
                 <a class="btn btn-primary" href="{{ route('articulo_eliminar') }}" role="button">Eliminar articulo</a>  
@@ -39,11 +39,8 @@
         </div>
 
         <!-- el espacio de contenido-->
-        <div class="col-10 border border-primary">
-            <p>contenido</p> 
+        <div class="col-10 border border-primary">            
             @yield('contenido')  
         </div> 
-   <div>
-   
-          
+   <div>             
 @endsection

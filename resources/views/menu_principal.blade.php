@@ -39,12 +39,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="{{ route('menu_cliente') }}">Cliente</a>
-      <a class="nav-item nav-link" href="{{ route('menu_usuario') }}" >Usuario</a>
-      <a class="nav-item nav-link" href="{{ route('menu_proveedor') }}">Proveedor</a>
-      <a class="nav-item nav-link" href="{{ route('menu_ventas') }}">Venta</a>
-      <a class="nav-item nav-link" href="{{ route('menu_stock') }}">Stock</a>
-      <a class="nav-item nav-link" href="{{ route('menu_pedidos') }}">Pedidos</a>
+      <a class="nav-item nav-link" href="{{ route('cliente_crear') }}">Cliente</a>
+      <a class="nav-item nav-link" href="{{ route('usuario_crear') }}" >Usuario</a>
+      <a class="nav-item nav-link" href="{{ route('proveedor_agregar') }}">Proveedor</a>
+      <a class="nav-item nav-link" href="{{ route('ventas_agregar') }}">Venta</a>
+      <a class="nav-item nav-link" href="{{ route('producto_agregar') }}">Stock</a>
+      <a class="nav-item nav-link" href="{{ route('pedidos_agregar') }}">Pedidos</a>
       <a class="nav-item nav-link" href="{{ route('nuevo_reportes') }}">Reportes</a>
     </div>
   </div>

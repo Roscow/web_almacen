@@ -7,7 +7,7 @@
   <div class="roundedImage">&nbsp;</div>
 </div > 
 
-<form action="{{route('menu_principal')}}" method="GET">
+<form action="{{route('ventas_agregar')}}" method="GET">
 
 	<input type="text" placeholder="Usuario" required>
   <input type="password" placeholder="Contraseña" required>
@@ -15,7 +15,7 @@
   <a href="{{ route('recuperar_password') }}" data-toggle="modal" data-target="#myModal"><font color = "white">Recuperar contraseña?</font> </a>
 
   <!--<a href="{{ route('menu_principal') }}" class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar </a>-->
-  <button type="submit"  class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Crear</button>
+  <button type="submit"  class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar</button>
   </form>
 
 <!-- Modal -->
