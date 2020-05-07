@@ -42,5 +42,5 @@
         <div class="col-10 border border-primary">            
             @yield('contenido')  
         </div> 
-   <div>             
+    </div>             
 @endsection

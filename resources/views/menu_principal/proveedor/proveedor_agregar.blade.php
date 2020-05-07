@@ -9,7 +9,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut empresa</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="17250874-k">
+            <input type="text" class="form-control" id="inputAddress" placeholder="17250874-k" required>
         </div>
 
         <div class="form-group col-md-6">
@@ -21,12 +21,12 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">telefono</label>
-            <input type="numeric" class="form-control" id="inputAddress" placeholder="123123123">
+            <input type="numeric" class="form-control" id="inputAddress" placeholder="123123123" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Correo</label>
-            <input type="email" class="form-control" id="inputAddress" placeholder="Juan@elcancer.cl">
+            <input type="email" class="form-control" id="inputAddress" placeholder="Juan@elcancer.cl" required>
         </div>    
     </div>
 
@@ -48,7 +48,7 @@
     <div class="form-row">        
         <div class="form-group col-md-12">
             <label for="inputAddress">Nombre contacto</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan carlos ">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Juan carlos " required>
         </div>    
     </div>
 
@@ -77,7 +77,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca">
+            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca" required>
         </div> 
 
         <div class="form-group col-md-4">

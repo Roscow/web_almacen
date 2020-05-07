@@ -8,20 +8,20 @@
     <h5>* datos cliente</h5>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputAddress">Rut</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="17250874-k">
+            <label for="inputAddress">Rut</label >
+            <input type="number" class="form-control" id="inputAddress" placeholder="17250874-k" required>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Telefono</label>
-            <input type="text" class="form-control" id="inputEmail4" placeholder="1231231231">
+            <input type="number" class="form-control" id="inputEmail4" placeholder="1231231231" required>
         </div>           
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Juan" required>
         </div> 
 
         <div class="form-group col-md-6">
@@ -33,7 +33,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Juan" required>
         </div> 
 
         <div class="form-group col-md-6">
@@ -62,18 +62,18 @@
                 <option>...</option>
             </select>
         </div>
-    <div>
+    </div>
 
     <div class="form-row">
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca">
+            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca" required>
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Numero</label>
-            <input type="number" class="form-control" id="inputAddress" placeholder="022">
+            <input type="number" class="form-control" id="inputAddress" placeholder="022" required>
         </div> 
 
         <div class="form-group col-md-4">

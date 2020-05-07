@@ -9,7 +9,7 @@
 
 <form action="{{route('ventas_agregar')}}" method="GET">
 
-	<input type="text" placeholder="Usuario" required>
+	<input type="email" placeholder="Usuario" required>
   <input type="password" placeholder="Contraseña" required>
   <!-- Trigger the modal with a button -->
   <a href="{{ route('recuperar_password') }}" data-toggle="modal" data-target="#myModal"><font color = "white">Recuperar contraseña?</font> </a>

@@ -4,6 +4,7 @@
 @section('contenido')
    <h1>editar cliente</h1>   
 <form>
+  <div>
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione cliente a editar</label>
@@ -65,7 +66,7 @@
                 <option>...</option>
             </select>
         </div>
-    <div>
+    </div>
 
     <div class="form-row">
 
@@ -87,6 +88,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Crear</button>
+    </div>
 </form>
 
 @endsection

@@ -3,7 +3,7 @@
 
 @section('seccion')
 <div class="container-full-width">
-<header>
+    <header>
         <div class="card">
             <div class="card-header">
                 <a class="navbar-brand" href="#">
@@ -13,7 +13,7 @@
             </div>
         </div>
      </header>
-<div>
+</div>
 
 <!-- datos de usuario conectado-->
 
@@ -28,6 +28,7 @@
                <a class="navbar-brand" href="#">
                 preferencias
                </a>
+            </div>
         </div>
 
 
