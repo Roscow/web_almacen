@@ -19,7 +19,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Jose" required>
         </div> 
 
         <div class="form-group col-md-6">
@@ -31,19 +31,19 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Perez" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Figueroa">
         </div>    
     </div>
     <div class="form-row">
         
         <div class="form-group col-md-6">
             <label for="inputEmail4">Telefono</label>
-            <input type="text" class="form-control" id="inputEmail4" placeholder="1231231231">
+            <input type="text" class="form-control" id="inputEmail4" placeholder="1231231231" required>
         </div>           
     </div>
 
@@ -87,7 +87,7 @@
 
     </div>
 
-    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
     </div>
 </form>
 

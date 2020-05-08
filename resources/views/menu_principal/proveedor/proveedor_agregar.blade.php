@@ -33,7 +33,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Codigo postal</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="number" class="form-control" id="inputAddress" placeholder="9273353">
         </div> 
 
         <div class="form-group col-md-6">

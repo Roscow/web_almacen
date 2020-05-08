@@ -6,7 +6,7 @@
    <div class="row">
           <!-- el siderbar de los botones  -->
         <div class="col-2">
-            <p>MENU PROVEEDOR</p> 
+            <p>MENU STOCK</p> 
             <div class="btn-group-vertical" role="link" aria-label="Button group with nested dropdown">
 
                 <!--productos desplegable-->

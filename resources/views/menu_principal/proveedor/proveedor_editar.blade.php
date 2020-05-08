@@ -94,7 +94,7 @@
             <input type="text" class="form-control" id="inputAddress" placeholder="52-b">
         </div> 
     </div>
-    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @endsection
 

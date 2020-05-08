@@ -21,7 +21,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan" required>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Jose" required>
         </div> 
 
         <div class="form-group col-md-6">
@@ -33,12 +33,12 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan" required>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Perez" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Figueroa">
         </div>    
     </div>
 
