@@ -26,7 +26,7 @@
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" placeholder="jose">
         </div>    
     </div>
 
@@ -50,16 +50,21 @@
         <div class="form-group col-md-6">
             <label for="inputState">Region</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+                <option selected>Elegir...</option>               
+                @foreach ($regiones as $item)
+                    <option> {{$item->region}}</option>                   
+                @endforeach
             </select>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+                <option selected>Elegir...</option>       
+                @foreach ($comunas as $item)
+                    <option> {{$item->comuna}}</option>                   
+                @endforeach
+            
             </select>
         </div>
     </div>

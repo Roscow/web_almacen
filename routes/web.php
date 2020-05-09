@@ -32,68 +32,63 @@ Route::view('menu_usuario','menu_principal/menu_usuario')->name('menu_usuario');
 Route::view('menu_ventas','menu_principal/menu_ventas')->name('menu_ventas');
 Route::view('nuevo_reportes','menu_principal/nuevo_reporte')->name('nuevo_reportes');
 
-
 //views de menu cliente
-Route::view('cliente_crear','menu_principal/cliente/cliente_crear')->name('cliente_crear');
-Route::view('cliente_editar','menu_principal/cliente/cliente_editar')->name('cliente_editar');
-Route::view('cliente_eliminar','menu_principal/cliente/cliente_eliminar')->name('cliente_eliminar');
-Route::view('cliente_fiados','menu_principal/cliente/cliente_fiados')->name('cliente_fiados');
+Route::get('cliente_crear','PagesController@cliente_crear')->name('cliente_crear');
+Route::get('cliente_editar','PagesController@cliente_editar')->name('cliente_editar');
+Route::get('cliente_eliminar','PagesController@cliente_eliminar')->name('cliente_eliminar');
+Route::get('cliente_fiados','PagesController@cliente_fiados')->name('cliente_fiados');
+
 
 
 //views de menu pedidos
-Route::view('pedidos_agregar','menu_principal/pedidos/pedidos_agregar')->name('pedidos_agregar');
-Route::view('pedidos_recepcionar','menu_principal/pedidos/pedidos_recepcionar')->name('pedidos_recepcionar');
-Route::view('pedidos_ver','menu_principal/pedidos/pedidos_ver')->name('pedidos_ver');
+Route::get('pedidos_agregar','PagesController@pedidos_agregar')->name('pedidos_agregar');
+Route::get('pedidos_recepcionar','PagesController@pedidos_recepcionar')->name('pedidos_recepcionar');
+Route::get('pedidos_ver','PagesController@pedidos_ver')->name('pedidos_ver');
+
 
 
 //views de menu proveedor
-Route::view('proveedor_agregar','menu_principal/proveedor/proveedor_agregar')->name('proveedor_agregar');
-Route::view('proveedor_agregar_rubro','menu_principal/proveedor/proveedor_agregar_rubro')->name('proveedor_agregar_rubro');
-Route::view('proveedor_editar','menu_principal/proveedor/proveedor_editar')->name('proveedor_editar');
-Route::view('proveedor_eliminar','menu_principal/proveedor/proveedor_eliminar')->name('proveedor_eliminar');
-Route::view('proveedor_pedidos','menu_principal/proveedor/proveedor_pedidos')->name('proveedor_pedidos');
+Route::get('proveedor_agregar','PagesController@proveedor_agregar')->name('proveedor_agregar');
+Route::get('proveedor_agregar_rubro','PagesController@proveedor_agregar_rubro')->name('proveedor_agregar_rubro');
+Route::get('proveedor_editar','PagesController@proveedor_editar')->name('proveedor_editar');
+Route::get('proveedor_eliminar','PagesController@proveedor_eliminar')->name('proveedor_eliminar');
+Route::get('proveedor_pedidos','PagesController@proveedor_pedidos')->name('proveedor_pedidos');
 
 
 
 //views de menu stock
-Route::view('menu_articulo','menu_principal/stock/menu_articulo')->name('menu_articulo');
-Route::view('articulo_agregar','menu_principal/stock/articulos/articulo_agregar')->name('articulo_agregar');
-Route::view('articulo_eliminar','menu_principal/stock/articulos/articulo_eliminar')->name('articulo_eliminar');
 
-Route::view('menu_productos','menu_principal/stock/menu_productos')->name('menu_productos');
-Route::view('producto_agregar','menu_principal/stock/productos/producto_Agregar')->name('producto_agregar');
-Route::view('producto_eliminar','menu_principal/stock/productos/producto_eliminar')->name('producto_eliminar');
-Route::view('producto_modificar','menu_principal/stock/productos/producto_modificar')->name('producto_modificar');
-Route::view('producto_mostrar','menu_principal/stock/productos/producto_mostrar')->name('producto_mostrar');
+Route::get('menu_articulo','PagesController@menu_articulo')->name('menu_articulo');
+Route::get('articulo_agregar','PagesController@articulo_agregar')->name('articulo_agregar');
+Route::get('articulo_eliminar','PagesController@articulo_eliminar')->name('articulo_eliminar');
 
-Route::view('agregar_familia_producto','menu_principal/stock/stock_agregar_familia_producto')->name('agregar_familia_producto');
-Route::view('agregar_tipo_producto','menu_principal/stock/stock_agregar_tipo_producto')->name('agregar_tipo_producto');
+Route::get('menu_productos','PagesController@menu_productos')->name('menu_productos');
+Route::get('producto_agregar','PagesController@producto_agregar')->name('producto_agregar');
+Route::get('producto_eliminar','PagesController@producto_eliminar')->name('producto_eliminar');
+Route::get('producto_modificar','PagesController@producto_modificar')->name('producto_modificar');
+Route::get('producto_mostrar','PagesController@producto_mostrar')->name('producto_mostrar');
+
+Route::get('agregar_familia_producto','PagesController@agregar_familia_producto')->name('agregar_familia_producto');
+Route::get('agregar_tipo_producto','PagesController@agregar_tipo_producto')->name('agregar_tipo_producto');
+
+
+
 
 
 //views de menu usuario
-Route::view('usuario_crear','menu_principal/usuario/usuario_crear')->name('usuario_crear');
-Route::view('usuario_editar','menu_principal/usuario/usuario_editar')->name('usuario_editar');
-Route::view('usuario_eliminar','menu_principal/usuario/usuario_eliminar')->name('usuario_eliminar');
-Route::view('usuario_ver_todos','menu_principal/usuario/usuario_ver_todos')->name('usuario_ver_todos');
+Route::get('usuario_crear','PagesController@usuario_crear')->name('usuario_crear');
+Route::get('usuario_ver_todos','PagesController@usuario_ver_todos')->name('usuario_ver_todos');
+Route::get('usuario_eliminar','PagesController@usuario_eliminar')->name('usuario_eliminar');
+Route::get('usuario_editar','PagesController@usuario_editar')->name('usuario_editar');
 
 
-//views de menu ventas
-Route::view('ventas_agregar','menu_principal/ventas/ventas_agregar')->name('ventas_agregar');
-Route::view('ventas_anular','menu_principal/ventas/ventas_anular')->name('ventas_anular');
-Route::view('ventas_ver','menu_principal/ventas/ventas_ver')->name('ventas_ver');
-Route::view('ventas_ver_detalle','menu_principal/usuario/ventas/ventas_ver_detalle')->name('ventas_ver_detalle');
+Route::get('ventas_agregar','PagesController@ventas_agregar')->name('ventas_agregar');
+Route::get('ventas_anular','PagesController@ventas_anular')->name('ventas_anular');
+Route::get('ventas_ver','PagesController@ventas_ver')->name('ventas_ver');
+Route::get('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ventas_ver_detalle');
 
+
+
+//otras
 Route::post('recupera', 'LoginController@enviarRecupera')->name('recupera');
 
-
-/* //otros views
-Route::get('/', function () {
-    return view('/base');
-});
-*/
-
-/*
-Route::get('/', function () {
-    return view('templates/');
-});
-*/

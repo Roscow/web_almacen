@@ -10,11 +10,14 @@
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione usuario a editar</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+                <option selected>Elegir...</option>
+                @foreach ($usuarios as $item)
+                    <option><p> {{$item->nombre1}} {{$item->nombre2}}   {{$item->apellido1}}  {{$item->apellido2}}</p></option>                   
+                @endforeach
             </select>
         </div>    
     </div>
+    <button type="submit" class="btn btn-primary">Seleccionar</button>
     </form>
 
 

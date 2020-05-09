@@ -9,11 +9,15 @@
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione cliente a editar</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+                <option selected>Elegir...</option>
+                @foreach ($clientes as $item)
+                    <option><p> {{$item->nombre1}} {{$item->nombre2}}   {{$item->apellido1}}  {{$item->apellido2}}</p></option>                   
+                @endforeach
             </select>
-        </div>    
+        </div>            
     </div>
+    <button type="submit" class="btn btn-primary">Seleccionar</button>
+
 
     <h5>* datos cliente</h5>
     <div class="form-row">
@@ -54,16 +58,20 @@
         <div class="form-group col-md-6">
             <label for="inputState">Region</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>               
+                @foreach ($regiones as $item)
+                    <option> {{$item->region}}</option>                   
+                @endforeach
             </select>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>       
+                @foreach ($comunas as $item)
+                    <option> {{$item->comuna}}</option>                   
+                @endforeach
             </select>
         </div>
     </div>
@@ -88,7 +96,10 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>
+<<<<<<< HEAD
+=======
     </div>
+>>>>>>> f173f3a50cba2a7ca792f0992ecfde50e6a6aeb2
 </form>
 
 @endsection

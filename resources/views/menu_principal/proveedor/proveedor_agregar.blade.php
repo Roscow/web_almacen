@@ -39,8 +39,11 @@
         <div class="form-group col-md-6">
             <label for="inputState">Rubro</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>               
+                @foreach ($rubros as $item)
+                    <option> {{$item->rubro}}</option>                   
+                @endforeach
+            </select>
             </select>
         </div>   
     </div>
@@ -59,16 +62,20 @@
         <div class="form-group col-md-6">
             <label for="inputState">Region</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>               
+                @foreach ($regiones as $item)
+                    <option> {{$item->region}}</option>                   
+                @endforeach
             </select>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>       
+                @foreach ($comunas as $item)
+                    <option> {{$item->comuna}}</option>                   
+                @endforeach
             </select>
         </div>
     </div>

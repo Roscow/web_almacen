@@ -9,8 +9,10 @@
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione cliente </label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+                <option selected>Elegir...</option>
+                @foreach ($clientes as $item)
+                    <option><p>{{$item->nombre1}} {{$item->nombre2}} {{$item->apellido1}} {{$item->apellido2}}</p></option>                   
+                @endforeach
             </select>
         </div>    
     </div>

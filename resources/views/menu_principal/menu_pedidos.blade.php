@@ -15,7 +15,10 @@
           </div>                          
             <!-- el espacio de contenido-->
           <div class="col-10 border border-primary">
+<<<<<<< HEAD
+=======
               
+>>>>>>> f173f3a50cba2a7ca792f0992ecfde50e6a6aeb2
             @yield('contenido')
           </div>
       <!--para crear botones laterales-->

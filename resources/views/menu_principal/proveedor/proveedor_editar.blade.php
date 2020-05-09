@@ -9,11 +9,15 @@
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione proveedor</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>
+                @foreach ($proveedores as $item)
+                    <option><p> {{$item->razon_social}}</p></option>                   
+                @endforeach
             </select>
         </div>    
     </div> 
+    <button type="submit" class="btn btn-primary">Seleccionar</button>
+
 <form>
     <h5>* datos proveedor</h5>
     <div class="form-row">        
@@ -63,16 +67,20 @@
         <div class="form-group col-md-6">
             <label for="inputState">Region</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>               
+                @foreach ($regiones as $item)
+                    <option> {{$item->region}}</option>                   
+                @endforeach
             </select>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+            <option selected>Elegir...</option>       
+                @foreach ($comunas as $item)
+                    <option> {{$item->comuna}}</option>                   
+                @endforeach
             </select>
         </div>
     </div>
