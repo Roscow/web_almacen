@@ -35,6 +35,20 @@ class PagesController extends Controller
         return view('menu_principal.cliente.cliente_fiados', compact('clientes')); 
     }
 
+    public function edicion_cliente(){        
+        $clientes = App\Cliente::all();   
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();     
+        return view('menu_principal.cliente.edicion_cliente', compact('clientes','regiones','comunas')); 
+    }
+
+    public function detalle_cliente(){        
+        $clientes = App\Cliente::all();   
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();     
+        return view('menu_principal.cliente.detalle_cliente', compact('clientes','regiones','comunas')); 
+    }
+
     //funciones de usuarios
     public function usuario_eliminar(){        
         $usuarios = App\Usuario::all();        

@@ -37,6 +37,8 @@ Route::get('cliente_crear','PagesController@cliente_crear')->name('cliente_crear
 Route::get('cliente_editar','PagesController@cliente_editar')->name('cliente_editar');
 Route::get('cliente_eliminar','PagesController@cliente_eliminar')->name('cliente_eliminar');
 Route::get('cliente_fiados','PagesController@cliente_fiados')->name('cliente_fiados');
+Route::get('edicion_cliente','PagesController@edicion_cliente')->name('edicion_cliente');
+Route::get('detalle_cliente','PagesController@detalle_cliente')->name('detalle_cliente');
 
 
 
