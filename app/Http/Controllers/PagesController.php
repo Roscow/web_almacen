@@ -70,6 +70,10 @@ class PagesController extends Controller
         return view('menu_principal.usuario.usuario_ver_todos', compact('usuarios')); 
     }
 
+    public function edicion_usuario(){   
+        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use     
+        return view('menu_principal.usuario.edicion_usuario', compact('usuarios')); 
+    }
 
     //FUNCIONES DE PROVEEDOR
     public function proveedor_agregar(){        

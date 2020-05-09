@@ -82,6 +82,7 @@ Route::get('usuario_crear','PagesController@usuario_crear')->name('usuario_crear
 Route::get('usuario_ver_todos','PagesController@usuario_ver_todos')->name('usuario_ver_todos');
 Route::get('usuario_eliminar','PagesController@usuario_eliminar')->name('usuario_eliminar');
 Route::get('usuario_editar','PagesController@usuario_editar')->name('usuario_editar');
+Route::get('edicion_usuario','PagesController@edicion_usuario')->name('edicion_usuario');
 
 
 Route::get('ventas_agregar','PagesController@ventas_agregar')->name('ventas_agregar');
