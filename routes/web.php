@@ -55,6 +55,7 @@ Route::get('proveedor_agregar_rubro','PagesController@proveedor_agregar_rubro')-
 Route::get('proveedor_editar','PagesController@proveedor_editar')->name('proveedor_editar');
 Route::get('proveedor_eliminar','PagesController@proveedor_eliminar')->name('proveedor_eliminar');
 Route::get('proveedor_pedidos','PagesController@proveedor_pedidos')->name('proveedor_pedidos');
+Route::get('edicion_proveedor','PagesController@edicion_proveedor')->name('edicion_proveedor');
 
 
 

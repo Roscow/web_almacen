@@ -1,17 +1,11 @@
-<!--al cambiar de direcctorio el raiz cambia-->
-@extends('menu_principal/menu_proveedor')
+
+@extends('menu_principal/proveedor/proveedor_editar')
 
 
-@section('contenido')
-   <h1>crear proveedor</h1>   
+@section('edicion_proveedor')
 <form>
     <h5>* datos proveedor</h5>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputAddress">Rut empresa</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="17250874-k" required>
-        </div>
-
+    <div class="form-row">        
         <div class="form-group col-md-6">
             <label for="inputEmail4">Razon social (nombre)</label>
             <input type="text" class="form-control" id="inputEmail4" placeholder="Coca-cola">
@@ -21,19 +15,19 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">telefono</label>
-            <input type="numeric" class="form-control" id="inputAddress" placeholder="123123123" required>
+            <input type="numeric" class="form-control" id="inputAddress" placeholder="123123123">
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Correo</label>
-            <input type="email" class="form-control" id="inputAddress" placeholder="Juan@elcancer.cl" required>
+            <input type="email" class="form-control" id="inputAddress" placeholder="Juan@elcancer.cl">
         </div>    
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Codigo postal</label>
-            <input type="number" class="form-control" id="inputAddress" placeholder="9273353">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Juan">
         </div> 
 
         <div class="form-group col-md-6">
@@ -42,7 +36,7 @@
             <option selected>Elegir...</option>               
                 @foreach ($rubros as $item)
                     <option> {{$item->rubro}}</option>                   
-                @endforeach            
+                @endforeach
             </select>
         </div>   
     </div>
@@ -50,10 +44,9 @@
     <div class="form-row">        
         <div class="form-group col-md-12">
             <label for="inputAddress">Nombre contacto</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Juan carlos " required>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Juan carlos ">
         </div>    
     </div>
-
 
     <h5>* direccion</h5>
     <div class="form-row">
@@ -83,7 +76,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca" required>
+            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca">
         </div> 
 
         <div class="form-group col-md-4">
@@ -94,10 +87,8 @@
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="52-b">
-        </div>    
+        </div> 
     </div>
-    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @endsection
-
-

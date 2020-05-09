@@ -106,6 +106,15 @@ class PagesController extends Controller
         return view('menu_principal.proveedor.proveedor_pedidos', compact('proveedores')); 
     }
 
+    public function edicion_proveedor(){
+        $proveedores = App\Proveedor::all();
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();
+        $rubros = App\Rubro::all(); 
+
+        return view('menu_principal.proveedor.edicion_proveedor', compact('proveedores','regiones','comunas','rubros')); 
+    }
+
     //FUNCIONES PEDIDOS
     public function pedidos_agregar(){        
         $proveedores = App\Proveedor::all(); 
