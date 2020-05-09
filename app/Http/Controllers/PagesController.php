@@ -115,6 +115,15 @@ class PagesController extends Controller
         return view('menu_principal.proveedor.edicion_proveedor', compact('proveedores','regiones','comunas','rubros')); 
     }
 
+    public function detalle_proveedor_pedidos(){
+        $proveedores = App\Proveedor::all();
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();
+        $rubros = App\Rubro::all(); 
+
+        return view('menu_principal.proveedor.detalle_proveedor_pedidos', compact('proveedores','regiones','comunas','rubros')); 
+    }
+
     //FUNCIONES PEDIDOS
     public function pedidos_agregar(){        
         $proveedores = App\Proveedor::all(); 
@@ -168,26 +177,36 @@ class PagesController extends Controller
 
     public function producto_agregar(){
         $proveedores = App\Proveedor::all();
-        return view('menu_principal.stock.articulos.articulo_agregar', compact('proveedores')); 
+        $familia = App\Famila_producto::all();
+        $tipo = App\Tipo_producto::all();
+        return view('menu_principal.stock.productos.producto_agregar', compact('familia','tipo','proveedores')); 
     }
     public function producto_eliminar(){
-        $proveedores = App\Proveedor::all();
-        return view('menu_principal.stock.productos.producto_agregar', compact('proveedores')); 
+        $productos = App\Producto::all();
+        return view('menu_principal.stock.productos.producto_eliminar', compact('productos')); 
     }
     public function producto_modificar(){
         $proveedores = App\Proveedor::all();
-        return view('menu_principal.stock.productos.producto_modificar', compact('proveedores')); 
+        $productos = App\Producto::all();
+        return view('menu_principal.stock.productos.producto_modificar', compact('proveedores','productos')); 
     }
     public function producto_mostrar(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.stock.productos.producto_mostrar', compact('proveedores')); 
     }
 
+    public function edicion_producto(){ 
+        $proveedores = App\Proveedor::all();
+        $productos = App\Producto::all();  
+        $familia = App\Famila_producto::all();
+        $tipo = App\Tipo_producto::all();
+        return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familia','tipo','productos')); 
+    }
 
     //FUNCIONES DE VENTAS
     public function ventas_agregar(){
-        $proveedores = App\Proveedor::all();
-        return view('menu_principal.ventas.ventas_agregar', compact('proveedores')); 
+        $clientes = App\Cliente::all();
+        return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
     }
     public function ventas_anular(){
         $proveedores = App\Proveedor::all();

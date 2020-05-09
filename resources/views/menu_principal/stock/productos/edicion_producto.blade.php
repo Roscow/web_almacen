@@ -1,10 +1,9 @@
-<!--al cambiar de direcctorio el raiz cambia-->
-@extends('menu_principal/menu_stock')
+
+@extends('menu_principal/stock/productos/producto_modificar')
 
 
-@section('contenido')
-   <h1>crear producto</h1>   
-<form>
+
+@section('edicion_producto')
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputAddress">Nombre </label>
@@ -24,10 +23,10 @@
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione familia</label>
             <select id="inputState" class="form-control">
-                <option selected>Elegir...</option>
+            <option selected>Elegir...</option>
                 @foreach ($familia as $item)
                     <option>{{$item->familia}}</option>
-                @endforeach                
+                @endforeach  
             </select>
         </div>       
     </div> 
@@ -73,9 +72,6 @@
             <input type="number" class="form-control" id="inputAddress" placeholder="0">
         </div>    
     </div>
-    <button type="submit" class="btn btn-primary">Crear</button>
-</form>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
 
-@endsection
-
-
+    @endsection
