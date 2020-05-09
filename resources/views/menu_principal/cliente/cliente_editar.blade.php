@@ -96,10 +96,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>
-<<<<<<< HEAD
-=======
     </div>
->>>>>>> f173f3a50cba2a7ca792f0992ecfde50e6a6aeb2
 </form>
 
 @endsection

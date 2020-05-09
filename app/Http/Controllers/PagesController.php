@@ -122,7 +122,7 @@ class PagesController extends Controller
         return view('menu_principal.stock.stock_agregar_familia_producto', compact('proveedores')); 
     }
 
-    public function agregar_tipo_productos(){
+    public function agregar_tipo_producto(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.stock.stock_agregar_tipo_producto', compact('proveedores')); 
     }

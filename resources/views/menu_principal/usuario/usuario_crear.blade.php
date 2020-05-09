@@ -44,20 +44,12 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Numero</label>
-<<<<<<< HEAD
-            <input type="text" class="form-control" id="inputAddress" placeholder="+569 232342">
-=======
             <input type="text" class="form-control" id="inputAddress" placeholder="+56994009300">
->>>>>>> f173f3a50cba2a7ca792f0992ecfde50e6a6aeb2
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Fecha de nacimiento</label>
-<<<<<<< HEAD
-            <input type="date" class="form-control" id="inputAddress" placeholder="02/12/1998">
-=======
             <input type="date" class="form-control" id="inputAddress" placeholder="02/12/1988">
->>>>>>> f173f3a50cba2a7ca792f0992ecfde50e6a6aeb2
         </div>         
     </div>
 
