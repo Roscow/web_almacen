@@ -12,8 +12,11 @@
         </div>  
     </div>
 
-    <button type="submit" class="btn btn-primary">Buscar</button>
+    <a class="btn btn-primary" href="{{route('busqueda_producto')}}">Buscar</a>
 </form>
+@yield('busqueda')
+
+
 
 @endsection
 

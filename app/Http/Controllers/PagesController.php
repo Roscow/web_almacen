@@ -203,6 +203,16 @@ class PagesController extends Controller
         return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familia','tipo','productos')); 
     }
 
+    public function busqueda_producto(){ 
+        //$prod_singular = App\Producto::findOrFail($id);        
+        
+        $proveedores = App\Proveedor::all();
+        $productos = App\Producto::all();  
+        $familia = App\Famila_producto::all();
+        $tipo = App\Tipo_producto::all();     
+        return view('menu_principal.stock.productos.busqueda_producto',compact('proveedores','familia','tipo','productos')); 
+    }
+
     //FUNCIONES DE VENTAS
     public function ventas_agregar(){
         $clientes = App\Cliente::all();
