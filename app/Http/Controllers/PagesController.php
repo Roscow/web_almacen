@@ -162,6 +162,7 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         return view('menu_principal.stock.stock_agregar_tipo_producto', compact('proveedores')); 
     }
+ 
 
     public function articulo_agregar(){        
         $proveedores = App\Proveedor::all(); 
@@ -230,5 +231,20 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         return view('menu_principal.ventas.ventas_ver', compact('proveedores')); 
     }
+
+
+    //OTROS
+    public function insert_tipo_producto(Request $request){
+        //return $request->all();
+        $nuevo_tipo = new App\Tipo_producto;
+        $nuevo_tipo->tipo = $request->tipo;
+        //$nuevo_tipo->id_tipo = 3;   eloquent autoincrementa solo
+        $nuevo_tipo->save();
+        return back();
+    }
+
+
+
+
 
 }
