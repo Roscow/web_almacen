@@ -4,42 +4,50 @@
 
 @section('contenido')
    <h1>crear cliente</h1>   
-<form>
+<form action="{{route('insert_cliente')}}" method="POST">
+@csrf
     <h5>* datos cliente</h5>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut</label >
-            <input type="number" class="form-control" id="inputAddress" placeholder="17250874-k" required>
+            <input type="number" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" required>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Telefono</label>
-            <input type="number" class="form-control" id="inputEmail4" placeholder="1231231231" required>
+            <input type="number" name="telefono" class="form-control" id="inputEmail4" placeholder="1231231231" required>
         </div>           
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Jose" required>
+            <input type="text" name="nombre1" class="form-control" id="inputAddress" placeholder="Jose" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="jose">
+            <input type="text" name="nombre2" class="form-control" id="inputAddress" placeholder="jose">
         </div>    
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Perez" required>
+            <input type="text" name="apellido1" class="form-control" id="inputAddress" placeholder="Perez" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Figueroa">
+            <input type="text"name="apellido2" class="form-control" id="inputAddress" placeholder="Figueroa">
         </div>    
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Correo</label>
+            <input type="email" name="correo" class="form-control" id="inputAddress" placeholder="ejemplo@correo.cl" required>
+        </div>        
     </div>
 
 
@@ -59,7 +67,7 @@
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
-            <select id="inputState" class="form-control">
+            <select name="comuna_nombre" id="inputState" class="form-control">
                 <option selected>Elegir...</option>       
                 @foreach ($comunas as $item)
                     <option> {{$item->comuna}}</option>                   
@@ -73,17 +81,17 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca" required>
+            <input type="text" name="calle" class="form-control" id="inputAddress" placeholder="esquina blanca" required>
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Numero</label>
-            <input type="number" class="form-control" id="inputAddress" placeholder="022" required>
+            <input type="number" name="numero" class="form-control" id="inputAddress" placeholder="022" required>
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="52-b">
+            <input type="text" name="departamento" class="form-control" id="inputAddress" placeholder="52-b">
         </div>   
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>

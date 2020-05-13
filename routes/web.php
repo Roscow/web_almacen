@@ -99,4 +99,5 @@ Route::get('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ven
 Route::post('recupera', 'LoginController@enviarRecupera')->name('recupera');
 Route::post('/', 'PagesController@insert_tipo_producto')->name('insert_tipo_producto');
 Route::post('/', 'PagesController@insert_usuario')->name('insert_usuario');
+Route::post('/', 'PagesController@insert_cliente')->name('insert_cliente');
 

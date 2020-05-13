@@ -233,7 +233,7 @@ class PagesController extends Controller
     }
 
 
-    //OTROS
+    //FORMULARIOS AGREGAR
     public function insert_tipo_producto(Request $request){
         //return $request->all();
         $nuevo_tipo = new App\Tipo_producto;
@@ -268,6 +268,39 @@ class PagesController extends Controller
         return back();
     }
 
+    public function insert_cliente(Request $request){
+        
+        //return $request->all();
+        $new_cliente = new App\Cliente;
+        
+        $new_cliente->rut = $request->rut;
+        $new_cliente->telefono = $request->telefono;
+        $new_cliente->nombre1 = $request->nombre1;
+        $new_cliente->nombre2 = $request->nombre2;
+        $new_cliente->apellido1 = $request->apellido1;
+        $new_cliente->apellido2 = $request->apellido2;
+        $new_cliente->correo = $request->correo;
+        //$new_cliente->dv = substr($request->rut,-1,1) ;
+        $new_cliente->dv = 'k';
+        $new_cliente->fecha_nacimiento = $request->fecha_nacimiento;
+        $new_cliente->monto_deuda = 0;
+        $new_cliente->id_direccion = $request->rut;
+        $new_cliente->save();
 
 
+        // es necesario ingresar el id_comuna por listado
+        $new_direccion = new App\Direccion;
+        $new_direccion->calle = $request->calle;
+        $new_direccion->departamento = $request->departamento;
+        //$new_direccion->id_comuna= $request->id_comuna;
+        /*hacer un proceso para determinar el id con el nombre
+        $var_comuna = App\Comuna::where("comuna","=",$request->comuna_nombre);
+        $new_direccion->id_comuna= $var_comuna->id_comuna;
+        */
+        $new_direccion->id_comuna= 1;
+        $new_direccion->numero = $request->numero;
+        $new_direccion->id_direccion = $request->rut;
+        $new_direccion->save();
+        return back();
+    }
 }
