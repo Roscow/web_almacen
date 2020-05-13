@@ -244,10 +244,8 @@ class PagesController extends Controller
     }
 
     
-    public function insert_usuario(Request $request){
-        //return $request->all();
+    public function insert_usuario(Request $request){        
         $nuevo_usuario = new App\Usuario;
-
         //$nuevo_usuario->id_user = increments();
         $nuevo_usuario->apellido1 = $request->apellido1;
         $nuevo_usuario->apellido2 = $request->apellido2;
@@ -262,17 +260,13 @@ class PagesController extends Controller
         $nuevo_usuario->rut = $request->rut;
         $nuevo_usuario->telefono = $request->telefono;
         $nuevo_usuario->usser =  $request->nombre1;
-
         //$nuevo_tipo->id_tipo = 3;   eloquent autoincrementa solo
         $nuevo_usuario->save();
         return back();
     }
 
     public function insert_cliente(Request $request){
-        
-        //return $request->all();
-        $new_cliente = new App\Cliente;
-        
+        $new_cliente = new App\Cliente;        
         $new_cliente->rut = $request->rut;
         $new_cliente->telefono = $request->telefono;
         $new_cliente->nombre1 = $request->nombre1;
@@ -286,8 +280,6 @@ class PagesController extends Controller
         $new_cliente->monto_deuda = 0;
         $new_cliente->id_direccion = $request->rut;
         $new_cliente->save();
-
-
         // es necesario ingresar el id_comuna por listado
         $new_direccion = new App\Direccion;
         $new_direccion->calle = $request->calle;
@@ -309,19 +301,23 @@ class PagesController extends Controller
        
     
     public function edicion_cliente2(Request $request){
+        //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos
         $var_nombre = explode(" ",$request->cliente);
-        $var = $request->cliente;
-        $var_nombre2= 'prueba6';
-        //$cliente = new App\Cliente;
+        $cliente = new App\Cliente;
         $cliente = (App\Cliente::where('nombre1','=', $var_nombre[0])
                                 ->where('nombre2','=',$var_nombre[1])
                                 ->where('apellido1','=',$var_nombre[2])
                                 ->where('apellido2','=',$var_nombre[3]))->get();
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();     
-        $clientes = App\Cliente::all();     
-        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','var')); 
-
+        $clientes = App\Cliente::all(); 
+           
+        //$var_rut  = App\Direccion::where('id_direccion','=','$cliente->rut')->get();  
+        $var_rut= $cliente[0]->rut;
+        $direccion = new App\Direccion;
+        $direccion  = App\Direccion::where('id_direccion','=',$var_rut)->get() ;                       
+        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','direccion')); 
+        
     }
 
 
