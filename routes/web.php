@@ -76,7 +76,6 @@ Route::get('busqueda_producto','PagesController@busqueda_producto')->name('busqu
 
 Route::get('agregar_familia_producto','PagesController@agregar_familia_producto')->name('agregar_familia_producto');
 Route::get('agregar_tipo_producto','PagesController@agregar_tipo_producto')->name('agregar_tipo_producto');
-Route::post('/', 'PagesController@insert_tipo_producto')->name('insert_tipo_producto');
 
 
 
@@ -98,4 +97,6 @@ Route::get('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ven
 
 //otras
 Route::post('recupera', 'LoginController@enviarRecupera')->name('recupera');
+Route::post('/', 'PagesController@insert_tipo_producto')->name('insert_tipo_producto');
+Route::post('/', 'PagesController@insert_usuario')->name('insert_usuario');
 

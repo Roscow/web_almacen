@@ -243,7 +243,30 @@ class PagesController extends Controller
         return back();
     }
 
+    
+    public function insert_usuario(Request $request){
+        //return $request->all();
+        $nuevo_usuario = new App\Usuario;
 
+        //$nuevo_usuario->id_user = increments();
+        $nuevo_usuario->apellido1 = $request->apellido1;
+        $nuevo_usuario->apellido2 = $request->apellido2;
+        $nuevo_usuario->contraseña= '1234';
+        $nuevo_usuario->correo = $request->correo;
+        //$nuevo_usuario->dv = substr($request->rut,-1,1) ;
+        $nuevo_usuario->dv = 'k';
+        $nuevo_usuario->fecha_nacimiento = $request->fecha_nacimiento;
+        $nuevo_usuario->id_tipo_user = 1;
+        $nuevo_usuario->nombre1 = $request->nombre1;
+        $nuevo_usuario->nombre2 = $request->nombre2;
+        $nuevo_usuario->rut = $request->rut;
+        $nuevo_usuario->telefono = $request->telefono;
+        $nuevo_usuario->usser =  $request->nombre1;
+
+        //$nuevo_tipo->id_tipo = 3;   eloquent autoincrementa solo
+        $nuevo_usuario->save();
+        return back();
+    }
 
 
 
