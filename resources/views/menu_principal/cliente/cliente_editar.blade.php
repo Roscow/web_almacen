@@ -4,12 +4,13 @@
 @section('contenido')
    <h1>editar cliente</h1>   
   
-<form >
+<form action="{{route('edicion_cliente2')}}" method="POST">
+@csrf
   <div>
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione cliente a editar</label>
-            <select id="inputState" class="form-control">
+            <select id="inputState" name="cliente" class="form-control">
                 <option selected>Elegir...</option>
                 @foreach ($clientes as $item)
                     <option><p> {{$item->nombre1}} {{$item->nombre2}}   {{$item->apellido1}}  {{$item->apellido2}}</p></option>                   
@@ -17,7 +18,8 @@
             </select>
         </div>            
     </div>
-    <a class="btn btn-primary" href="{{route('edicion_cliente')}}">Seleccionar</a>
+    <!--<a class="btn btn-primary" href="{{route('edicion_cliente2')}}">Seleccionar</a>-->
+    <button type="submit" class="btn btn-primary">Seleccionar</button>
     <div class="container">
         @yield('edicion')
     </div>

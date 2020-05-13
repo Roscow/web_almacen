@@ -39,6 +39,7 @@ Route::get('cliente_eliminar','PagesController@cliente_eliminar')->name('cliente
 Route::get('cliente_fiados','PagesController@cliente_fiados')->name('cliente_fiados');
 Route::get('edicion_cliente','PagesController@edicion_cliente')->name('edicion_cliente');
 Route::get('detalle_cliente','PagesController@detalle_cliente')->name('detalle_cliente');
+Route::post('edicion_cliente2','PagesController@edicion_cliente2')->name('edicion_cliente2');
 
 
 

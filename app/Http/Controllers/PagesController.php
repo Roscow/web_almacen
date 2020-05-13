@@ -303,4 +303,27 @@ class PagesController extends Controller
         $new_direccion->save();
         return back();
     }
+
+
+    //FORMULARIOS EDITAR
+       
+    
+    public function edicion_cliente2(Request $request){
+        $var_nombre = explode(" ",$request->cliente);
+        $var = $request->cliente;
+        $var_nombre2= 'prueba6';
+        //$cliente = new App\Cliente;
+        $cliente = (App\Cliente::where('nombre1','=', $var_nombre[0])
+                                ->where('nombre2','=',$var_nombre[1])
+                                ->where('apellido1','=',$var_nombre[2])
+                                ->where('apellido2','=',$var_nombre[3]))->get();
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();     
+        $clientes = App\Cliente::all();     
+        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','var')); 
+
+    }
+
+
+   
 }
