@@ -98,7 +98,8 @@ Route::get('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ven
 
 //otras post
 Route::post('recupera', 'LoginController@enviarRecupera')->name('recupera');
-Route::post('/', 'PagesController@insert_tipo_producto')->name('insert_tipo_producto');
-Route::post('/', 'PagesController@insert_usuario')->name('insert_usuario');
-Route::post('/', 'PagesController@insert_cliente')->name('insert_cliente');
+Route::post('/insert_tipo_producto', 'PagesController@insert_tipo_producto')->name('insert_tipo_producto');
+Route::post('/insert_usuario', 'PagesController@insert_usuario')->name('insert_usuario');
+Route::post('/insert_cliente', 'PagesController@insert_cliente')->name('insert_cliente');
+Route::post('/eliminar_cliente', 'PagesController@eliminar_cliente')->name('eliminar_cliente');
 

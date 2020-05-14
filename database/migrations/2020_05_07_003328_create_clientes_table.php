@@ -23,8 +23,9 @@ class CreateClientesTable extends Migration
             $table->string('id_direccion');
             $table->integer('telefono');
             $table->integer('monto_deuda');
-            $table->timestamp('fecha_nacimiento');
+            //$table->timestamp('fecha_nacimiento');
             $table->string('correo');
+            $table->datetime('fecha_nacimiento');
         });
     }
 

@@ -10,7 +10,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut</label >
-            <input type="number" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" required>
+            <input type="text" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" required>
         </div>
 
         <div class="form-group col-md-6">
@@ -46,8 +46,13 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Correo</label>
-            <input type="email" name="correo" class="form-control" id="inputAddress" placeholder="ejemplo@correo.cl" required>
-        </div>        
+            <input type="email" name="correo" class="form-control" id="inputAddress" placeholder="ejemplo@correo.cl" required>        
+        </div>    
+
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Fecha de nacimiento</label>
+            <input type="date" name="fecha_nacimiento" class="form-control" id="inputAddress" placeholder="02/12/1988">
+        </div>
     </div>
 
 

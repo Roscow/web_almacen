@@ -44,8 +44,12 @@
         <div class="form-group col-md-6">
             <label for="inputAddress">Numero</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="1231231">
-        </div>         
+        </div>    
 
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Fecha de nacimiento</label>
+            <input type="date" name="fecha_nacimiento" class="form-control" id="inputAddress" placeholder="02/12/1988">
+        </div>     
     </div>
 
     <div class="form-row">    

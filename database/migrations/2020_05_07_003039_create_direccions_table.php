@@ -18,7 +18,7 @@ class CreateDireccionsTable extends Migration
             $table->integer('id_comuna');
             $table->string('calle');
             $table->string('numero');
-            $table->string('departamento');
+            $table->string('departamento')->nullable($value = true)	;
         });
     }
 

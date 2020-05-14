@@ -266,6 +266,8 @@ class PagesController extends Controller
     }
 
     public function insert_cliente(Request $request){
+        
+
         $new_cliente = new App\Cliente;        
         $new_cliente->rut = $request->rut;
         $new_cliente->telefono = $request->telefono;
@@ -274,8 +276,7 @@ class PagesController extends Controller
         $new_cliente->apellido1 = $request->apellido1;
         $new_cliente->apellido2 = $request->apellido2;
         $new_cliente->correo = $request->correo;
-        //$new_cliente->dv = substr($request->rut,-1,1) ;
-        $new_cliente->dv = 'k';
+        $new_cliente->dv = substr($request->rut,-1,1);
         $new_cliente->fecha_nacimiento = $request->fecha_nacimiento;
         $new_cliente->monto_deuda = 0;
         $new_cliente->id_direccion = $request->rut;
@@ -311,13 +312,44 @@ class PagesController extends Controller
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();     
         $clientes = App\Cliente::all(); 
-           
+
+        //setear la fecha
+        $fecha= $cliente[0]->fecha_nacimiento;
+        $fechaComoEntero = strtotime($fecha);
+        $year = date("Y", $fechaComoEntero);
+        $month = date("m", $fechaComoEntero);
+        $day = date("d", $fechaComoEntero);
         //$var_rut  = App\Direccion::where('id_direccion','=','$cliente->rut')->get();  
         $var_rut= $cliente[0]->rut;
         $direccion = new App\Direccion;
         $direccion  = App\Direccion::where('id_direccion','=',$var_rut)->get() ;                       
-        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','direccion')); 
-        
+        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','direccion','year','month','day'));         
+        //return $fecha;
+    }
+
+
+    public function eliminar_cliente(Request $request){
+        $clientes = App\Cliente::all(); 
+        $var= $request->cliente_list;
+        $var_nombre = explode(" ",$var);
+        /*
+        $var_nombre[0]='prueba20';
+        $var_nombre[1]='prueba20';
+        $var_nombre[2]='prueba20';
+        $var_nombre[3]='prueba20';
+*/            
+        $cliente = App\Cliente::where('nombre1','=', $var_nombre[0])
+                                ->where('nombre2','=',$var_nombre[1])
+                                ->where('apellido1','=',$var_nombre[2])
+                                ->where('apellido2','=',$var_nombre[3])->first();  
+        //$id = $cliente[0]->rut;
+        $cliente_aux = new App\Cliente;
+        $cliente_aux = $cliente[0];
+        //$cliente_aux->delete();
+        //$cliente_eliminar = App\Cliente::find($id); 
+        //$cliente->delete();
+        //return view('menu_principal.cliente.cliente_eliminar', compact('clientes')); 
+        //return $cliente_aux;
     }
 
 

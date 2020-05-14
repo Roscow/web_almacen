@@ -4,14 +4,15 @@
 
 @section('contenido')
 <h1>eliminar cliente</h1>   
-    <form>    
+    <form action="{{route('eliminar_cliente')}}" method="POST">  
+    @csrf  
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione cliente a eliminar</label>
-            <select id="inputState" class="form-control">            
-                <option selected>Elegir...</option>
+            <select  name="cliente_list" id="inputState" class="form-control">            
+                <option  selected>Elegir...</option>
                 @foreach ($clientes as $item)
-                    <option><p> {{$item->nombre1}} {{$item->nombre2}}   {{$item->apellido1}}  {{$item->apellido2}}</p></option>                   
+                    <option><p> {{$item->nombre1}} {{$item->nombre2}} {{$item->apellido1}} {{$item->apellido2}}</p></option>                   
                 @endforeach
             </select>
         </div>    

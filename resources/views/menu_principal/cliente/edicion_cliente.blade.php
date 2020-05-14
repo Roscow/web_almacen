@@ -3,31 +3,29 @@
 @section('edicion')
 
     <h5>* datos cliente</h5>
-    
-  
 <form>
 @csrf
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->nombre1}}" placeholder="Jose" required>
+            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->nombre1}}" placeholder="" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Nombre</label>
-            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->nombre2}}" placeholder="Juan">
+            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->nombre2}}" placeholder="">
         </div>    
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->apellido1}}" placeholder="Perez" required>
+            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->apellido1}}" placeholder="" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Apellido</label>
-            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->apellido2}}" placeholder="Figueroa">
+            <input type="text" class="form-control" id="inputAddress" value="{{$cliente[0]->apellido2}}" placeholder="">
         </div>    
     </div>
 
@@ -35,8 +33,13 @@
         
         <div class="form-group col-md-6">
             <label for="inputEmail4">Telefono</label>
-            <input type="text" class="form-control" id="inputEmail4" value="{{$cliente[0]->telefono}}" placeholder="1231231231" required>
-        </div>           
+            <input type="text" class="form-control" id="inputEmail4" value="{{$cliente[0]->telefono}}" placeholder="" required>
+        </div>        
+
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Fecha de nacimiento</label>
+            <input type="date" name="fecha_nacimiento" class="form-control" id="inputAddress" value="{{$year}}-{{$month}}-{{$day}}">
+        </div>   
     </div>
 
 
@@ -66,17 +69,17 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="inputAddress" value="{{$direccion[0]->calle}}" placeholder="esquina blanca">
+            <input type="text" class="form-control" id="inputAddress" value="{{$direccion[0]->calle}}" placeholder="">
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Numero</label>
-            <input type="number" class="form-control" id="inputAddress" value="{{$direccion[0]->numero}}" placeholder="022">
+            <input type="number" class="form-control" id="inputAddress" value="{{$direccion[0]->numero}}" placeholder="">
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
-            <input type="text" class="form-control" id="inputAddress" value="{{$direccion[0]->departamento}}" placeholder="52-b">
+            <input type="text" class="form-control" id="inputAddress" value="{{$direccion[0]->departamento}}" placeholder="">
         </div> 
     </div>
 
