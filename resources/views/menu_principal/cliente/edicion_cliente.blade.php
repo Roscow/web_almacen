@@ -47,23 +47,30 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputState">Region</label>
-            <select id="inputState" class="form-control">
-            <option selected>Elegir...</option>               
+            <select id="selectRegion" class="form-control">          
                 @foreach ($regiones as $item)
-                    <option> {{$item->region}}</option>                   
+                    @if($item->id_region === $region[0]->id_region )
+                        <option value="{{$item->id_region}}" selected> {{$item->region}}</option>
+                    @else
+                        <option value="{{$item->id_region}}"> {{$item->region}}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
-            <select id="inputState" class="form-control">
-            <option selected>Elegir...</option>       
+            <select id="selectComuna" class="form-control">
                 @foreach ($comunas as $item)
-                    <option> {{$item->comuna}}</option>                   
+                    @if($item->id_comuna === $comuna[0]->id_comuna ){
+                        <option value="{{$item->id_comuna}}" selected> {{$item->comuna}}</option>
+                    @else
+                        <option value="{{$item->id_comuna}}"> {{$item->comuna}}</option>
+                    @endif                                    
                 @endforeach
             </select>
         </div>
+    </div>
     </div>
 
     <div class="form-row">

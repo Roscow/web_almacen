@@ -75,6 +75,22 @@ class PagesController extends Controller
         return view('menu_principal.usuario.edicion_usuario', compact('usuarios')); 
     }
 
+    
+    //FUNCION OBTENER COMUNAS
+    public function obtener_comunas(Request $request){  
+
+        if ($request->ajax()) {
+            $comunas = App\Comuna::where ('id_region', $request->id_region)->get();
+            foreach ($comunas as $comuna) {
+                $comunasArrays[$comuna->id_comuna] = $comuna->comuna;
+            }
+
+            return response()->json($comunasArrays);
+        }
+
+        return response()->json();
+    }
+
     //FUNCIONES DE PROVEEDOR
     public function proveedor_agregar(){        
         $proveedores = App\Proveedor::all(); 
@@ -309,8 +325,17 @@ class PagesController extends Controller
                                 ->where('nombre2','=',$var_nombre[1])
                                 ->where('apellido1','=',$var_nombre[2])
                                 ->where('apellido2','=',$var_nombre[3]))->get();
+        //$regiones = App\Region::all();
+        //$comunas = App\Comuna::all();     
+
+
+        $direccion = App\Direccion::where ('id_direccion', $cliente[0]->id_direccion)->get();
+        $comuna = App\Comuna::where ('id_comuna', $direccion[0]->id_comuna)->get();
+        $region = App\Region::where ('id_region', $comuna[0]->id_region)->get();
+ 
         $regiones = App\Region::all();
-        $comunas = App\Comuna::all();     
+        $comunas = App\Comuna::where ('id_region', $region[0]->id_region)->get();
+
         $clientes = App\Cliente::all(); 
 
         //setear la fecha
@@ -323,7 +348,7 @@ class PagesController extends Controller
         $var_rut= $cliente[0]->rut;
         $direccion = new App\Direccion;
         $direccion  = App\Direccion::where('id_direccion','=',$var_rut)->get() ;                       
-        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','direccion','year','month','day'));         
+        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','direccion','year','month','day','region','comuna'));         
         //return $fecha;
     }
 

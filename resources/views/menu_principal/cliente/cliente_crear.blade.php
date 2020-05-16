@@ -60,24 +60,23 @@
     <h5>* direccion</h5>
     <div class="form-row">
 
-        <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
             <label for="inputState">Region</label>
-            <select id="inputState" class="form-control">
-                <option selected>Elegir...</option>               
+            <select id="selectRegion" class="form-control">
+            <option selected>Elegir...</option>               
                 @foreach ($regiones as $item)
-                    <option> {{$item->region}}</option>                   
+                    <option value="{{$item->id_region}}"> {{$item->region}}</option>                   
                 @endforeach
             </select>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
-            <select name="comuna_nombre" id="inputState" class="form-control">
-                <option selected>Elegir...</option>       
-                @foreach ($comunas as $item)
+            <select id="selectComuna" class="form-control">
+            <option selected>Elegir...</option>       
+            <!--    @foreach ($comunas as $item)
                     <option> {{$item->comuna}}</option>                   
-                @endforeach
-            
+                @endforeach-->
             </select>
         </div>
     </div>
