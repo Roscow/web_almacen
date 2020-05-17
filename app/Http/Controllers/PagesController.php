@@ -284,6 +284,23 @@ class PagesController extends Controller
     public function insert_cliente(Request $request){
         
 
+        $new_direccion = new App\Direccion;
+        $new_direccion->calle = $request->calle;
+        $new_direccion->departamento = $request->departamento;
+
+        //$new_direccion->id_comuna= $request->id_comuna;
+        /*hacer un proceso para determinar el id con el nombre
+        $var_comuna = App\Comuna::where("comuna","=",$request->comuna_nombre);
+        $new_direccion->id_comuna= $var_comuna->id_comuna;
+        */
+
+        error_log('selectComuna ' . $request->selectComuna);
+
+        $new_direccion->id_comuna= $request->selectComuna;
+        $new_direccion->numero = $request->numero;
+        $new_direccion->id_direccion = $request->rut;
+        $new_direccion->save();
+
         $new_cliente = new App\Cliente;        
         $new_cliente->rut = $request->rut;
         $new_cliente->telefono = $request->telefono;
@@ -298,24 +315,39 @@ class PagesController extends Controller
         $new_cliente->id_direccion = $request->rut;
         $new_cliente->save();
         // es necesario ingresar el id_comuna por listado
-        $new_direccion = new App\Direccion;
-        $new_direccion->calle = $request->calle;
-        $new_direccion->departamento = $request->departamento;
-        //$new_direccion->id_comuna= $request->id_comuna;
-        /*hacer un proceso para determinar el id con el nombre
-        $var_comuna = App\Comuna::where("comuna","=",$request->comuna_nombre);
-        $new_direccion->id_comuna= $var_comuna->id_comuna;
-        */
-        $new_direccion->id_comuna= 1;
-        $new_direccion->numero = $request->numero;
-        $new_direccion->id_direccion = $request->rut;
-        $new_direccion->save();
+
         return back();
     }
 
 
     //FORMULARIOS EDITAR
-       
+    
+    public function actualizar_cliente(Request $request){
+        
+        error_log('Rut Actualizar :' . $request->rut);
+        $clientes = App\Cliente::where ('rut', $request->rut)->get();
+        $clientes[0]->telefono = $request->telefono;
+        $clientes[0]->nombre1 = $request->nombre1;
+        $clientes[0]->nombre2 = $request->nombre2;
+        $clientes[0]->apellido1 = $request->apellido1;
+        $clientes[0]->apellido2 = $request->apellido2;
+        $clientes[0]->fecha_nacimiento = $request->fecha_nacimiento;    
+        $clientes[0]->save();
+
+        $direcciones = App\Direccion::where ('id_direccion', $request->rut)->get();
+        $direcciones[0]->id_comuna = $request->selectComuna;
+        $direcciones[0]->calle = $request->calle;
+        $direcciones[0]->numero = $request->numeroCalle;
+        $direcciones[0]->departamento = $request->depto;
+        $direcciones[0]->save();
+
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();
+        
+        return view('menu_principal.cliente.cliente_crear', compact('regiones','comunas'));
+
+    }
+
     
     public function edicion_cliente2(Request $request){
         //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos

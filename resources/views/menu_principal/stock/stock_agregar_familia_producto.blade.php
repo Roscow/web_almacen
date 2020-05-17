@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>nueva familia de producto</h1>   
+<h1>Nueva familia de producto</h1>   
 <form>     
             <div class="form-row">            
                 <div class="form-group col-md-6">

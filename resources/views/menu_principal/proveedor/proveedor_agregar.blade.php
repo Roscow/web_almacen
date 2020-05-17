@@ -3,9 +3,9 @@
 
 
 @section('contenido')
-   <h1>crear proveedor</h1>   
+   <h1>Crear proveedor</h1>   
 <form>
-    <h5>* datos proveedor</h5>
+    <h5>* Datos proveedor</h5>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut empresa</label>

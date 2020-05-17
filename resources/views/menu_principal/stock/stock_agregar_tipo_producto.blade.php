@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>nuevo tipo de producto</h1>   
+<h1>Nuevo tipo de producto</h1>   
 <form action="{{ route('insert_tipo_producto')}}" method="POST">     
         @csrf
             <div class="form-row">            

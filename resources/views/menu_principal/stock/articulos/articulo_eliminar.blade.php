@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>eliminar articulo</h1>   
+<h1>Eliminar articulo</h1>   
     <form>    
     <div class="form-row">               
           

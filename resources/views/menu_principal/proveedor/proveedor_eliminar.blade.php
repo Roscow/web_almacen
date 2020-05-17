@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>eliminar proveedor</h1>   
+<h1>Eliminar proveedor</h1>   
     <form>    
     <div class="form-row">        
         <div class="form-group col-md-4">

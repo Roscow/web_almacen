@@ -4,7 +4,7 @@
 
 
 @section('contenido')
-<h1> ver usuarios  </h1>
+<h1> Ver usuarios  </h1>
 <div class="accordion" id="accordionExample">
 <!--mostrando rubros en acordion-->
 @foreach ($usuarios as $elemento)

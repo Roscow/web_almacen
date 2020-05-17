@@ -8,4 +8,6 @@ class Direccion extends Model
 {
     public $timestamps=false;
 
+    protected $primaryKey = 'id_direccion';
+
 }

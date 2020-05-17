@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>pedidos </h1>
+<h1>Pedidos </h1>
 <form>
     <div class="form-row">        
         <div class="form-group col-md-4">

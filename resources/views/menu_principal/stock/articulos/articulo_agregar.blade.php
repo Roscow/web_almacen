@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>agregar articulo</h1>   
+<h1>Agregar articulo</h1>   
     <form>    
     <div class="form-row">        
         <div class="form-group col-md-4">
@@ -15,12 +15,12 @@
         </div>    
 
         <div class="form-group col-md-4">
-            <label for="inputAddress">fecha de vencimiento</label>
+            <label for="inputAddress">Fecha de vencimiento</label>
             <input type="date" class="form-control" id="inputAddress" placeholder="esquina blanca">
         </div> 
 
         <div class="form-group col-md-4">
-            <label for="inputAddress">cantidad</label>
+            <label for="inputAddress">Cantidad</label>
             <input type="numeric" class="form-control" id="inputAddress" placeholder="0">
         </div> 
 

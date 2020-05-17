@@ -3,10 +3,10 @@
 
 
 @section('contenido')
-   <h1>crear cliente</h1>   
+   <h1>Crear cliente</h1>   
 <form action="{{route('insert_cliente')}}" method="POST">
 @csrf
-    <h5>* datos cliente</h5>
+    <h5>* Datos cliente</h5>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut</label >
@@ -57,12 +57,12 @@
 
 
 
-    <h5>* direccion</h5>
+    <h5>* Direccion</h5>
     <div class="form-row">
 
     <div class="form-group col-md-6">
             <label for="inputState">Region</label>
-            <select id="selectRegion" class="form-control">
+            <select id="selectRegion" name="selectRegion" class="form-control">
             <option selected>Elegir...</option>               
                 @foreach ($regiones as $item)
                     <option value="{{$item->id_region}}"> {{$item->region}}</option>                   
@@ -72,7 +72,7 @@
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
-            <select id="selectComuna" class="form-control">
+            <select id="selectComuna" name="selectComuna" class="form-control">
             <option selected>Elegir...</option>       
             <!--    @foreach ($comunas as $item)
                     <option> {{$item->comuna}}</option>                   
@@ -85,7 +85,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" name="calle" class="form-control" id="inputAddress" placeholder="esquina blanca" required>
+            <input type="text" name="calle" class="form-control" id="inputAddress" placeholder="Esquina Blanca" required>
         </div> 
 
         <div class="form-group col-md-4">

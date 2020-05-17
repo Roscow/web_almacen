@@ -2,7 +2,7 @@
 
 
 @section('contenido')
-   <h1>editar cliente</h1>   
+   <h1>Editar cliente</h1>   
   
 <form action="{{route('edicion_cliente2')}}" method="POST">
 @csrf
@@ -20,8 +20,9 @@
     </div>
     <!--<a class="btn btn-primary" href="{{route('edicion_cliente2')}}">Seleccionar</a>-->
     <button type="submit" class="btn btn-primary">Seleccionar</button>
-    <div class="container">
-        @yield('edicion')
-    </div>
 </form>
+
+<div class="container">
+        @yield('edicion')
+</div>
 @endsection
