@@ -10,6 +10,12 @@
                 <img src="https://cdn.icon-icons.com/icons2/943/PNG/128/shoppaymentorderbuy-29_icon-icons.com_73875.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 AlMACEN LOS YUYITOS - SISTEMA DE CONTROL Y GESTION
                </a>
+               <div style="float: right">
+                @php
+                    setlocale(LC_TIME, "spanish");
+                    echo strftime("%A, %d de %B de %Y");
+                @endphp
+           </div>
             </div>
         </div>
      </header>
@@ -181,12 +187,12 @@
 
 
 
-<!--<div class="container-full-width" style="margin-top: 70px">       
-        <footer>              
+<!--<div class="container-full-width" style="margin-top: 70px">
+        <footer>
             <div class="card">
                 <div class="card-header">
                     2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
-                </div>            
-            </div>       
+                </div>
+            </div>
         </footer>
 </div>
