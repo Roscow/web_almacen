@@ -4,44 +4,45 @@
 
 @section('contenido')
    <h1>Crear proveedor</h1>   
-<form>
+<form action="{{route('insert_proveedor')}}" method="POST">
+@csrf
     <h5>* Datos proveedor</h5>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut empresa</label>
-            <input type="text" name="rut_empresa" class="form-control" id="inputAddress" placeholder="17250874-k" required>
+            <input type="text" name="rut_empresa" class="form-control" id="inputrut_empresa" placeholder="17250874-k" required>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Razon social (nombre)</label>
-            <input type="text" name="razon_social" class="form-control" id="inputEmail4" placeholder="Coca-cola">
+            <input type="text" name="razon_social" class="form-control" id="inputrazon_social" placeholder="Coca-cola">
         </div>           
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">telefono</label>
-            <input type="numeric" name="telefono" class="form-control" id="inputAddress" placeholder="123123123" required>
+            <input type="numeric" name="telefono" class="form-control" id="inputtelefono" placeholder="123123123" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Correo</label>
-            <input type="email" name="correo" class="form-control" id="inputAddress" placeholder="Juan@elcancer.cl" required>
+            <input type="email" name="correo" class="form-control" id="inputcorreo" placeholder="Juan@elcancer.cl" required>
         </div>    
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Codigo postal</label>
-            <input type="number" name="codigo_postal" class="form-control" id="inputAddress" placeholder="9273353">
+            <input type="number" name="codigo_postal" class="form-control" id="inputcodigo_postal" placeholder="9273353">
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputState">Rubro</label>
-            <select id="inputState" class="form-control">
-            <option selected>Elegir...</option>               
+            <select name="selectRubro" id="selectRubro" class="form-control">
+            <option selected>Elegir rubro...</option>               
                 @foreach ($rubros as $item)
-                    <option> {{$item->rubro}}</option>                   
+                    <option value="{{$item->id}}"> {{$item->rubro}}</option>                   
                 @endforeach            
             </select>
         </div>   
@@ -50,7 +51,7 @@
     <div class="form-row">        
         <div class="form-group col-md-12">
             <label for="inputAddress">Nombre contacto</label>
-            <input type="text" name="nombre_contacto" class="form-control" id="inputAddress" placeholder="Juan carlos " required>
+            <input type="text" name="nombre_contacto" class="form-control" id="inputnombre_contacto" placeholder="Juan carlos " required>
         </div>    
     </div>
 
@@ -60,7 +61,7 @@
 
         <div class="form-group col-md-6">
             <label for="inputState">Region</label>
-            <select id="selectRegion" class="form-control">
+            <select id="selectRegion" name="selectRegion" class="form-control">
             <option selected>Elegir...</option>               
                 @foreach ($regiones as $item)
                     <option value="{{$item->id_region}}"> {{$item->region}}</option>                   
@@ -70,7 +71,7 @@
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
-            <select id="selectComuna" class="form-control">
+            <select id="selectComuna" name="selectComuna" class="form-control">
             <option selected>Elegir...</option>       
             <!--    @foreach ($comunas as $item)
                     <option> {{$item->comuna}}</option>                   
@@ -83,17 +84,15 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="esquina blanca" required>
+            <input type="text" class="form-control" id="inputCalle" name="calle" placeholder="Esquina blanca" required>
         </div> 
-
         <div class="form-group col-md-4">
             <label for="inputAddress">Numero</label>
-            <input type="number" class="form-control" id="inputAddress" placeholder="022">
+            <input type="number" class="form-control" id="inputNumero" name="numero" placeholder="022">
         </div> 
-
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="52-b">
+            <input type="text" class="form-control" id="inputDepto" name="depto" placeholder="52-B">
         </div>    
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>

@@ -260,19 +260,28 @@ class PagesController extends Controller
     }
 
     public function insert_proveedor(Request $request){
+
+        error_log('selectRubro ' .  $request->selectRubro);
+
+
+        $new_direccion = new App\Direccion;
+        $new_direccion->calle = $request->calle;
+        $new_direccion->departamento = $request->depto;
+        $new_direccion->id_comuna= $request->selectComuna;
+        $new_direccion->numero = $request->numero;
+        $new_direccion->id_direccion = $request->rut_empresa;
+        $new_direccion->save();
+ 
          $nuevo_proveedor = new App\Proveedor;
          $nuevo_proveedor->rut_empresa = $request->rut_empresa;
          $nuevo_proveedor->razon_social = $request->razon_social;
          $nuevo_proveedor->telefono = $request->telefono;
          $nuevo_proveedor->correo = $request->correo;
          $nuevo_proveedor->codigo_postal = $request->codigo_postal;
-         $nuevo_proveedor->rubro = $request->rubro;
+         $nuevo_proveedor->id_rubro = $request->selectRubro;
          $nuevo_proveedor->nombre_contacto = $request->nombre_contacto;
-         $nuevo_proveedor->region = $request->region;
-         $nuevo_proveedor->comuna = $request->comuna;
-         $nuevo_proveedor->calle = $request->calle;
-         $nuevo_proveedor->numero = $request->numero;
-         $nuevo_proveedor->depto = $request->dpto;
+         $nuevo_proveedor->id_direccion = $request->rut_empresa;
+    
          $nuevo_proveedor->save();
          return back();
 

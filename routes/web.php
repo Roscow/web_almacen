@@ -60,6 +60,7 @@ Route::get('edicion_proveedor','PagesController@edicion_proveedor')->name('edici
 Route::get('detalle_proveedor_pedidos','PagesController@detalle_proveedor_pedidos')->name('detalle_proveedor_pedidos');
 Route::get('obtener_comunas','PagesController@obtener_comunas')->name('obtener_comunas');
 Route::post('actualizar_cliente','PagesController@actualizar_cliente')->name('actualizar_cliente');
+Route::post('insert_proveedor','PagesController@insert_proveedor')->name('insert_proveedor');
 
 
 
