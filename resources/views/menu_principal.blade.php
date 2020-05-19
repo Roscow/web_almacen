@@ -187,12 +187,12 @@
 
 
 
-<!--<div class="container-full-width" style="margin-top: 70px">
-        <footer>
+<!--<div class="container-full-width" style="margin-top: 70px">       
+        <footer>              
             <div class="card">
                 <div class="card-header">
                     2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
-                </div>
-            </div>
+                </div>            
+            </div>       
         </footer>
 </div>

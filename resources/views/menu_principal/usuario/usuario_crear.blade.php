@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-   <h1>crear usuario</h1>   
+   <h1>Crear usuario</h1>   
 <form action="{{route('insert_usuario')}}" method="POST">
 @csrf
     <div class="form-row">

@@ -35,7 +35,7 @@
     </div>
 
 
-    <h5>* direccion</h5>
+    <h5>* Direccion</h5>
     <div class="form-row">
 
         <div class="form-group col-md-6">

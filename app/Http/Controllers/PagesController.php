@@ -259,7 +259,24 @@ class PagesController extends Controller
         return back();
     }
 
-    
+    public function insert_proveedor(Request $request){
+         $nuevo_proveedor = new App\Proveedor;
+         $nuevo_proveedor->rut_empresa = $request->rut_empresa;
+         $nuevo_proveedor->razon_social = $request->razon_social;
+         $nuevo_proveedor->telefono = $request->telefono;
+         $nuevo_proveedor->correo = $request->correo;
+         $nuevo_proveedor->codigo_postal = $request->codigo_postal;
+         $nuevo_proveedor->rubro = $request->rubro;
+         $nuevo_proveedor->nombre_contacto = $request->nombre_contacto;
+         $nuevo_proveedor->region = $request->region;
+         $nuevo_proveedor->comuna = $request->comuna;
+         $nuevo_proveedor->calle = $request->calle;
+         $nuevo_proveedor->numero = $request->numero;
+         $nuevo_proveedor->depto = $request->dpto;
+         $nuevo_proveedor->save();
+         return back();
+
+    }
     public function insert_usuario(Request $request){        
         $nuevo_usuario = new App\Usuario;
         //$nuevo_usuario->id_user = increments();
@@ -343,8 +360,9 @@ class PagesController extends Controller
 
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();
+        $mensaje = "Sus cambios han sido realizado con exito!";
         
-        return view('menu_principal.cliente.cliente_crear', compact('regiones','comunas'));
+        return view('menu_principal.cliente.cliente_crear', compact('regiones','comunas', 'mensaje'));
 
     }
 
