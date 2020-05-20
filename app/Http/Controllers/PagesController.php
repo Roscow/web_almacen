@@ -122,13 +122,53 @@ class PagesController extends Controller
         return view('menu_principal.proveedor.proveedor_pedidos', compact('proveedores')); 
     }
 
-    public function edicion_proveedor(){
-        $proveedores = App\Proveedor::all();
-        $regiones = App\Region::all();
-        $comunas = App\Comuna::all();
-        $rubros = App\Rubro::all(); 
+    public function edicion_proveedor(Request $request){
+    
+        
 
-        return view('menu_principal.proveedor.edicion_proveedor', compact('proveedores','regiones','comunas','rubros')); 
+        error_log('Rut Actualizar :' . $request->razon_social);
+        $proveedores = new App\Proveedor();
+        $proveedores = App\Proveedor::where('razon_social','=', $request->razon_social)->get();
+
+        $direccion = App\Direccion::where ('id_direccion', $proveedores[0]->id_direccion)->get();
+        $comuna = App\Comuna::where ('id_comuna', $direccion[0]->id_comuna)->get();
+        $region = App\Region::where ('id_region', $comuna[0]->id_region)->get();
+ 
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::where ('id_region', $region[0]->id_region)->get();
+
+        $rubros = App\Rubro::all();
+
+        return view('menu_principal.proveedor.edicion_proveedor', compact('proveedores','regiones','comunas','region','comuna', 'direccion', 'rubros')); 
+    }
+
+    public function actulizar_proveedor(Request $request){
+   
+        error_log('Rut Actualizar :' . $request->rut_empresa);
+        $proveedores = App\Proveedor::where ('rut_empresa', $request->rut_empresa)->get();
+        $proveedores[0]->rut_empresa = $request->rut_empresa;
+        $proveedores[0]->razon_social = $request->razon_social;
+        $proveedores[0]->telefono = $request->telefono;
+        $proveedores[0]->correo = $request->correo;
+        $proveedores[0]->codigo_postal = $request->codigo_postal; 
+        $proveedores[0]->nombre_contacto = $request->nombre_contacto;   
+        $proveedores[0]->save();
+
+        $direcciones = App\Direccion::where ('id_direccion', $request->rut_empresa)->get();
+        $direcciones[0]->id_comuna = $request->selectComuna;
+        $direcciones[0]->calle = $request->calle;
+        $direcciones[0]->numero = $request->numeroCalle;
+        $direcciones[0]->departamento = $request->depto;
+        $direcciones[0]->save();
+
+        $proveedores = App\Proveedor::all(); 
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();       
+        $rubros = App\Rubro::all();
+        $mensaje = "Sus cambios han sido realizado con exito!";
+       
+
+        return view('menu_principal.proveedor.proveedor_editar', compact('proveedores','regiones','comunas','rubros', 'mensaje')); 
     }
 
     public function detalle_proveedor_pedidos(){
