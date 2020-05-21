@@ -1,4 +1,4 @@
-@extends('menu_principal/menu_cliente')
+}|@extends('menu_principal/menu_cliente')
 
 
 @section('contenido')

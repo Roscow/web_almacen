@@ -56,7 +56,7 @@
 
     <div class="form-row">    
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <input class="form-check-input" type="checkbox" id="id_tipo_user" name="id_tipo_user">
             <label class="form-check-label" for="gridCheck">
                 Usuario Administrador
             </label>

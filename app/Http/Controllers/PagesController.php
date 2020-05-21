@@ -70,12 +70,66 @@ class PagesController extends Controller
         return view('menu_principal.usuario.usuario_ver_todos', compact('usuarios')); 
     }
 
-    public function edicion_usuario(){   
-        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use     
-        return view('menu_principal.usuario.edicion_usuario', compact('usuarios')); 
+    public function edicion_usuario(Request $request){   
+        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use   
+        
+         //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos
+         
+         error_log('usuario ' . $request->usuario);
+
+         $var_nombre = explode(" ",$request->usuario);
+
+         error_log('nombre1 ' . $var_nombre[0]);
+         error_log('nombre2 ' . $var_nombre[1]);
+         error_log('apellido1 ' . $var_nombre[2]);
+         error_log('apellido2 ' . $var_nombre[3]);
+
+         $usuario = App\Usuario::where('nombre1','=', $var_nombre[0])
+                                 ->where('nombre2','=',$var_nombre[1])
+                                 ->where('apellido1','=',$var_nombre[2])
+                                 ->where('apellido2','=',$var_nombre[3])->get();
+ 
+        error_log('usuario ' . $usuario);
+         //setear la fecha
+         $fecha= $usuario[0]->fecha_nacimiento;
+         $fechaComoEntero = strtotime($fecha);
+         $year = date("Y", $fechaComoEntero);
+         $month = date("m", $fechaComoEntero);
+         $day = date("d", $fechaComoEntero);
+
+         return view('menu_principal.usuario.edicion_usuario', compact('usuario','usuarios','year','month','day'));         
+
+    }
+
+    public function actualizar_usuario(Request $request){   
+        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use   
+        
+         //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos
+         
+         error_log('id_tipo_user ' . $request->id_tipo_user);
+
+         $usuario = App\Usuario::where ('id_user', $request->id_user)->get();
+         $usuario[0]->nombre1 = $request->nombre1;
+         $usuario[0]->nombre2 = $request->nombre2;
+         $usuario[0]->apellido1 = $request->apellido1;
+         $usuario[0]->apellido2 = $request->apellido2;
+         $usuario[0]->usser = $request->nombre1;
+         $usuario[0]->correo = $request->correo;
+         $usuario[0]->telefono = $request->numero;
+         $usuario[0]->id_tipo_user = $request->id_tipo_user=='on' ? 1:0;
+         $usuario[0]->fecha_nacimiento = $request->fecha_nacimiento;
+
+         $usuario[0]->save();
+
+         $usuarios = App\Usuario::all();  
+         $mensaje = "Sus cambios han sido realizado con exito!";
+
+         return view('menu_principal.usuario.usuario_crear', compact('usuarios','mensaje'));         
+
     }
 
     
+
     //FUNCION OBTENER COMUNAS
     public function obtener_comunas(Request $request){  
 
@@ -326,7 +380,10 @@ class PagesController extends Controller
          return back();
 
     }
-    public function insert_usuario(Request $request){        
+    public function insert_usuario(Request $request){      
+
+        error_log('selectrut' . $request->selectrut);
+
         $nuevo_usuario = new App\Usuario;
         //$nuevo_usuario->id_user = increments();
         $nuevo_usuario->apellido1 = $request->apellido1;
@@ -336,7 +393,7 @@ class PagesController extends Controller
         //$nuevo_usuario->dv = substr($request->rut,-1,1) ;
         $nuevo_usuario->dv = 'k';
         $nuevo_usuario->fecha_nacimiento = $request->fecha_nacimiento;
-        $nuevo_usuario->id_tipo_user = 1;
+        $nuevo_usuario->id_tipo_user = $request->id_tipo_user=='on' ? 1:0;
         $nuevo_usuario->nombre1 = $request->nombre1;
         $nuevo_usuario->nombre2 = $request->nombre2;
         $nuevo_usuario->rut = $request->rut;
