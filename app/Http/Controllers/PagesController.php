@@ -50,9 +50,26 @@ class PagesController extends Controller
     }
 
     //funciones de usuarios
-    public function usuario_eliminar(){        
+    public function usuario_eliminar(){      
         $usuarios = App\Usuario::all();        
         return view('menu_principal.usuario.usuario_eliminar', compact('usuarios')); 
+    }
+
+    public function eliminar_usuario(Request $request){
+       
+        $var_nombre = explode(" ",$request->usuario_list);
+    
+        $usuario = App\Usuario::where('nombre1','=', $var_nombre[0])
+                                ->where('nombre2','=',$var_nombre[1])
+                                ->where('apellido1','=',$var_nombre[2])
+                                ->where('apellido2','=',$var_nombre[3])->get(); 
+                                $usuario[0]->delete(); 
+        $mensaje = "Se ha eliminado usuario correctamente!";
+
+        $usuarios = App\Usuario::all();        
+       
+        return view('menu_principal.usuario.usuario_crear', compact( 'mensaje', 'usuarios')); 
+
     }
 
     public function usuario_editar(){        
@@ -166,9 +183,22 @@ class PagesController extends Controller
         return view('menu_principal.proveedor.proveedor_editar', compact('regiones','comunas','proveedores')); 
     }
 
-    public function proveedor_eliminar(){
-        $proveedores = App\Proveedor::all();
+    public function proveedor_eliminar(Request $request){
+        $proveedores = App\Proveedor::all(); 
         return view('menu_principal.proveedor.proveedor_eliminar', compact('proveedores')); 
+    }
+
+    public function proveedor_eliminar2(Request $request){
+        error_log('Rut Actualizar :' . $request->proveedor_list);
+        $proveedores = App\Proveedor::where('razon_social','=', $request->proveedor_list)->get();
+        $proveedores[0]->delete();
+         
+        $proveedores = App\Proveedor::all(); 
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();       
+        $rubros = App\Rubro::all(); 
+        $mensaje = "Se ha eliminado proveedor correctamente!!";
+        return view('menu_principal.proveedor.proveedor_agregar', compact('regiones','comunas','proveedores','rubros', 'mensaje')); 
     }
 
     public function proveedor_pedidos(){
@@ -510,28 +540,22 @@ class PagesController extends Controller
 
 
     public function eliminar_cliente(Request $request){
-        $clientes = App\Cliente::all(); 
-        $var= $request->cliente_list;
-        $var_nombre = explode(" ",$var);
-        /*
-        $var_nombre[0]='prueba20';
-        $var_nombre[1]='prueba20';
-        $var_nombre[2]='prueba20';
-        $var_nombre[3]='prueba20';
-*/            
+       
+        $var_nombre = explode(" ",$request->cliente_list);
+    
         $cliente = App\Cliente::where('nombre1','=', $var_nombre[0])
                                 ->where('nombre2','=',$var_nombre[1])
                                 ->where('apellido1','=',$var_nombre[2])
-                                ->where('apellido2','=',$var_nombre[3])->first();  
-        //$id = $cliente[0]->rut;
-        $cliente_aux = new App\Cliente;
-        $cliente_aux = $cliente[0];
-        //$cliente_aux->delete();
-        //$cliente_eliminar = App\Cliente::find($id); 
-        //$cliente->delete();
-        //return view('menu_principal.cliente.cliente_eliminar', compact('clientes')); 
-        //return $cliente_aux;
+                                ->where('apellido2','=',$var_nombre[3])->get(); 
+                                $cliente[0]->delete(); 
+        $mensaje = "Se ha eliminado cliente correctamente!";
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();
+
+        return view('menu_principal.cliente.cliente_crear', compact('regiones', 'comunas', 'mensaje')); 
+
     }
+
 
 
    

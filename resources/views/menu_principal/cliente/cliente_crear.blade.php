@@ -86,7 +86,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" name="calle" class="form-control" id="inputCalle" placeholder="esquina blanca" required onpaste="return false" onkeypress="return soloLetras(event)">
+            <input type="text" name="calle" class="form-control" id="inputCalle" placeholder="Esquina blanca" required onpaste="return false" onkeypress="return soloLetras(event)">
         </div>
 
         <div class="form-group col-md-4">
@@ -96,7 +96,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
-            <input type="text" name="departamento" class="form-control" id="inputDepto" placeholder="52-b" onpaste="return false">
+            <input type="text" name="departamento" class="form-control" id="inputDepto" placeholder="52-B" onpaste="return false">
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>

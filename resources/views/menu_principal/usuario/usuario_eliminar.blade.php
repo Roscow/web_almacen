@@ -4,11 +4,12 @@
 
 @section('contenido')
 <h1>Eliminar usuario</h1>   
-    <form>    
+    <form action="{{route('eliminar_usuario')}}" method="POST">   
+    @csrf     
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione usuario a eliminar</label>
-            <select id="inputState" class="form-control">
+            <select id="inputState" name="usuario_list" class="form-control">
                 <option selected>Elegir...</option>
                     @foreach ($usuarios as $item)
                         <option><p> {{$item->nombre1}} {{$item->nombre2}}   {{$item->apellido1}}  {{$item->apellido2}}</p></option>                   

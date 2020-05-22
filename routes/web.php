@@ -55,6 +55,7 @@ Route::get('proveedor_agregar','PagesController@proveedor_agregar')->name('prove
 Route::get('proveedor_agregar_rubro','PagesController@proveedor_agregar_rubro')->name('proveedor_agregar_rubro');
 Route::get('proveedor_editar','PagesController@proveedor_editar')->name('proveedor_editar');
 Route::get('proveedor_eliminar','PagesController@proveedor_eliminar')->name('proveedor_eliminar');
+Route::post('proveedor_eliminar2','PagesController@proveedor_eliminar2')->name('proveedor_eliminar2');
 Route::get('proveedor_pedidos','PagesController@proveedor_pedidos')->name('proveedor_pedidos');
 Route::get('detalle_proveedor_pedidos','PagesController@detalle_proveedor_pedidos')->name('detalle_proveedor_pedidos');
 Route::get('obtener_comunas','PagesController@obtener_comunas')->name('obtener_comunas');
@@ -83,7 +84,6 @@ Route::get('agregar_tipo_producto','PagesController@agregar_tipo_producto')->nam
 
 
 
-
 //views de menu usuario
 Route::get('usuario_crear','PagesController@usuario_crear')->name('usuario_crear');
 Route::get('usuario_ver_todos','PagesController@usuario_ver_todos')->name('usuario_ver_todos');
@@ -91,6 +91,7 @@ Route::get('usuario_eliminar','PagesController@usuario_eliminar')->name('usuario
 Route::get('usuario_editar','PagesController@usuario_editar')->name('usuario_editar');
 Route::post('edicion_usuario','PagesController@edicion_usuario')->name('edicion_usuario');
 Route::post('actualizar_usuario','PagesController@actualizar_usuario')->name('actualizar_usuario');
+Route::post('eliminar_usuario','PagesController@eliminar_usuario')->name('eliminar_usuario');
 
 
 Route::get('ventas_agregar','PagesController@ventas_agregar')->name('ventas_agregar');
