@@ -12,8 +12,9 @@
                </a>
                <div style="float: right">
                 @php
+                    date_default_timezone_set ("America/Santiago");
                     setlocale(LC_TIME, "spanish");
-                    echo strftime("%A, %d de %B de %Y");
+                    echo strftime("%A, %d de %B de %Y %H:%M");
                 @endphp
            </div>
             </div>
