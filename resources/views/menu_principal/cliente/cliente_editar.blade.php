@@ -5,7 +5,7 @@
    <h1>Editar cliente</h1>   
 <form action="{{route('edicion_cliente2')}}" method="POST">
 @csrf
-  <div>
+
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione cliente a editar</label>

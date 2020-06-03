@@ -82,6 +82,6 @@
     </div>
 </form>
     @section('edicion')
-        <p>editando</p>
+        <p>Editando</p>
     @endsection
 @endsection

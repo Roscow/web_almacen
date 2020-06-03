@@ -14,7 +14,9 @@
                 @php
                     date_default_timezone_set ("America/Santiago");
                     setlocale(LC_TIME, "spanish");
-                    echo strftime("%A, %d de %B de %Y %H:%M");
+                   
+                        echo ucwords(strftime("%A, %d de %B %Y %H:%M"));
+                   
                 @endphp
            </div>
             </div>
@@ -30,10 +32,10 @@
                 _USUARIO_
                </a>
                <a class="navbar-brand" href="#" style="float: right">
-                cerrar sesión
+                Cerrar sesión
                </a>
                <a class="navbar-brand" href="#">
-                preferencias
+                Preferencias
                </a>
             </div>
         </div>

@@ -13,13 +13,13 @@
         </div>  
 
         <div class="form-group col-md-4">
-            <label for="inputAddress">total </label>
+            <label for="inputAddress">Total </label>
             <input type="text" class="form-control" id="inputAddress" placeholder="0">
         </div>  
     </div>
-    <button type="submit" class="btn btn-primary">agregar</button>
+    <button type="submit" class="btn btn-primary">Agregar</button>
 </form>
-<h6>* listado de productos</h6>
+<h6>* Listado de productos</h6>
 <ul class="list-group">
         <li class="list-group-item">        
             <div class="form-row">               
@@ -108,7 +108,7 @@
 
 
 
-        <button type="submit" class="btn btn-primary">confirmar venta</button>
+        <button type="submit" class="btn btn-primary">Confirmar venta</button>
     </form>
 @endsection
 

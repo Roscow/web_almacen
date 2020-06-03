@@ -68,7 +68,7 @@
 }
 
 body{
-	font-family: arial, Helvetica, sans-serif;
+	
 	font-size: 16px;
 }
 
@@ -87,7 +87,7 @@ body{
 	height: 500px;
 }
 .wrapper:before{
-	background-image: url(https://i.pinimg.com/originals/f1/e3/3e/f1e33ea2f317cd6a3178646431099534.png);
+	background-image: url(https://lh3.googleusercontent.com/proxy/Tf7O2ciVY1j39JzDI34MLaUPnWi8kX2wASPeRsQsqKrKC7kGy2g0TsLNs0ly-2fpxLUAHjnUHEjW8mvI63EcKozwYmfZeoq7gQUS_8g24TppUsu5TCDSWXYL);
 	background-size: cover;
 	content: "";
 	position: fixed;
@@ -151,7 +151,7 @@ body{
 	font-size: 14px;
 }
 .buttonlogin{
-	background-color: #fb5a2f;
+	background-color: #3366FF;
 	color: #fff;
 	border:none;
 	border-radius: 5px;
@@ -163,7 +163,7 @@ body{
 }
 
 .buttonlogin:hover, .buttonlogin:focus, .buttonlogin:active {
-  background-color: #fb5a2f !important;
+  background-color: #337FFF !important;
   color: #fff !important;
   outline: none !important;
   box-shadow: none !important;
