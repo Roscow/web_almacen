@@ -9,7 +9,7 @@
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione proveedor </label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
+                <option selected>Elegir...</option>
                 <option>...</option>
             </select>
         </div>    
@@ -31,7 +31,7 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
       <br><br>
-            <h6>* detalle del pedido</h6>
+            <h6>* Detalle del pedido</h6>
             <p>
            coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
            coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
@@ -54,7 +54,7 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">       
       <br><br>
-            <h6>* detalle del pedido</h6>
+            <h6>* Detalle del pedido</h6>
             <p>
            coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
            coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>

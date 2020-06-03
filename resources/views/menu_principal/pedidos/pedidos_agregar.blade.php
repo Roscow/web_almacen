@@ -10,7 +10,7 @@
         <div class="form-group col-md-12">
             <label for="inputState">Seleccione proveedor</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
+                <option selected>Elegir...</option>
                 <option>...</option>
             </select>
         </div>
@@ -18,7 +18,7 @@
         <div class="form-group col-md-4">
             <label for="inputState">Producto</label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
+                <option selected>Elegir...</option>
                 <option>...</option>
             </select>
         </div>

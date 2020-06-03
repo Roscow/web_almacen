@@ -9,7 +9,7 @@
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione producto </label>
             <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
+                <option selected>Elegir...</option>
                 <option>...</option>
             </select>
         </div>    

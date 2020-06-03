@@ -5,12 +5,12 @@
     
     <h1>NUEVO REPORTE</h1>   
     <form>
-        <h6>* plazo de analisis</h6>
+        <h6>* Plazo de analisis</h6>
         <div class="form-row">        
             <div class="form-group col-md-3">
                 <label for="inputState">Seleccione mes  </label>
                 <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
+                    <option selected>Elegir...</option>
                     <option>...</option>
                 </select>
             </div>  
@@ -18,7 +18,7 @@
             <div class="form-group col-md-3">
                 <label for="inputState">Seleccione año </label>
                 <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
+                    <option selected>Elegir...</option>
                     <option>...</option>
                 </select>
             </div>  
@@ -28,7 +28,7 @@
     <br><br>
 
     <p>
-        *****ejemplo de reporte:****<br>
+        *****Ejemplo de reporte:****<br>
         periodo de analisis : julio - 2020<br>
         <br>productos mas vendidos
         <br>n° ventas en el periodo:
@@ -45,7 +45,7 @@
 
     </p>
     <form>
-        <button type="submit" class="btn btn-primary">imprimir</button> 
+        <button type="submit" class="btn btn-primary">Imprimir</button> 
     </form>
 
     @yield('contenido')     
