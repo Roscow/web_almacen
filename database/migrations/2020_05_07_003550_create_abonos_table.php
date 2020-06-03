@@ -14,7 +14,7 @@ class CreateAbonosTable extends Migration
     public function up()
     {
         Schema::create('abonos', function (Blueprint $table) {
-            $table->integer('id_abono');
+            $table->increments('id_abono');
             $table->timestamp('fecha_pago');
             $table->integer('rut_cliente');
             $table->integer('monto');

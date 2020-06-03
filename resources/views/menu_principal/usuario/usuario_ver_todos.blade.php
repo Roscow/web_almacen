@@ -13,7 +13,8 @@
     <div class="card-header" id="heading{{$elemento->id_user}}">
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$elemento->id_user}}" aria-expanded="true" aria-controls="collapseOne">
-          <p> {{$elemento->nombre1}} {{$elemento->nombre2}} {{$elemento->apellido1}} {{$elemento->apellido2}}</p>
+          <!--<p> {{$elemento->nombre1}} {{$elemento->nombre2}} {{$elemento->apellido1}} {{$elemento->apellido2}}</p>-->
+          <p>{{str_replace("_", " ",$elemento->nombre1)}} {{str_replace("_", " ",$elemento->nombre2)}} {{str_replace("_", " ",$elemento->apellido1)}} {{str_replace("_", " ",$elemento->apellido2)}} </p> 
         </button>
       </h2>
     </div>
@@ -24,7 +25,14 @@
       Rut: {{$elemento->rut}} - {{$elemento->dv}}<br>
       Correo: {{$elemento->correo}}<br>
       Telefono: {{$elemento->telefono}}<br>
-      Tipo_usuario: {{$elemento->id_tipo_user}}<br>
+      Tipo_usuario:       
+      @if ($elemento->id_tipo_user == 0)
+        vendedor
+      @else
+        administrador
+      @endif
+   
+      <br>
       Fecha Nacimiento: {{$elemento->fecha_nacimiento}}
       </p>
       </div>

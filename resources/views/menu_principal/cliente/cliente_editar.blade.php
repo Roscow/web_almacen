@@ -1,9 +1,8 @@
-}|@extends('menu_principal/menu_cliente')
+@extends('menu_principal/menu_cliente')
 
 
 @section('contenido')
    <h1>Editar cliente</h1>   
-  
 <form action="{{route('edicion_cliente2')}}" method="POST">
 @csrf
   <div>
