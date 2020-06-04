@@ -248,7 +248,7 @@ class PagesController extends Controller
         $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use   
         
          //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos
-         
+    
          error_log('usuario ' . $request->usuario);
 
          $var_nombre = explode(" ",$request->usuario);
@@ -276,31 +276,22 @@ class PagesController extends Controller
     }
 
     public function actualizar_usuario(Request $request){   
-        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use   
-        
-         //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos
-         
+        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use            
          error_log('id_tipo_user ' . $request->id_tipo_user);
-
          $usuario = App\Usuario::where ('id_user', $request->id_user)->get();
-
         //para no generar errores por variables con espacios    
          $usuario[0]->nombre1 = str_replace(" ", "_", $request->nombre1);
          $usuario[0]->nombre2 = str_replace(" ", "_", $request->nombre2);
          $usuario[0]->apellido1 = str_replace(" ", "_", $request->nombre2);
          $usuario[0]->apellido2 = str_replace(" ", "_", $request->apellido2);
-
          $usuario[0]->usser = $request->nombre1;
          $usuario[0]->correo = $request->correo;
          $usuario[0]->telefono = $request->numero;
          $usuario[0]->id_tipo_user = $request->id_tipo_user=='on' ? 1:0;
          $usuario[0]->fecha_nacimiento = $request->fecha_nacimiento;
-
          $usuario[0]->save();
-
          $usuarios = App\Usuario::all();  
          $mensaje = "Sus cambios han sido realizado con exito!";
-
          return view('menu_principal.usuario.usuario_crear', compact('usuarios','mensaje'));         
 
     }
@@ -369,6 +360,39 @@ class PagesController extends Controller
         return view('menu_principal.proveedor.proveedor_editar', compact('regiones','comunas','proveedores')); 
     }
 
+    
+    public function insert_proveedor(Request $request){
+        error_log('selectRubro ' .  $request->selectRubro);
+        $new_direccion = new App\Direccion;
+        $new_direccion->calle = $request->calle;
+        $new_direccion->departamento = $request->depto;
+        $new_direccion->id_comuna= $request->selectComuna;
+        $new_direccion->numero = $request->numero;
+        $new_direccion->id_direccion = $request->rut_empresa;
+        $new_direccion->save();
+ 
+         $nuevo_proveedor = new App\Proveedor;
+         $nuevo_proveedor->rut_empresa = $request->rut_empresa;
+         $nuevo_proveedor->razon_social = $request->razon_social;
+         $nuevo_proveedor->telefono = $request->telefono;
+         $nuevo_proveedor->correo = $request->correo;
+         $nuevo_proveedor->codigo_postal = $request->codigo_postal;
+         $nuevo_proveedor->id_rubro = $request->selectRubro;
+         $nuevo_proveedor->nombre_contacto = $request->nombre_contacto;
+         $nuevo_proveedor->id_direccion = $request->rut_empresa;
+    
+         $nuevo_proveedor->save();
+         $mensaje = "proveedor ingresado correctamente";
+         $proveedores = App\Proveedor::all(); 
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();       
+        $rubros = App\Rubro::all(); 
+        return view('menu_principal.proveedor.proveedor_agregar', compact('mensaje','regiones','comunas','proveedores','rubros')); 
+         //return view('menu_principal.proveedor.proveedor_agregar', compact('mensaje','proveedores')); 
+         //return back();
+
+    }
+
     public function proveedor_eliminar(Request $request){
         $proveedores = App\Proveedor::all(); 
         return view('menu_principal.proveedor.proveedor_eliminar', compact('proveedores')); 
@@ -392,20 +416,31 @@ class PagesController extends Controller
         return view('menu_principal.proveedor.proveedor_pedidos', compact('proveedores')); 
     }
 
+    public function detalle_proveedor_pedidos(Request $request){
+        $proveedores = App\Proveedor::all();
+        $var_nombre =$request->proveedor;        
+        $proveedor = App\Proveedor::where('razon_social','=', $var_nombre)->get();             
+        $rut = $proveedor[0]->rut_empresa;
+        $pedidos= new app\Pedido;
+        $pedidos = App\Pedido::where('rut_empresa','=',$rut)->get();        
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();
+        $rubros = App\Rubro::all(); 
+        //enviar detalle de pedidos que sean de ese proveedor
+        $detalle = App\Detalle_pedido::all();
+        return view('menu_principal.proveedor.detalle_proveedor_pedidos', compact('proveedores','regiones','comunas','rubros','pedidos','detalle')); 
+    }
+
     public function edicion_proveedor(Request $request){            
         error_log('Rut Actualizar :' . $request->razon_social);
         $proveedores = new App\Proveedor();
         $proveedores = App\Proveedor::where('razon_social','=', $request->razon_social)->get();
-
         $direccion = App\Direccion::where ('id_direccion', $proveedores[0]->id_direccion)->get();
         $comuna = App\Comuna::where ('id_comuna', $direccion[0]->id_comuna)->get();
         $region = App\Region::where ('id_region', $comuna[0]->id_region)->get();
- 
         $regiones = App\Region::all();
         $comunas = App\Comuna::where ('id_region', $region[0]->id_region)->get();
-
         $rubros = App\Rubro::all();
-
         return view('menu_principal.proveedor.edicion_proveedor', compact('proveedores','regiones','comunas','region','comuna', 'direccion', 'rubros')); 
     }
 
@@ -438,14 +473,9 @@ class PagesController extends Controller
         return view('menu_principal.proveedor.proveedor_editar', compact('proveedores','regiones','comunas','rubros', 'mensaje')); 
     }
 
-    public function detalle_proveedor_pedidos(){
-        $proveedores = App\Proveedor::all();
-        $regiones = App\Region::all();
-        $comunas = App\Comuna::all();
-        $rubros = App\Rubro::all(); 
+    
 
-        return view('menu_principal.proveedor.detalle_proveedor_pedidos', compact('proveedores','regiones','comunas','rubros')); 
-    }
+    
 
     //FUNCIONES PEDIDOS
     public function pedidos_agregar(){        
@@ -547,33 +577,6 @@ class PagesController extends Controller
         return back();
     }
 
-    public function insert_proveedor(Request $request){
-
-        error_log('selectRubro ' .  $request->selectRubro);
-
-
-        $new_direccion = new App\Direccion;
-        $new_direccion->calle = $request->calle;
-        $new_direccion->departamento = $request->depto;
-        $new_direccion->id_comuna= $request->selectComuna;
-        $new_direccion->numero = $request->numero;
-        $new_direccion->id_direccion = $request->rut_empresa;
-        $new_direccion->save();
- 
-         $nuevo_proveedor = new App\Proveedor;
-         $nuevo_proveedor->rut_empresa = $request->rut_empresa;
-         $nuevo_proveedor->razon_social = $request->razon_social;
-         $nuevo_proveedor->telefono = $request->telefono;
-         $nuevo_proveedor->correo = $request->correo;
-         $nuevo_proveedor->codigo_postal = $request->codigo_postal;
-         $nuevo_proveedor->id_rubro = $request->selectRubro;
-         $nuevo_proveedor->nombre_contacto = $request->nombre_contacto;
-         $nuevo_proveedor->id_direccion = $request->rut_empresa;
-    
-         $nuevo_proveedor->save();
-         return back();
-
-    }
     //FUNCIONES DE VENTAS
     public function ventas_agregar(){
         $clientes = App\Cliente::all();

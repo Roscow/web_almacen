@@ -3,77 +3,48 @@
 
 
 @section('detalle_proveedor_pedidos')
-    
-<div class="accordion" id="accordionExample">
-
-<div class="card">
-  <div class="card-header" id="headingOne">
-    <h2 class="mb-0">
-      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-               29-03-2020
-      </button>
-    </h2>
-  </div>
-
-  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-    <div class="card-body">
-    <br><br>
-          <h6>* detalle del pedido</h6>
-          <p>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>     
-    </div>
-  </div>
-</div>
-
-
-<div class="card">
-  <div class="card-header" id="headingTwo">
-    <h2 class="mb-0">
-      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          29-04-2020
-      </button>
-    </h2>
-  </div>
-  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-    <div class="card-body">       
-    <br><br>
-          <h6>* detalle del pedido</h6>
-          <p>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-         coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>     
-    </div>
-  </div>
-</div>
-
-
-<div class="card">
-  <div class="card-header" id="headingThree">
-    <h2 class="mb-0">
-      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          29-05-2020
-      </button>
-    </h2>
-  </div>
-  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-    <div class="card-body">      
-          fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-          fecha:13-05-2019    fiado    monto: $15900     deuda: 21900<br><br>
-          fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-          fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-          fecha:13-05-2019    fiado    monto: $15900     deuda: 21900<br><br>
-          fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-          fecha:13-05-2019    fiado    monto: $15900     deuda: 21900<br><br>
-          fecha:18-07-2017    abono    monto: $1212      deuda: 13900
-    </div>
-  </div>
-</div>
-</div>
-
+          
+      <div class="accordion" id="accordionExample">
+      @foreach($pedidos as $item)
+          <div class="card">
+            <div class="card-header" id="heading{{$item->id_pedido}}">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$item->id_pedido}}" aria-expanded="true" aria-controls="collapse{{$item->id_pedido}}">
+                        ID:{{$item->id_pedido}} Fecha:{{$item->fecha_creacion}}
+                </button>
+              </h2>
+            </div>
+          </div>
+          <div id="collapse{{$item->id_pedido}}" class="collapse" aria-labelledby="heading{{$item->id_pedido}}" data-parent="#accordionExample">
+            <div class="card-body">                                
+                  <table class="table">
+                    <thead>
+                        <tr>
+                          <th scope="col">Codigo producto</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Costo linea</th>
+                          <th scope="col">estado</th>
+                          <th scope="col">fecha recepcion</th>
+                        </tr>
+                      <thead>
+                      <tbody>
+                        @foreach ($detalle as $item2)
+                            @if ($item->id_pedido == $item2->id_pedido)
+                            <tr>
+                              <!--<th scope="row">{{$item2->id_pedido}}</th>-->
+                              <td>{{$item2->codigo_producto}}</td>
+                              <td>{{$item2->cantidad}}</td>
+                              <td>${{$item2->costo_linea}}</td>
+                              <td>{{$item2->id_estado}}</td>
+                              <td>{{$item2->fecha_recepcion}}</td>
+                            </tr>                                 
+                            @endif 
+                        @endforeach   
+                    </tbody>
+                  </table>
+                  
+            </div>
+          </div>
+      @endforeach
+      </div>
 @endsection

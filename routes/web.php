@@ -41,7 +41,6 @@ Route::get('edicion_cliente','PagesController@edicion_cliente')->name('edicion_c
 Route::post('detalle_cliente','PagesController@detalle_cliente')->name('detalle_cliente');
 Route::post('edicion_cliente2','PagesController@edicion_cliente2')->name('edicion_cliente2');
 Route::post('abonar','PagesController@abonar')->name('abonar');
-Route::post('nuevo_rubro','PagesController@nuevo_rubro')->name('nuevo_rubro');
 
 
 
@@ -59,12 +58,13 @@ Route::get('proveedor_editar','PagesController@proveedor_editar')->name('proveed
 Route::get('proveedor_eliminar','PagesController@proveedor_eliminar')->name('proveedor_eliminar');
 Route::post('proveedor_eliminar2','PagesController@proveedor_eliminar2')->name('proveedor_eliminar2');
 Route::get('proveedor_pedidos','PagesController@proveedor_pedidos')->name('proveedor_pedidos');
-Route::get('detalle_proveedor_pedidos','PagesController@detalle_proveedor_pedidos')->name('detalle_proveedor_pedidos');
+Route::post('detalle_proveedor_pedidos','PagesController@detalle_proveedor_pedidos')->name('detalle_proveedor_pedidos');
 Route::get('obtener_comunas','PagesController@obtener_comunas')->name('obtener_comunas');
 Route::post('actualizar_cliente','PagesController@actualizar_cliente')->name('actualizar_cliente');
 Route::post('insert_proveedor','PagesController@insert_proveedor')->name('insert_proveedor');
 Route::post('edicion_proveedor','PagesController@edicion_proveedor')->name('edicion_proveedor');
 Route::post('actulizar_proveedor','PagesController@actulizar_proveedor')->name('actulizar_proveedor');
+Route::post('nuevo_rubro','PagesController@nuevo_rubro')->name('nuevo_rubro');
 
 
 //views de menu stock

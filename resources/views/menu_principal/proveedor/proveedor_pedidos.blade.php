@@ -4,11 +4,12 @@
 
 @section('contenido')
 <h1>Pedidos </h1>
-<form>
+<form action="{{route('detalle_proveedor_pedidos')}}" method="POST">
+@csrf
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione proveedor </label>
-            <select id="inputState" class="form-control">
+            <select name="proveedor" id="inputState" class="form-control">
             <option selected>Elegir...</option>
                 @foreach ($proveedores as $item)
                     <option><p> {{$item->razon_social}}</p></option>                   
@@ -16,8 +17,9 @@
             </select>
         </div>    
     </div>
-    <a class="btn btn-primary" href="{{route('detalle_proveedor_pedidos')}}">Seleccionar</a>
-</form>
-@yield('detalle_proveedor_pedidos')
+    <button type="submit" class="btn btn-primary">Seleccionar</button>    </form>
+<div class="container">
+    @yield('detalle_proveedor_pedidos')
+</div>
 
 @endsection
