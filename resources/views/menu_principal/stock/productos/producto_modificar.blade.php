@@ -4,11 +4,12 @@
 
 @section('contenido')
    <h1>modificar producto</h1>   
-<form>
+<form action="{{ route('edicion_producto')}}" method="POST">    
+@csrf
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione producto a editar</label>
-            <select id="inputState" class="form-control">
+            <select name="producto" id="inputState" class="form-control">
             <option selected>Elegir...</option>
                 @foreach ($productos as $item)
                     <option>{{$item->nombre}}</option>
@@ -16,7 +17,7 @@
             </select>
         </div>    
     </div>
-    <a class="btn btn-primary" href="{{route('edicion_producto')}}">Seleccionar</a>
+    <button type="submit" class="btn btn-primary">Seleccionar</button>
 </form>
 @yield('edicion_producto')
 

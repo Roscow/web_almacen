@@ -521,48 +521,62 @@ class PagesController extends Controller
         return view('menu_principal.stock.productos.producto_mostrar', compact('proveedores')); 
     }
 
-    public function edicion_producto(){ 
+    public function edicion_producto(Request $request){ 
         $proveedores = App\Proveedor::all();
         $productos = App\Producto::all();  
-        $familia = App\Famila_producto::all();
-        $tipo = App\Tipo_producto::all();
-        return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familia','tipo','productos')); 
+        $producto = App\Producto::where ('nombre', $request->producto)->get();
+        $familias = App\Famila_producto::all();
+        $tipos = App\Tipo_producto::all();
+        return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familias','tipos','productos','producto')); 
     }
+
+    public function actualizar_producto(Request $request){ 
+        
+
+        $producto = App\producto::where ('nombre','=', $request->prod)->get();    
+        $producto[0]->nombre = $request->nombre;
+        $producto[0]->descripcion = $request->descripcion;
+        $producto[0]->precio_compra = $request->precio_compra;
+        $producto[0]->precio_venta = $request->precio_venta;
+        $producto[0]->stock = $request->stock;
+        $producto[0]->stock_critico = $request->stock_critico;
+
+        $nombre_tipo = $request->tipo;
+        $tipo =  App\Tipo_producto::where ('tipo',$nombre_tipo)->get();
+        $producto[0]->id_tipo = $tipo[0]->id_tipo;     
+
+        $nombre_familia = $request->familia;
+        $familia =  App\Famila_producto::where ('familia',$request->familia)->get();
+        $producto[0]->id_familia = $familia[0]->id_familia;
+
+        $nombre_proveedor = $request->proveedor;
+        $proveedor =  App\Proveedor::where ('razon_social', $request->proveedor)->get();
+        $producto[0]->rut_empresa= $proveedor[0]->rut_empresa;
+        $producto[0]->save();
+
+        $proveedores = App\Proveedor::all();
+        $productos = App\Producto::all();  
+     
+        $mensaje = "Sus cambios han sido realizado con exito!";       
+        //return view('menu_principal.proveedor.proveedor_editar', compact('proveedores','regiones','comunas','rubros', 'mensaje')); 
+        //return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familia','tipo','productos')); 
+        
+        return view('menu_principal.stock.productos.producto_modificar', compact('mensaje','proveedores','productos')); 
+
+    }
+
 
     public function busqueda_producto(Request $request){ 
         $prod_nombre = $request->nombre;
         $producto = App\Producto::where('nombre',$prod_nombre)->get();
         $contador = count($producto);
-        //$prod = $producto[0];
-
-
         if( $contador== 0){
             $mensaje="no hay coincidencias";
             return view('menu_principal.stock.productos.producto_mostrar',compact('mensaje'));
         }
-
         if( $contador != 0){
             return view('menu_principal.stock.productos.busqueda_producto',compact('producto')); 
-        }
-        /*
-        $prod = $producto[0];
-        
-        $proveedores = App\Proveedor::all();
-        $productos = App\Producto::all();  
-        $familias = App\Famila_producto::all();
-        $tipos = App\Tipo_producto::all();     
-        //return view('menu_principal.stock.productos.busqueda_producto',compact('proveedores','familias','tipos','productos','producto')); 
-        if (count($producto)== 0){
-            //$mensaje="no hay coincidencias";
-            //return view('menu_principal.stock.productos.producto_mostrar',compact('mensaje'));
-            //return view('menu_principal.stock.productos.producto_mostrar',compact('mensaje','proveedores','familias','tipos','productos','producto'));         
-            //return view('menu_principal.stock.productos.producto_mostrar', compact('mensaje','proveedores')); 
-        }
-        if(count($producto) != 0){
-            //return view('menu_principal.stock.productos.busqueda_producto',compact('proveedores','familias','tipos','productos','prod','producto')); 
-        } 
-        */   
-        //return $contador;        
+        }              
     }
 
     public function insert_tipo_producto(Request $request){

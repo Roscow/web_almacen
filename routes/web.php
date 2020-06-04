@@ -78,8 +78,9 @@ Route::get('producto_agregar','PagesController@producto_agregar')->name('product
 Route::get('producto_eliminar','PagesController@producto_eliminar')->name('producto_eliminar');
 Route::get('producto_modificar','PagesController@producto_modificar')->name('producto_modificar');
 Route::get('producto_mostrar','PagesController@producto_mostrar')->name('producto_mostrar');
-Route::get('edicion_producto','PagesController@edicion_producto')->name('edicion_producto');
+Route::post('edicion_producto','PagesController@edicion_producto')->name('edicion_producto');
 Route::post('busqueda_producto','PagesController@busqueda_producto')->name('busqueda_producto');
+Route::post('actualizar_producto','PagesController@actualizar_producto')->name('actualizar_producto');
 
 Route::get('agregar_familia_producto','PagesController@agregar_familia_producto')->name('agregar_familia_producto');
 Route::get('agregar_tipo_producto','PagesController@agregar_tipo_producto')->name('agregar_tipo_producto');
