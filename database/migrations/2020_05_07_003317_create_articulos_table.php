@@ -14,7 +14,7 @@ class CreateArticulosTable extends Migration
     public function up()
     {
         Schema::create('articulos', function (Blueprint $table) {
-            $table->integer('id_articulo');
+            $table->increments('id_articulo');
             $table->integer('id_producto');
             $table->timestamp('fecha_vencimiento');
         });

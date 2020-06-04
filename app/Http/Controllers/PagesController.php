@@ -35,13 +35,17 @@ class PagesController extends Controller
         return view('menu_principal.cliente.cliente_fiados', compact('clientes')); 
     }
 
+    public function edicion_cliente(){        
+        $clientes = App\Cliente::all();   
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();     
+        return view('menu_principal.cliente.edicion_cliente', compact('clientes','regiones','comunas')); 
+    }
     
 
-    public function insert_cliente(Request $request){
-        
+    public function insert_cliente(Request $request){        
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();
-
         $new_direccion = new App\Direccion;
         $new_direccion->calle = $request->calle;
         $new_direccion->departamento = $request->departamento;
@@ -73,36 +77,18 @@ class PagesController extends Controller
         $mensaje = "Cliente ingresado con exito!";
         return view('menu_principal.cliente.cliente_crear', compact('comunas','regiones','clientes','mensaje'));         
 
-    }
-
-
-    public function edicion_cliente(){        
-        $clientes = App\Cliente::all();   
-        $regiones = App\Region::all();
-        $comunas = App\Comuna::all();     
-        return view('menu_principal.cliente.edicion_cliente', compact('clientes','regiones','comunas')); 
-    }
-
-  
-
-    
+    }    
 
     public function actualizar_cliente(Request $request){        
         error_log('Rut Actualizar :' . $request->rut);
         $clientes = App\Cliente::where ('rut', $request->rut)->get();
         $clientes[0]->telefono = $request->telefono;
-
         $clientes[0]->nombre1 = str_replace(" ", "_", $request->nombre1);
         $clientes[0]->nombre2 = str_replace(" ", "_", $request->nombre2);
         $clientes[0]->apellido1 = str_replace(" ", "_", $request->apellido1);
-        $clientes[0]->apellido2 = str_replace(" ", "_", $request->apellido2);
-        //$clientes[0]->nombre1 = $request->nombre1;
-        //$clientes[0]->nombre2 = $request->nombre2;
-        //$clientes[0]->apellido1 = $request->apellido1;
-        //$clientes[0]->apellido2 = $request->apellido2;
+        $clientes[0]->apellido2 = str_replace(" ", "_", $request->apellido2);        
         $clientes[0]->fecha_nacimiento = $request->fecha_nacimiento;    
         $clientes[0]->save();
-
         $direcciones = App\Direccion::where ('id_direccion', $request->rut)->get();
         $direcciones[0]->id_comuna = $request->selectComuna;
         $direcciones[0]->calle = $request->calle;
@@ -129,11 +115,9 @@ class PagesController extends Controller
         $rut = $cliente[0]->rut;
         $abonos = new app\Abono;
         $abonos = App\Abono::where('rut_cliente','=',$rut)->get();
-
         $fiados = new app\Fiado;
         $fiados = App\Fiado::where('rut_cliente','=',$rut)->get();
         $monto_actual = $cliente[0]->monto_deuda;
-
         return view('menu_principal.cliente.detalle_cliente', compact('clientes','regiones','comunas','abonos','fiados','monto_actual','rut')); 
         //return $abonos;
 
@@ -183,14 +167,11 @@ class PagesController extends Controller
                                 ->where('apellido2','=',$var_nombre[3]))->get();
         //$regiones = App\Region::all();
         //$comunas = App\Comuna::all();     
-
         $direccion = App\Direccion::where ('id_direccion', $cliente[0]->id_direccion)->get();
         $comuna = App\Comuna::where ('id_comuna', $direccion[0]->id_comuna)->get();
-        $region = App\Region::where ('id_region', $comuna[0]->id_region)->get();
- 
+        $region = App\Region::where ('id_region', $comuna[0]->id_region)->get(); 
         $regiones = App\Region::all();
         $comunas = App\Comuna::where ('id_region', $region[0]->id_region)->get();
-
         $clientes = App\Cliente::all(); 
 
         //setear la fecha
@@ -214,10 +195,10 @@ class PagesController extends Controller
         $usuarios = App\Usuario::all();        
         return view('menu_principal.usuario.usuario_eliminar', compact('usuarios')); 
     }
-    public function eliminar_usuario(Request $request){
-       
-        $var_nombre = explode(" ",$request->usuario_list);
-    
+
+
+    public function eliminar_usuario(Request $request){       
+        $var_nombre = explode(" ",$request->usuario_list);    
         $usuario = App\Usuario::where('nombre1','=', $var_nombre[0])
                                 ->where('nombre2','=',$var_nombre[1])
                                 ->where('apellido1','=',$var_nombre[2])
@@ -245,24 +226,18 @@ class PagesController extends Controller
     }
 
     public function edicion_usuario(Request $request){   
-        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use   
-        
-         //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos
-    
+        $usuarios = App\Usuario::all(); //necesario enviar la variable para que el bloque anterior lo use         
+         //escript con problmas al generar espacios entre los campos necesario valida que no se ingresen espacios en los datos    
          error_log('usuario ' . $request->usuario);
-
          $var_nombre = explode(" ",$request->usuario);
-
          error_log('nombre1 ' . $var_nombre[0]);
          error_log('nombre2 ' . $var_nombre[1]);
          error_log('apellido1 ' . $var_nombre[2]);
-         error_log('apellido2 ' . $var_nombre[3]);
-        
+         error_log('apellido2 ' . $var_nombre[3]);        
          $usuario = App\Usuario::where('nombre1','=', $var_nombre[0])
                                  ->where('nombre2','=',$var_nombre[1])
                                  ->where('apellido1','=',$var_nombre[2])
-                                 ->where('apellido2','=',$var_nombre[3])->get();
-                
+                                 ->where('apellido2','=',$var_nombre[3])->get();                
         error_log('usuario ' . $usuario);
          //setear la fecha
          $fecha= $usuario[0]->fecha_nacimiento;
@@ -270,7 +245,6 @@ class PagesController extends Controller
          $year = date("Y", $fechaComoEntero);
          $month = date("m", $fechaComoEntero);
          $day = date("d", $fechaComoEntero);
-
          return view('menu_principal.usuario.edicion_usuario', compact('usuario','usuarios','year','month','day'));         
 
     }
@@ -428,7 +402,8 @@ class PagesController extends Controller
         $rubros = App\Rubro::all(); 
         //enviar detalle de pedidos que sean de ese proveedor
         $detalle = App\Detalle_pedido::all();
-        return view('menu_principal.proveedor.detalle_proveedor_pedidos', compact('proveedores','regiones','comunas','rubros','pedidos','detalle')); 
+        $estados = App\Estado_orden::all();
+        return view('menu_principal.proveedor.detalle_proveedor_pedidos', compact('proveedores','regiones','comunas','rubros','pedidos','detalle','estados')); 
     }
 
     public function edicion_proveedor(Request $request){            
@@ -455,21 +430,17 @@ class PagesController extends Controller
         $proveedores[0]->codigo_postal = $request->codigo_postal; 
         $proveedores[0]->nombre_contacto = $request->nombre_contacto;   
         $proveedores[0]->save();
-
         $direcciones = App\Direccion::where ('id_direccion', $request->rut_empresa)->get();
         $direcciones[0]->id_comuna = $request->selectComuna;
         $direcciones[0]->calle = $request->calle;
         $direcciones[0]->numero = $request->numeroCalle;
         $direcciones[0]->departamento = $request->depto;
         $direcciones[0]->save();
-
         $proveedores = App\Proveedor::all(); 
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();       
         $rubros = App\Rubro::all();
-        $mensaje = "Sus cambios han sido realizado con exito!";
-       
-
+        $mensaje = "Sus cambios han sido realizado con exito!";       
         return view('menu_principal.proveedor.proveedor_editar', compact('proveedores','regiones','comunas','rubros', 'mensaje')); 
     }
 
@@ -505,15 +476,16 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         return view('menu_principal.stock.menu_producto', compact('proveedores')); 
     }
-
-    public function agregar_familia_producto(){
-        $proveedores = App\Proveedor::all();
-        return view('menu_principal.stock.stock_agregar_familia_producto', compact('proveedores')); 
-    }
+    
 
     public function agregar_tipo_producto(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.stock.stock_agregar_tipo_producto', compact('proveedores')); 
+    }
+
+    public function agregar_familia_producto(){
+        $proveedores = App\Proveedor::all();
+        return view('menu_principal.stock.stock_agregar_familia_producto', compact('proveedores')); 
     }
  
 
@@ -531,9 +503,9 @@ class PagesController extends Controller
 
     public function producto_agregar(){
         $proveedores = App\Proveedor::all();
-        $familia = App\Famila_producto::all();
-        $tipo = App\Tipo_producto::all();
-        return view('menu_principal.stock.productos.producto_agregar', compact('familia','tipo','proveedores')); 
+        $familias = App\Famila_producto::all();
+        $tipos = App\Tipo_producto::all();
+        return view('menu_principal.stock.productos.producto_agregar', compact('familias','tipos','proveedores')); 
     }
     public function producto_eliminar(){
         $productos = App\Producto::all();
@@ -567,15 +539,82 @@ class PagesController extends Controller
         return view('menu_principal.stock.productos.busqueda_producto',compact('proveedores','familia','tipo','productos')); 
     }
 
-    //FORMULARIOS AGREGAR
     public function insert_tipo_producto(Request $request){
         //return $request->all();
         $nuevo_tipo = new App\Tipo_producto;
         $nuevo_tipo->tipo = $request->tipo;
         //$nuevo_tipo->id_tipo = 3;   eloquent autoincrementa solo
         $nuevo_tipo->save();
-        return back();
+        $proveedores = App\Proveedor::all();
+        $familias = App\Famila_producto::all();
+        $tipos = App\Tipo_producto::all();
+        $mensaje = "se ha creado un nuevo tipo de producto";
+        return view('menu_principal.stock.productos.producto_agregar',compact('mensaje','proveedores','familias','tipos','productos')); 
+
     }
+
+    public function insert_familia_producto(Request $request){            
+        $nueva_familia = new App\Famila_producto;
+        $nueva_familia->familia = $request->familia;
+        $nueva_familia->save();
+        $proveedores = App\Proveedor::all();      
+        $familias = App\Famila_producto::all();
+        $tipos = App\Tipo_producto::all(); 
+        $mensaje = "se ha creado una nueva familia de producto";
+        return view('menu_principal.stock.productos.producto_agregar',compact('mensaje','proveedores','familias','tipos','productos')); 
+    }
+
+    public function insert_producto(Request $request){          
+        $new_prod = new App\Producto;
+        $new_prod->nombre = $request->nombre;
+        $new_prod->precio_compra = $request->precio_compra;
+        $new_prod->precio_venta = $request->precio_venta;
+        $new_prod->stock = $request->stock;
+        $new_prod->stock_critico = $request->stock_critico;
+        $new_prod->descripcion = $request->descripcion;
+        //ingresar los id no el nombre de los cbox
+
+        $nombre_tipo = $request->tipo;
+        $tipo =  App\Tipo_producto::where ('tipo',$nombre_tipo)->get();
+        $new_prod->id_tipo = $tipo[0]->id_tipo;     
+
+        $nombre_familia = $request->familia;
+        $familia =  App\Famila_producto::where ('familia',$request->familia)->get();
+        $new_prod->id_familia = $familia[0]->id_familia;
+
+        $nombre_proveedor = $request->proveedor;
+        $proveedor =  App\Proveedor::where ('razon_social', $request->proveedor)->get();
+        $new_prod->rut_empresa= $proveedor[0]->rut_empresa;
+         //creo el codigo por reglas de negocio modificar para q sean 3 caracteres
+       /* $new_prod->codigo_producto =    substr($proveedor[0]->rut_empresa,1,1) . 
+                                        substr($familia[0]->id_familia,1,1) . 
+                                        '00000000' . 
+                                        substr($tipo[0]->id_tipo,1,1) ;
+       */
+        $new_prod->codigo_producto =    $proveedor[0]->rut_empresa . 
+                                        $familia[0]->id_familia .                                         
+                                        $tipo[0]->id_tipo ;                                        
+
+        $new_prod->save();        
+        $mensaje = "producto  ingresado correctamente";
+        $proveedores = App\Proveedor::all();
+        $familias = App\Famila_producto::all();
+        $tipos = App\Tipo_producto::all();
+        return view('menu_principal.stock.productos.producto_agregar',compact('mensaje','proveedores','familias','tipos')); 
+
+    }
+
+    public function delete_producto(Request $request){
+        $producto = App\Producto::where('nombre','=',$request->producto)->get();        
+        $producto[0]->delete();
+        $mensaje = "producto eliminado correctamente";
+
+        $productos = App\Producto::all();
+        return view('menu_principal.stock.productos.producto_eliminar', compact('productos','mensaje'));     
+        
+    }
+
+
 
     //FUNCIONES DE VENTAS
     public function ventas_agregar(){

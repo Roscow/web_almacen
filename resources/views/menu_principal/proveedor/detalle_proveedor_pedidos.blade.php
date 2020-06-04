@@ -10,7 +10,12 @@
             <div class="card-header" id="heading{{$item->id_pedido}}">
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$item->id_pedido}}" aria-expanded="true" aria-controls="collapse{{$item->id_pedido}}">
-                        ID:{{$item->id_pedido}} Fecha:{{$item->fecha_creacion}}
+                        ID:{{$item->id_pedido}} Fecha:{{$item->fecha_creacion}} 
+                        @foreach ($estados as $item3)
+                            @if ($item->id_estado == $item3->id_estado)
+                                ({{$item3->estado}})
+                            @endif                                       
+                        @endforeach
                 </button>
               </h2>
             </div>
@@ -35,7 +40,11 @@
                               <td>{{$item2->codigo_producto}}</td>
                               <td>{{$item2->cantidad}}</td>
                               <td>${{$item2->costo_linea}}</td>
-                              <td>{{$item2->id_estado}}</td>
+                              @foreach ($estados as $item3)
+                                  @if ($item2->id_estado == $item3->id_estado)
+                                    <td>{{$item3->estado}}</td>                                  
+                                  @endif                                
+                              @endforeach                              
                               <td>{{$item2->fecha_recepcion}}</td>
                             </tr>                                 
                             @endif 

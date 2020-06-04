@@ -15,7 +15,7 @@ class CreateEstadoOrdensTable extends Migration
     {
         Schema::create('estado_ordens', function (Blueprint $table) {
             $table->integer('id_estado');
-            $table->string('nvarchar',15);
+            $table->string('estado',15);
         });
     }
 

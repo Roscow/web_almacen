@@ -14,7 +14,7 @@ class CreateFamilaProductosTable extends Migration
     public function up()
     {
         Schema::create('famila_productos', function (Blueprint $table) {
-            $table->integer('id_familia');
+            $table->increments('id_familia');
             $table->string('familia');
         });
     }

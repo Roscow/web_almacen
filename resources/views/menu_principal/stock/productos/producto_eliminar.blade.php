@@ -3,12 +3,13 @@
 
 
 @section('contenido')
-<h1>eliminar producto</h1>   
-    <form>    
+<h1>eliminar producto</h1>  
+    <form action="{{ route('delete_producto')}}" method="POST">       
+    @csrf
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione producto a eliminar</label>
-            <select id="inputState" class="form-control">
+            <select name="producto" id="inputState" class="form-control">
             <option selected>Elegir...</option>
                 @foreach ($productos as $item)
                     <option>{{$item->nombre}}</option>
