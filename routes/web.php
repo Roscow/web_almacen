@@ -41,6 +41,7 @@ Route::get('edicion_cliente','PagesController@edicion_cliente')->name('edicion_c
 Route::post('detalle_cliente','PagesController@detalle_cliente')->name('detalle_cliente');
 Route::post('edicion_cliente2','PagesController@edicion_cliente2')->name('edicion_cliente2');
 Route::post('abonar','PagesController@abonar')->name('abonar');
+Route::post('nuevo_rubro','PagesController@nuevo_rubro')->name('nuevo_rubro');
 
 
 

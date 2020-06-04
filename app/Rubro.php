@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Rubro extends Model
 {
     //
+    public $timestamps=false;
+
 }

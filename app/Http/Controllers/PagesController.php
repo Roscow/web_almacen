@@ -139,8 +139,7 @@ class PagesController extends Controller
 
     }
 
-    public function abonar(Request $request){
-        
+    public function abonar(Request $request){        
         $rut= $request->rut;
         $clientes = App\Cliente::all();
         $new_abono = new app\Abono;
@@ -155,9 +154,9 @@ class PagesController extends Controller
         $cliente_aux[0]->save();
         $mensaje = "abono ingresado con exito!";
         return view('menu_principal.cliente.cliente_fiados', compact('clientes','mensaje')); 
-
-
     }
+
+
 
     public function eliminar_cliente(Request $request){       
         $var_nombre = explode(" ",$request->cliente_list);        
@@ -349,9 +348,19 @@ class PagesController extends Controller
     }
 
     public function proveedor_agregar_rubro(){        
-        $proveedores = App\Proveedor::all();        
+        $proveedores = App\Proveedor::all();          
         return view('menu_principal.proveedor.proveedor_agregar_rubro', compact('proveedores')); 
     }
+
+    public function nuevo_rubro(Request $request){        
+        $proveedores = App\Proveedor::all();  
+        $new_rubro = new app\Rubro;
+        $new_rubro->rubro = $request->rubro;
+        $new_rubro->save();
+        $mensaje = "nuevo rubro añadido correctamente!!";
+        return view('menu_principal.proveedor.proveedor_agregar_rubro', compact('mensaje','proveedores')); 
+    }
+    
 
     public function proveedor_editar(){        
         $proveedores = App\Proveedor::all(); 
