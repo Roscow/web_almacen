@@ -529,14 +529,40 @@ class PagesController extends Controller
         return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familia','tipo','productos')); 
     }
 
-    public function busqueda_producto(){ 
-        //$prod_singular = App\Producto::findOrFail($id);        
+    public function busqueda_producto(Request $request){ 
+        $prod_nombre = $request->nombre;
+        $producto = App\Producto::where('nombre',$prod_nombre)->get();
+        $contador = count($producto);
+        //$prod = $producto[0];
+
+
+        if( $contador== 0){
+            $mensaje="no hay coincidencias";
+            return view('menu_principal.stock.productos.producto_mostrar',compact('mensaje'));
+        }
+
+        if( $contador != 0){
+            return view('menu_principal.stock.productos.busqueda_producto',compact('producto')); 
+        }
+        /*
+        $prod = $producto[0];
         
         $proveedores = App\Proveedor::all();
         $productos = App\Producto::all();  
-        $familia = App\Famila_producto::all();
-        $tipo = App\Tipo_producto::all();     
-        return view('menu_principal.stock.productos.busqueda_producto',compact('proveedores','familia','tipo','productos')); 
+        $familias = App\Famila_producto::all();
+        $tipos = App\Tipo_producto::all();     
+        //return view('menu_principal.stock.productos.busqueda_producto',compact('proveedores','familias','tipos','productos','producto')); 
+        if (count($producto)== 0){
+            //$mensaje="no hay coincidencias";
+            //return view('menu_principal.stock.productos.producto_mostrar',compact('mensaje'));
+            //return view('menu_principal.stock.productos.producto_mostrar',compact('mensaje','proveedores','familias','tipos','productos','producto'));         
+            //return view('menu_principal.stock.productos.producto_mostrar', compact('mensaje','proveedores')); 
+        }
+        if(count($producto) != 0){
+            //return view('menu_principal.stock.productos.busqueda_producto',compact('proveedores','familias','tipos','productos','prod','producto')); 
+        } 
+        */   
+        //return $contador;        
     }
 
     public function insert_tipo_producto(Request $request){
@@ -590,6 +616,7 @@ class PagesController extends Controller
                                         substr($familia[0]->id_familia,1,1) . 
                                         '00000000' . 
                                         substr($tipo[0]->id_tipo,1,1) ;
+
        */
         $new_prod->codigo_producto =    $proveedor[0]->rut_empresa . 
                                         $familia[0]->id_familia .                                         

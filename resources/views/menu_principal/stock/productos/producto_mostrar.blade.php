@@ -4,15 +4,16 @@
 
 @section('contenido')
    <h1>Buscar producto</h1>   
-<form>
+<form action="{{ route('busqueda_producto')}}" method="POST">      
+@csrf 
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputAddress">Nombre </label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="coca-cola">
+            <input type="text" name="nombre" class="form-control" id="inputAddress" placeholder="coca-cola">
         </div>  
     </div>
 
-    <a class="btn btn-primary" href="{{route('busqueda_producto')}}">Buscar</a>
+    <button type="submit" class="btn btn-primary">Buscar</button>
 </form>
 @yield('busqueda')
 
