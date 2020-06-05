@@ -65,7 +65,7 @@ class PagesController extends Controller
         $new_cliente->telefono = $request->telefono;
         $new_cliente->nombre1 = str_replace(" ", "_", $request->nombre1);
         $new_cliente->nombre2 = str_replace(" ", "_", $request->nombre2);
-        $new_cliente->apellido1 = str_replace(" ", "_", $request->nombre2);
+        $new_cliente->apellido1 = str_replace(" ", "_", $request->apellido1);
         $new_cliente->apellido2 = str_replace(" ", "_", $request->apellido2);
         //al ingresar una letra da error
         $new_cliente->correo = $request->correo;
