@@ -87,7 +87,7 @@ body{
 	height: 500px;
 }
 .wrapper:before{
-	background-image: url(https://lh3.googleusercontent.com/proxy/Tf7O2ciVY1j39JzDI34MLaUPnWi8kX2wASPeRsQsqKrKC7kGy2g0TsLNs0ly-2fpxLUAHjnUHEjW8mvI63EcKozwYmfZeoq7gQUS_8g24TppUsu5TCDSWXYL.png);
+	background-image: url(images/Fondo.jpg);
 	background-size: cover;
 	content: "";
 	position: fixed;
