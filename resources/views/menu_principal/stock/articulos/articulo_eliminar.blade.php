@@ -4,12 +4,12 @@
 
 @section('contenido')
 <h1>Eliminar articulo</h1>   
-    <form>    
-    <div class="form-row">               
-          
+<form action="{{ route('delete_articulo')}}" method="POST">    
+@csrf
+    <div class="form-row">                         
         <div class="form-group col-md-4">
             <label for="inputAddress">Codigo</label>
-            <input type="numeric" class="form-control" id="inputAddress" placeholder="01231231">
+            <input name="id_articulo" type="text" class="form-control" id="inputAddress" placeholder="01231231">
         </div> 
 
     </div>

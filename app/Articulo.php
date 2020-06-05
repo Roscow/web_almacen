@@ -8,5 +8,6 @@ class Articulo extends Model
 {
     //
     public $timestamps=false;
+    protected $primaryKey = 'id_articulo';
 
 }

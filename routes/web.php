@@ -114,5 +114,6 @@ Route::post('/eliminar_cliente', 'PagesController@eliminar_cliente')->name('elim
 Route::post('/insert_producto', 'PagesController@insert_producto')->name('insert_producto');
 Route::post('/delete_producto', 'PagesController@delete_producto')->name('delete_producto');
 Route::post('/insert_articulo', 'PagesController@insert_articulo')->name('insert_articulo');
+Route::post('/delete_articulo', 'PagesController@delete_articulo')->name('delete_articulo');
 
 

@@ -510,13 +510,27 @@ class PagesController extends Controller
             //el articulo->id_Articulo debe incrementar solo
             $contador=$contador-1;           
         }
-        return $contador;
+        $mensaje = "articulos agregados";
+        $proveedores = App\Proveedor::all(); 
+        $regiones = App\Region::all();
+        $comunas = App\Comuna::all();  
+        $productos = App\Producto::all();
+        return view('menu_principal.stock.articulos.articulo_agregar', compact('mensaje','regiones','comunas','proveedores','productos')); 
     }
 
     public function articulo_eliminar(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.stock.articulos.articulo_eliminar', compact('proveedores')); 
     }
+
+    public function delete_articulo(Request $request){        
+        $articulo = App\Articulo::where('id_articulo','=',$request->id_articulo)->get();
+        $mensaje='articulo eliminado';
+        $articulo[0]->delete();     
+        return view('menu_principal.stock.articulos.articulo_eliminar', compact('mensaje','proveedores')); 
+   
+    }
+
 
     public function producto_agregar(){
         $proveedores = App\Proveedor::all();
