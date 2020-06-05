@@ -492,8 +492,25 @@ class PagesController extends Controller
     public function articulo_agregar(){        
         $proveedores = App\Proveedor::all(); 
         $regiones = App\Region::all();
-        $comunas = App\Comuna::all();       
-        return view('menu_principal.stock.articulos.articulo_agregar', compact('regiones','comunas','proveedores')); 
+        $comunas = App\Comuna::all();  
+        $productos = App\Producto::all(); 
+        return view('menu_principal.stock.articulos.articulo_agregar', compact('regiones','comunas','proveedores','productos')); 
+    }
+
+
+    public function insert_articulo(Request $request){
+        $contador= $request->cantidad;
+        $producto= App\Producto::where('nombre','=',$request->producto)->get(); 
+
+        while ($contador>0){
+            $articulo = new App\Articulo; 
+            $articulo->fecha_vencimiento = $request->vencimiento;                        
+            $articulo->id_producto = $producto[0]->codigo_producto;
+            $articulo->save();
+            //el articulo->id_Articulo debe incrementar solo
+            $contador=$contador-1;           
+        }
+        return $contador;
     }
 
     public function articulo_eliminar(){
@@ -530,9 +547,7 @@ class PagesController extends Controller
         return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familias','tipos','productos','producto')); 
     }
 
-    public function actualizar_producto(Request $request){ 
-        
-
+    public function actualizar_producto(Request $request){         
         $producto = App\producto::where ('nombre','=', $request->prod)->get();    
         $producto[0]->nombre = $request->nombre;
         $producto[0]->descripcion = $request->descripcion;
