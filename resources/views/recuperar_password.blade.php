@@ -54,15 +54,29 @@
 
 </div> 
 
-<div class="container-full-width" style="margin-top: 70px">       
-        <footer>              
-            <div class="card">
-                <div class="card-header">
+<footer style="position: fixed;left: 0;bottom: 0;width: 100%;">
+            <br>
+            <div class="container-full-width">
+            <nav class="bg-primary">
+                <div class="card-header" style="color: white ;">
                     2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
-                </div>            
-            </div>       
+
+                    <div style="float: right">
+                        @php
+                            date_default_timezone_set ("America/Santiago");
+                            setlocale(LC_TIME, "spanish");
+                        
+                            echo mb_convert_case(utf8_encode(strftime("%A, %d de %B %Y %H:%M")), MB_CASE_TITLE, 'UTF-8');
+                        
+                        @endphp
+                    </div>
+
+                </div>
+                </div>
+            </div>
         </footer>
-</div>
+
+
 @endsection
 
 
