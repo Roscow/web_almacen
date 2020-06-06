@@ -106,6 +106,9 @@ Route::get('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ven
 
 //otras post
 Route::post('recupera', 'LoginController@enviarRecupera')->name('recupera');
+Route::post('validaUsuario', 'LoginController@validaUsuario')->name('validaUsuario');
+Route::get('salirUsuario', 'LoginController@salirUsuario')->name('salirUsuario');
+
 Route::post('/insert_tipo_producto', 'PagesController@insert_tipo_producto')->name('insert_tipo_producto');
 Route::post('/insert_familia_producto', 'PagesController@insert_familia_producto')->name('insert_familia_producto');
 Route::post('/insert_usuario', 'PagesController@insert_usuario')->name('insert_usuario');

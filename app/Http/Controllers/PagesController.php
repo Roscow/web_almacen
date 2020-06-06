@@ -261,7 +261,7 @@ class PagesController extends Controller
          $usuario[0]->usser = $request->nombre1;
          $usuario[0]->correo = $request->correo;
          $usuario[0]->telefono = $request->numero;
-         $usuario[0]->id_tipo_user = $request->id_tipo_user=='on' ? 1:0;
+         $usuario[0]->id_tipo_user = $request->id_tipo_user=='on' ? 0:1; 
          $usuario[0]->fecha_nacimiento = $request->fecha_nacimiento;
          $usuario[0]->save();
          $usuarios = App\Usuario::all();  
@@ -285,7 +285,7 @@ class PagesController extends Controller
         $nuevo_usuario->dv = substr($request->rut,-1,1) ;
         //$nuevo_usuario->dv = 'k';
         $nuevo_usuario->fecha_nacimiento = $request->fecha_nacimiento;
-        $nuevo_usuario->id_tipo_user = $request->id_tipo_user=='on' ? 1:0; //1 es admin 0 no lo es
+        $nuevo_usuario->id_tipo_user = $request->id_tipo_user=='on' ? 0:1; 
         //$nuevo_usuario->nombre1 = $request->nombre1;
         //$nuevo_usuario->nombre2 = $request->nombre2;
         //$nuevo_usuario->apellido1 = $request->apellido1;

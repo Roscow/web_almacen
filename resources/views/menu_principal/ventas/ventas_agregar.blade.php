@@ -83,11 +83,17 @@
     <div class="form-row">
 
         <div class="form-group col-md-6">
-                <div class="form-check col-md-4">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                <div class="form-check col-md-4">    
+
+                    @if(strcmp(session('type'), 'Administrador') == 0 )
+                        <input class="form-check-input" type="checkbox" id="gridCheck" >
+                    @else
+                        <input class="form-check-input" type="checkbox" id="gridCheck" disabled >
+                    @endif
                     <label class="form-check-label" for="gridCheck">
                         Fiado
-                    </label>
+                    </label>                
+                   
                 </div>
         </div>
 

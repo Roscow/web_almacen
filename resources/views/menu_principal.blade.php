@@ -29,9 +29,9 @@
         <div class="card">
             <div class="card-header">
                 <a class="navbar-brand" href="#">
-                _USUARIO_
+                {{ ucwords(session('name')) }} ( {{ ucwords(session('type')) }})
                </a>
-               <a class="navbar-brand" href="#" style="float: right">
+               <a class="navbar-brand" href="{{ route('salirUsuario') }}" style="float: right">
                 Cerrar sesión
                </a>
                <a class="navbar-brand" href="#">

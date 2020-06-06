@@ -76,13 +76,24 @@
 
     <div class="form-row">
         <div class="form-group col-md-6">
+            
             <label for="inputAddress">precio de compra</label>
-            <input type="number" name="precio_compra" class="form-control" id="inputAddress" value="{{$producto[0]->precio_compra}}">
+            @if(strcmp(session('type'), 'Administrador') == 0 )
+                <input type="number" name="precio_compra" class="form-control" id="inputAddress" value="{{$producto[0]->precio_compra}}">
+            @else
+                <input type="number" name="precio_compra" class="form-control" id="inputAddress" value="{{$producto[0]->precio_compra}}" disabled>
+            @endif
+            
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Precio de venta</label>
-            <input type="number" name="precio_venta" class="form-control" id="inputEmail4" value="{{$producto[0]->precio_venta}}">
+            @if(strcmp(session('type'), 'Administrador') == 0 )
+                <input type="number" name="precio_venta" class="form-control" id="inputEmail4" value="{{$producto[0]->precio_venta}}">
+            @else
+                <input type="number" name="precio_venta" class="form-control" id="inputEmail4" value="{{$producto[0]->precio_venta}}" disabled>
+            @endif
+            
         </div>           
     </div>
 

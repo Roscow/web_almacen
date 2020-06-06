@@ -7,19 +7,19 @@
   <div class="roundedImage">&nbsp;</div>
 </div > 
 
-<form action="{{route('ventas_agregar')}}" method="GET">
-
-	<input type="email" placeholder="Usuario" required>
-  <input type="password" placeholder="Contraseña" required>
+<form action="{{route('validaUsuario')}}" method="POST">
+{{ csrf_field() }}
+  <input type="email" id="email" name="email" placeholder="Usuario" required>
+  <input type="password" id="password" name="password" placeholder="Contraseña" required>
   <!-- Trigger the modal with a button -->
-  <a href="{{ route('recuperar_password') }}" data-toggle="modal" data-target="#myModal"><font color = "white">Recuperar contraseña?</font> </a>
+  <a href="{{ route('recuperar_password') }}" data-toggle="modal" data-target="#myModalLogin"><font color = "white">Recuperar contraseña?</font> </a>
 
   <!--<a href="{{ route('menu_principal') }}" class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar </a>-->
   <button type="submit"  class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar</button>
   </form>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModalLogin" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
