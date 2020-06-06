@@ -2,7 +2,7 @@
 
 
 @section('seccion')
-<div class="container-full-width">
+<!--<div class="container-full-width">
     <header>
         <div class="card">
             <div class="card-header">
@@ -22,28 +22,10 @@
             </div>
         </div>
      </header>
-</div>
-
-<!-- datos de usuario conectado-->
-
-        <div class="card">
-            <div class="card-header">
-                <a class="navbar-brand" href="#">
-                {{ ucwords(session('name')) }} ( {{ ucwords(session('type')) }})
-               </a>
-               <a class="navbar-brand" href="{{ route('salirUsuario') }}" style="float: right">
-                Cerrar sesión
-               </a>
-               <a class="navbar-brand" href="#">
-                Preferencias
-               </a>
-            </div>
-        </div>
-
-
+</div>-->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="{{ route('menu_principal') }}">MENU PRINCIPAL</a>
+  <a class="navbar-brand" href="{{ route('menu_principal') }}" style="font-size: 17px;">{{ ucwords(session('name')) }} ( {{ ucwords(session('type')) }})</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -60,9 +42,12 @@
       <a class="nav-item nav-link" href="{{ route('nuevo_reportes') }}">Reportes</a>
     </div>
   </div>
+  <a class="navbar-brand" href="{{ route('salirUsuario') }}" style="float: right; font-size: 17px;">
+    Cerrar sesión
+  </a>
 </nav>
 
-
+        <br>
         <div class="container">
             @yield('seccion2')
         </div>
@@ -175,14 +160,24 @@
         </style>
 
 
-
-
-
-
-        <footer>
+        <footer style="position: fixed;left: 0;bottom: 0;width: 100%;">
+            <br>
             <div class="container-full-width">
-                <div class="card-header">
+            <nav class="bg-primary">
+                <div class="card-header" style="color: white ;">
                     2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
+
+                    <div style="float: right">
+                        @php
+                            date_default_timezone_set ("America/Santiago");
+                            setlocale(LC_TIME, "spanish");
+                        
+                            echo mb_convert_case(utf8_encode(strftime("%A, %d de %B %Y %H:%M")), MB_CASE_TITLE, 'UTF-8');
+                        
+                        @endphp
+                    </div>
+
+                </div>
                 </div>
             </div>
         </footer>

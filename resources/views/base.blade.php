@@ -10,12 +10,8 @@
 
     <title>Almacén los Yuyitos</title>
   </head>
-  <body>
+  <body style="margin-bottom:55px;">
 
-    
-
-
-    
     <div class="container-full-width">
         @yield('seccion')    
     </div>
