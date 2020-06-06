@@ -570,14 +570,17 @@ class PagesController extends Controller
         $producto[0]->stock = $request->stock;
         $producto[0]->stock_critico = $request->stock_critico;
 
+        error_log('$request->tipo : ' .  $request->tipo);
         $nombre_tipo = $request->tipo;
         $tipo =  App\Tipo_producto::where ('tipo',$nombre_tipo)->get();
         $producto[0]->id_tipo = $tipo[0]->id_tipo;     
 
+        error_log('$request->familia : ' .  $request->familia);
         $nombre_familia = $request->familia;
         $familia =  App\Famila_producto::where ('familia',$request->familia)->get();
         $producto[0]->id_familia = $familia[0]->id_familia;
 
+        error_log(' $request->proveedor : ' .   $request->proveedor);
         $nombre_proveedor = $request->proveedor;
         $proveedor =  App\Proveedor::where ('razon_social', $request->proveedor)->get();
         $producto[0]->rut_empresa= $proveedor[0]->rut_empresa;

@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>ver fiados </h1>
+<h1>Ver fiados </h1>
 
 <form action="{{route('detalle_cliente')}}" method="POST">
 @csrf

@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-   <h1>modificar producto</h1>   
+   <h1>Modificar producto</h1>   
 <form action="{{ route('edicion_producto')}}" method="POST">    
 @csrf
     <div class="form-row">        

@@ -25,7 +25,7 @@
 
 
         <div class="form-group col-md-4">
-            <label for="inputAddress">cantidad</label>
+            <label for="inputAddress">Cantidad</label>
             <input type="number" class="form-control" id="inputAddress" placeholder="0">
         </div>              
     </div>

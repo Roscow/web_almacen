@@ -14,7 +14,7 @@
             </select>
         </div>                   
     </div>
-    <button type="submit" class="btn btn-primary">abrir</button> 
+    <button type="submit" class="btn btn-primary">Abrir</button> 
 </form>
 
 <form>

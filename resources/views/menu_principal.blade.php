@@ -50,7 +50,9 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="{{ route('cliente_crear') }}">Cliente</a>
-      <a class="nav-item nav-link" href="{{ route('usuario_crear') }}" >Usuario</a>
+      @if(strcmp(session('type'), 'Administrador') == 0 )
+        <a class="nav-item nav-link" href="{{ route('usuario_crear') }}" >Usuario</a>
+      @endif
       <a class="nav-item nav-link" href="{{ route('proveedor_agregar') }}">Proveedor</a>
       <a class="nav-item nav-link" href="{{ route('ventas_agregar') }}">Venta</a>
       <a class="nav-item nav-link" href="{{ route('producto_agregar') }}">Stock</a>

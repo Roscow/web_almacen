@@ -11,6 +11,6 @@
             <input type="numeric" class="form-control" id="inputAddress" placeholder=" ">
         </div>    
     </div>
-    <button type="submit" class="btn btn-primary">anular</button>
+    <button type="submit" class="btn btn-primary">Anular</button>
     </form>
 @endsection

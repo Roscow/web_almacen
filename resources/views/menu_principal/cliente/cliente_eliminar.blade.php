@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>eliminar cliente</h1>   
+<h1>Eliminar cliente</h1>   
     <form action="{{route('eliminar_cliente')}}" method="POST">  
     @csrf  
     <div class="form-row">        
