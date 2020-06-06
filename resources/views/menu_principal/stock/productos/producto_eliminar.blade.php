@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>eliminar producto</h1>  
+<h1>Eliminar producto</h1>  
     <form action="{{ route('delete_producto')}}" method="POST">       
     @csrf
     <div class="form-row">        

@@ -27,9 +27,9 @@
       Telefono: {{$elemento->telefono}}<br>
       Tipo_usuario:       
       @if ($elemento->id_tipo_user == 0)
-        vendedor
+         Administrador 
       @else
-        administrador
+          Vendedor
       @endif
    
       <br>
