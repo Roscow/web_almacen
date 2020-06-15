@@ -54,6 +54,43 @@
 
     @endif
 
+       <!--Modal error--> 
+    @isset($error)
+
+    <div id="myModalError" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <form id="form1" action="{{route('recupera')}}" method="POST">
+                {{ csrf_field() }}
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" style="height: 140px;">   
+                
+                <img src="{{URL::asset('/images/x.gif')}}" height="80" width="90" style="left: 53%; margin: 6%; padding: 0; position: fixed; top: 5%;">
+                <br>
+                <br>
+                <h6 class="modal-title">{{$error}} </h6>
+
+        
+                </div>
+                <br>
+                <br>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>    
+        $(document).ready(function(){
+            $("#myModalError").modal('show');
+        });
+    </script>
+
+    @endif    
+
 <script>
     $(document).ready (function() {
         $('#selectRegion').on('change', function() {

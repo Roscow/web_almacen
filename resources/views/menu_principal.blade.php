@@ -2,27 +2,6 @@
 
 
 @section('seccion')
-<!--<div class="container-full-width">
-    <header>
-        <div class="card">
-            <div class="card-header">
-                <a class="navbar-brand" href="#">
-                <img src="https://cdn.icon-icons.com/icons2/943/PNG/128/shoppaymentorderbuy-29_icon-icons.com_73875.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                AlMACEN LOS YUYITOS - SISTEMA DE CONTROL Y GESTION
-               </a>
-               <div style="float: right">
-                @php
-                    date_default_timezone_set ("America/Santiago");
-                    setlocale(LC_TIME, "spanish");
-                   
-                        echo ucwords(strftime("%A, %d de %B %Y %H:%M"));
-                   
-                @endphp
-           </div>
-            </div>
-        </div>
-     </header>
-</div>-->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="{{ route('menu_principal') }}" style="font-size: 17px;">{{ ucwords(session('name')) }} ( {{ ucwords(session('type')) }})</a>

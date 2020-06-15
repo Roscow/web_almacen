@@ -65,9 +65,9 @@ class LoginController extends Controller
 
         }else{
 
-            $mensaje = "Acceso Denegado, Usuario o Contraseña Invalidas";
+            $error = "Acceso Denegado, Usuario o Contraseña Invalidas";
 
-            return view('login', compact('mensaje'));
+            return view('login', compact('error'));
         }    
 
     }
