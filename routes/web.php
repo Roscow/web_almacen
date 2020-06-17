@@ -101,8 +101,8 @@ Route::get('ventas_agregar','PagesController@ventas_agregar')->name('ventas_agre
 Route::get('ventas_anular','PagesController@ventas_anular')->name('ventas_anular');
 Route::get('ventas_ver','PagesController@ventas_ver')->name('ventas_ver');
 Route::get('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ventas_ver_detalle');
-
-
+Route::post('ventas_agregar_producto','PagesController@ventas_agregar_producto')->name('ventas_agregar_producto');
+Route::post('ventas_agregar_confirmar','PagesController@ventas_agregar_confirmar')->name('ventas_agregar_confirmar');
 
 //otras post
 Route::post('recupera', 'LoginController@enviarRecupera')->name('recupera');

@@ -61,6 +61,12 @@ class LoginController extends Controller
             $request->session()->put('user', $usuario[0]->correo);
             $request->session()->put('type', $tipo_usuario[0]->tipo);
 
+            $carrito = collect();
+            $request->session()->put('carrito', $carrito);
+            $carrito = array($request->session()->get('carrito'));
+            error_log( print_r($carrito, true));
+            $request->session()->put('total', 0);
+
             return view('menu_principal.ventas.ventas_agregar',  compact('clientes')); 
 
         }else{

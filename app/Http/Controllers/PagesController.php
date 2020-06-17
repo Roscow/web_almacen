@@ -690,10 +690,80 @@ class PagesController extends Controller
 
 
     //FUNCIONES DE VENTAS
-    public function ventas_agregar(){
+    public function ventas_agregar(Request $request){
         $clientes = App\Cliente::all();
+        $carrito = collect();
+        $request->session()->put('carrito', $carrito);
+        $carrito = array($request->session()->get('carrito'));
+        error_log( print_r($carrito, true));
+        $request->session()->put('total', 0);
         return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
     }
+
+    public function ventas_agregar_producto(Request $request){
+        
+        $clientes = App\Cliente::all();
+
+        $carrito = array($request->session()->get('carrito'));
+
+        error_log( print_r($carrito, true));
+
+        $total = $request->session()->get('total');
+
+        $producto =  App\Producto::where ('codigo_producto', $request->codigo)->get();
+
+        if(count($producto) > 0){
+
+            $item = array();
+            array_push($item, count($carrito)+1);
+            array_push($item, $producto[0]->codigo_producto);
+            array_push($item, $producto[0]->nombre);
+            array_push($item, $producto[0]->descripcion);
+            array_push($item, $request->cantidad);
+            array_push($item, $producto[0]->precio_venta);
+            
+            $total = $total + (intval($producto[0]->precio_venta) * intval($request->cantidad));
+
+            $request->session()->put('total', $total);
+            $request->session()->push('carrito', $item);
+
+            error_log( print_r($carrito, true));
+
+            return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
+
+        }else{
+            $error = "Producto Ingresado No Existe";
+
+            return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error')); 
+        }
+
+    }
+
+    public function ventas_agregar_confirmar(Request $request){
+        $clientes = App\Cliente::all();
+        error_log('Confirmar Pedido');
+
+        $carrito =  array($request->session()->get('carrito'));
+
+        foreach ($carrito as $items) {
+            $item = "";
+            foreach (array($items) as $value) {
+                $item = $item . " - " . $value;
+            }
+            error_log('Item : '. $item);
+        }
+
+        $mensaje = "Venta Realizada Correctamente...";
+
+        $carrito = collect();
+        $request->session()->put('carrito', $carrito);
+        $request->session()->put('total', 0);
+
+        return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'mensaje')); 
+
+    }
+
+
     public function ventas_anular(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.ventas.ventas_anular', compact('proveedores')); 
