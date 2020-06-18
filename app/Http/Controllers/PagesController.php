@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App;
+use DateTime;
+use DateTimeZone;
 
 use Illuminate\Http\Request;
 
@@ -713,6 +715,12 @@ class PagesController extends Controller
         $producto =  App\Producto::where ('codigo_producto', $request->codigo)->get();
 
         if(count($producto) > 0){
+            
+            if($producto[0]->stock < $request->cantidad){
+                $error = "No existe stock disponible para realizar la venta. Stock actual del producto corresponde a ". $producto[0]->stock;
+
+                return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error'));     
+            }
 
             $item = array();
             array_push($item, count($carrito)+1);
@@ -729,6 +737,13 @@ class PagesController extends Controller
 
             error_log( print_r($carrito, true));
 
+            
+            if($producto[0]->stock_critico >= $producto[0]->stock){
+                $mensaje = "Alerta de stock critco. Stock actual del producto corresponde a ". $producto[0]->stock;
+
+                return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'mensaje'));     
+            }
+
             return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
 
         }else{
@@ -741,17 +756,37 @@ class PagesController extends Controller
 
     public function ventas_agregar_confirmar(Request $request){
         $clientes = App\Cliente::all();
-        error_log('Confirmar Pedido');
+        
 
         $carrito =  array($request->session()->get('carrito'));
+        $total = $request->session()->get('total');
+        $user = $request->session()->get('user');
+        
+        foreach ($carrito as $prod) {
+            foreach ($prod as $items) {
+                
+                error_log('Producto Actualizacion Stock :');
+                error_log( print_r($items, true));
+                
+                $codigo_producto = $items[1];           
+                $cantidad = $items[4];
 
-        foreach ($carrito as $items) {
-            $item = "";
-            foreach (array($items) as $value) {
-                $item = $item . " - " . $value;
+                $producto =  App\Producto::where ('codigo_producto', $codigo_producto)->get();
+                $producto[0]->stock= ($producto[0]->stock - $cantidad);
+                $producto[0]->save();
             }
-            error_log('Item : '. $item);
         }
+
+        $usuario = App\Usuario::where('correo', $user)->get();
+
+        $now = new DateTime();
+        $now->setTimezone(new DateTimeZone('America/Santiago'));
+
+        $new_venta = new App\Venta();    
+        $new_venta->fecha = $now;
+        $new_venta->total = $total;
+        $new_venta->vendedor = $usuario[0]->id_user;
+        $new_venta->save();
 
         $mensaje = "Venta Realizada Correctamente...";
 
