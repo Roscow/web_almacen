@@ -978,7 +978,7 @@ class PagesController extends Controller
         $year= $request->year;
         //aqui generar las consultas 
         // la de productos mas vendidos        
-        $producMasVendido = App\Producto::where('id_user', '=',$item->vendedor)->get();
+        //$producMasVendido = App\Producto::where('id_user', '=',$item->vendedor)->get();
 
         return view('menu_principal.reporte_ver', compact('year','month'));
     }
