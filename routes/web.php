@@ -97,10 +97,13 @@ Route::post('actualizar_usuario','PagesController@actualizar_usuario')->name('ac
 Route::post('eliminar_usuario','PagesController@eliminar_usuario')->name('eliminar_usuario');
 
 
+Route::get('ventas_agregar_quitar/{id}','PagesController@ventas_agregar_quitar')->name('ventas_agregar_quitar');
 Route::get('ventas_agregar','PagesController@ventas_agregar')->name('ventas_agregar');
 Route::get('ventas_anular','PagesController@ventas_anular')->name('ventas_anular');
+Route::post('ventas_anular_detalle','PagesController@ventas_anular_detalle')->name('ventas_anular_detalle');
+Route::get('ventas_anular_accion/{id}/{date}','PagesController@ventas_anular_accion')->name('ventas_anular_accion');
 Route::get('ventas_ver','PagesController@ventas_ver')->name('ventas_ver');
-Route::get('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ventas_ver_detalle');
+Route::post('ventas_ver_detalle','PagesController@ventas_ver_detalle')->name('ventas_ver_detalle');
 Route::post('ventas_agregar_producto','PagesController@ventas_agregar_producto')->name('ventas_agregar_producto');
 Route::post('ventas_agregar_confirmar','PagesController@ventas_agregar_confirmar')->name('ventas_agregar_confirmar');
 

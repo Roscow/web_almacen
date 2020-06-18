@@ -27,21 +27,22 @@
                     <label for="inputAddress">Codigo </label>                   
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                     <label for="inputAddress">Nombre </label>                   
                 </div>   
                 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                     <label for="inputAddress">Descripcion </label>                   
                 </div>   
 
                 <div class="form-group col-md-2">
                     <label for="inputAddress">Cantidad </label>                   
-                </div>   
-
-                
+                </div>                   
                 <div class="form-group col-md-2">
                     <label for="inputAddress">Precio </label>                   
+                </div>   
+                <div class="form-group col-md-2">
+                    <label for="inputAddress">Accion </label>                   
                 </div>   
             </div>        
         </li>
@@ -53,11 +54,11 @@
                         <label for="inputAddress">{{$items[1]}}</label>                   
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <label for="inputAddress">{{$items[2]}}</label>                   
                     </div>   
                     
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-2">
                         <label for="inputAddress">{{$items[3]}}</label>                   
                     </div>   
 
@@ -67,6 +68,9 @@
                     <div class="form-group col-md-2">
                         <label for="inputAddress">{{$items[5]}}</label>                   
                     </div> 
+                    <div class="form-group col-md-2">
+                          <label for="inputAddress"><a href="{{ url('ventas_agregar_quitar/'.$items[0].'/') }}" class="btn btn-info btn-xs" role="button">Quitar</a></label>                   
+                    </div>
                 @endif  
             @endforeach  
             </div>        
@@ -116,7 +120,7 @@
 
         <div class="form-group col-md-6">
             <label for="inputState">Seleccione cliente</label>
-            <select id="idcliente" name="idcliente" class="form-control" required>
+            <select id="idcliente" name="idcliente" class="form-control">
             <option value="" selected>Elegir...</option>
                 @foreach ($clientes as $item)
                     <option value="{{$item->rut}}"><p> {{$item->nombre1}} {{$item->nombre2}}   {{$item->apellido1}}  {{$item->apellido2}}</p></option>                   

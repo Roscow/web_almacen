@@ -702,11 +702,27 @@ class PagesController extends Controller
         return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
     }
 
+    public function ventas_agregar_quitar($id, Request $request){
+        $clientes = App\Cliente::all();    
+        
+        unset($request->session()->get('carrito')[$id]);
+
+        $total = 0;
+        foreach ($request->session()->get('carrito') as $prod) {
+            $total = $total + (intval($prod[5]) * intval($prod[4]));
+        }
+
+        $request->session()->put('total', $total);
+        
+        return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
+    }
+    
+
     public function ventas_agregar_producto(Request $request){
         
         $clientes = App\Cliente::all();
 
-        $carrito = array($request->session()->get('carrito'));
+        $carrito = $request->session()->get('carrito');
 
         error_log( print_r($carrito, true));
 
@@ -723,7 +739,7 @@ class PagesController extends Controller
             }
 
             $item = array();
-            array_push($item, count($carrito)+1);
+            array_push($item, count($carrito));
             array_push($item, $producto[0]->codigo_producto);
             array_push($item, $producto[0]->nombre);
             array_push($item, $producto[0]->descripcion);
@@ -757,11 +773,19 @@ class PagesController extends Controller
     public function ventas_agregar_confirmar(Request $request){
         $clientes = App\Cliente::all();
         
+        // Validar Cliente de Venta Fiado
+        if(strcmp($request->gridCheck, 'on') == 0){
+            if(strcmp($request->idcliente, '') == 0){
+                $error = "Es necesario seleccionar cliente, si la venta corresponde a Fiado";
+                return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error'));     
+            }
+        }
 
+        // Obtener Datos de Ventas de Session
         $carrito =  array($request->session()->get('carrito'));
         $total = $request->session()->get('total');
         $user = $request->session()->get('user');
-        
+
         foreach ($carrito as $prod) {
             foreach ($prod as $items) {
                 
@@ -786,7 +810,19 @@ class PagesController extends Controller
         $new_venta->fecha = $now;
         $new_venta->total = $total;
         $new_venta->vendedor = $usuario[0]->id_user;
-        $new_venta->save();
+        if($new_venta->save()){
+
+            error_log('Fiado : ' . $request->gridCheck);            
+            if(strcmp($request->gridCheck, 'on') == 0){
+                $new_fiado = new App\Fiado();
+                $new_fiado->fecha_fiado = $now;
+                $new_fiado->rut_cliente = $request->idcliente;
+                $new_fiado->id_venta = $new_venta->id_venta;
+                $new_fiado->total_fiado = $total;
+                $new_fiado->save();
+            }
+
+        }
 
         $mensaje = "Venta Realizada Correctamente...";
 
@@ -798,15 +834,117 @@ class PagesController extends Controller
 
     }
 
+    public function ventas_anular_accion($id, $date){
+        $proveedores = App\Proveedor::all();
+        error_log('Id Anulacion : '. $id);
+        $fecha = $date;
+        error_log('Fehca : '. $fecha);
+
+        $fiados = App\Fiado::where('id_venta', $id)->get();
+        if(count($fiados) > 0){
+            $fiados[0]->delete();
+        }
+
+        $ventas = App\Venta::where('id_venta', $id)->get();
+        if(count($ventas) > 0){
+            $ventas[0]->delete();
+        }
+
+        $ventas = App\Venta::whereDate('fecha','=', $fecha)->get();
+
+        $resultado = array();
+
+        if(count($ventas) > 0){
+
+            foreach ($ventas as $item) {
+            
+                $usuario = App\Usuario::where('id_user', '=',$item->vendedor)->get();
+
+                $new_reporte = new App\Reporte();
+                $new_reporte->id_venta = $item->id_venta;
+                $new_reporte->fecha = $item->fecha;
+                $new_reporte->total = $item->total;
+                $new_reporte->vendedor = $usuario[0]->nombre1. ' '. $usuario[0]->apellido1. ' '. $usuario[0]->apellido2;
+                
+                array_push($resultado, $new_reporte);
+                
+            }
+        }
+
+        $mensaje = "Anulacion realizada correctamente.";
+            
+        return view('menu_principal.ventas.ventas_anular', compact('proveedores', 'mensaje','resultado', 'fecha')); 
+    }
+
+    public function ventas_anular_detalle(Request $request){
+        $proveedores = App\Proveedor::all();
+        error_log('Fecha Busqueda : '. $request->fecha);
+
+        $fecha = $request->fecha;
+
+        $ventas = App\Venta::whereDate('fecha','=', $request->fecha)->get();
+
+        if(count($ventas) > 0){
+
+            $resultado = array();
+            foreach ($ventas as $item) {
+            
+                $usuario = App\Usuario::where('id_user', '=',$item->vendedor)->get();
+
+                $new_reporte = new App\Reporte();
+                $new_reporte->id_venta = $item->id_venta;
+                $new_reporte->fecha = $item->fecha;
+                $new_reporte->total = $item->total;
+                $new_reporte->vendedor = $usuario[0]->nombre1. ' '. $usuario[0]->apellido1. ' '. $usuario[0]->apellido2;
+                
+                array_push($resultado, $new_reporte);
+                
+            }
+
+            return view('menu_principal.ventas.ventas_anular', compact('proveedores', 'resultado', 'fecha')); 
+        }else{
+            $mensaje = "No Existen Resultado para la busqueda...";
+            return view('menu_principal.ventas.ventas_anular', compact('proveedores', 'mensaje', 'fecha')); 
+            
+        }
+    }
 
     public function ventas_anular(){
-        $proveedores = App\Proveedor::all();
+        $proveedores = App\Proveedor::all();        
         return view('menu_principal.ventas.ventas_anular', compact('proveedores')); 
     }
-    public function ventas_ver_detalle(){
+
+    public function ventas_ver_detalle(Request $request){
         $proveedores = App\Proveedor::all();
-        return view('menu_principal.ventas.ventas_ver_detalle', compact('proveedores')); 
+        error_log('Fecha Busqueda : '. $request->fecha);
+
+        $ventas = App\Venta::whereDate('fecha','=', $request->fecha)->get();
+
+        if(count($ventas) > 0){
+
+            $resultado = array();
+            foreach ($ventas as $item) {
+            
+                $usuario = App\Usuario::where('id_user', '=',$item->vendedor)->get();
+
+                $new_reporte = new App\Reporte();
+                $new_reporte->id_venta = $item->id_venta;
+                $new_reporte->fecha = $item->fecha;
+                $new_reporte->total = $item->total;
+                $new_reporte->vendedor = $usuario[0]->nombre1. ' '. $usuario[0]->apellido1. ' '. $usuario[0]->apellido2;
+                
+                array_push($resultado, $new_reporte);
+                
+            }
+
+            return view('menu_principal.ventas.ventas_ver', compact('proveedores', 'resultado')); 
+        }else{
+            $mensaje = "No Existen Resultado para la busqueda...";
+            return view('menu_principal.ventas.ventas_ver', compact('proveedores', 'mensaje')); 
+            
+        }
     }
+
     public function ventas_ver(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.ventas.ventas_ver', compact('proveedores')); 
