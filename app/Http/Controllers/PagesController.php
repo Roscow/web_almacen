@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 use App;
 use DateTime;
@@ -968,6 +969,27 @@ class PagesController extends Controller
         return response()->json();
     }
     
+	public function nuevo_reporte(){
+        return view('menu_principal.nuevo_reporte');
+    }
+
+    public function reporte_ver(Request $request){
+        $month= $request->month;
+        $year= $request->year;
+        //aqui generar las consultas 
+        // la de productos mas vendidos        
+        $producMasVendido = App\Producto::where('id_user', '=',$item->vendedor)->get();
+
+        return view('menu_principal.reporte_ver', compact('year','month'));
+    }
+
+
+    public function prueba2(Request $request){
+        $var = $request->inputHidden;
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML($var);
+        return $pdf->stream();
+    }
 
 
    

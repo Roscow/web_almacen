@@ -30,7 +30,9 @@ Route::view('menu_proveedor','menu_principal/menu_proveedor')->name('menu_provee
 Route::view('menu_stock','menu_principal/menu_stock')->name('menu_stock');
 Route::view('menu_usuario','menu_principal/menu_usuario')->name('menu_usuario');
 Route::view('menu_ventas','menu_principal/menu_ventas')->name('menu_ventas');
-Route::view('nuevo_reportes','menu_principal/nuevo_reporte')->name('nuevo_reportes');
+Route::get('nuevo_reportes','PagesController@nuevo_reporte')->name('nuevo_reportes');
+Route::post('reporte_ver','PagesController@reporte_ver')->name('reporte_ver');
+
 
 //views de menu cliente
 Route::get('cliente_crear','PagesController@cliente_crear')->name('cliente_crear');
@@ -122,4 +124,14 @@ Route::post('/delete_producto', 'PagesController@delete_producto')->name('delete
 Route::post('/insert_articulo', 'PagesController@insert_articulo')->name('insert_articulo');
 Route::post('/delete_articulo', 'PagesController@delete_articulo')->name('delete_articulo');
 
+
+Route::get('prueba', function(){
+    $pdf = App::make('dompdf.wrapper');
+    $pdf->loadHTML('<h1>probando</h1>');
+    return $pdf->stream();
+
+});
+
+
+Route::post('prueba2','PagesController@prueba2')->name('prueba2');
 
