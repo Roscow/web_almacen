@@ -8,7 +8,7 @@
 {{ csrf_field() }}
     <div class="form-row">   
         <div class="form-group col-md-4">
-            <label for="inputAddress">Codigo </label>
+            <label for="inputAddress">Código </label>
             <input id="codigo" name="codigo" type="number" class="form-control" id="inputAddress" placeholder=" " required>
         </div>  
 
@@ -23,8 +23,8 @@
 <ul class="list-group">
         <li class="list-group-item">        
             <div class="form-row">               
-                <div class="form-group col-md-2">
-                    <label for="inputAddress">Codigo </label>                   
+                <div class="form-group col-md-3">
+                    <label for="inputAddress">Código </label>                   
                 </div>
 
                 <div class="form-group col-md-2">
@@ -32,17 +32,17 @@
                 </div>   
                 
                 <div class="form-group col-md-2">
-                    <label for="inputAddress">Descripcion </label>                   
+                    <label for="inputAddress">Descripción </label>                   
                 </div>   
 
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-1">
                     <label for="inputAddress">Cantidad </label>                   
                 </div>                   
                 <div class="form-group col-md-2">
                     <label for="inputAddress">Precio </label>                   
                 </div>   
                 <div class="form-group col-md-2">
-                    <label for="inputAddress">Accion </label>                   
+                    <label for="inputAddress">Acción </label>                   
                 </div>   
             </div>        
         </li>
@@ -50,7 +50,7 @@
             <div class="form-row">               
             @foreach ( session('carrito') as $items)            
                 @if(count(array($items)) > 0)
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-3">
                         <label for="inputAddress">{{$items[1]}}</label>                   
                     </div>
 
@@ -62,7 +62,7 @@
                         <label for="inputAddress">{{$items[3]}}</label>                   
                     </div>   
 
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-1">
                         <label for="inputAddress">{{$items[4]}}</label>                   
                     </div>               
                     <div class="form-group col-md-2">

@@ -8,7 +8,7 @@
     {{ csrf_field() }}
     <div class="form-row">        
         <div class="form-group col-md-4">
-            <label for="inputAddress">Fecha de creacion</label>
+            <label for="inputAddress">Fecha de creación</label>
             <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Juan">
         </div>    
     </div>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-group col-md-1">
-                    <label for="inputAddress">Accion </label>                   
+                    <label for="inputAddress">Acción </label>                   
                 </div>      
             </div>        
         </li>
@@ -72,5 +72,6 @@
                 <br>
             </div>   
         </li>
+        <br>
     </ul>
 @endsection

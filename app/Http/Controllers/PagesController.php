@@ -505,14 +505,23 @@ class PagesController extends Controller
         $contador= $request->cantidad;
         $producto= App\Producto::where('nombre','=',$request->producto)->get(); 
 
-        while ($contador>0){
+        $date=date_create($request->vencimiento);
+        
+        error_log('id_articulo : '. $producto[0]->codigo_producto.''.date_format($date,"Ymd"));
+        
+        $articulo_query = App\Articulo::where('id_articulo','=',$producto[0]->codigo_producto.''.date_format($date,"Ymd"))->get();
+
+        if(count($articulo_query) == 0){
             $articulo = new App\Articulo; 
-            $articulo->fecha_vencimiento = $request->vencimiento;                        
+            $articulo->id_articulo = $producto[0]->codigo_producto.''.date_format($date,"Ymd");
+            $articulo->fecha_vencimiento = $request->vencimiento;
             $articulo->id_producto = $producto[0]->codigo_producto;
             $articulo->save();
-            //el articulo->id_Articulo debe incrementar solo
-            $contador=$contador-1;           
         }
+
+        $producto[0]->stock = ($producto[0]->stock + $request->cantidad);
+        $producto[0]->save();
+
         $mensaje = "articulos agregados";
         $proveedores = App\Proveedor::all(); 
         $regiones = App\Region::all();
@@ -729,42 +738,49 @@ class PagesController extends Controller
 
         $total = $request->session()->get('total');
 
-        $producto =  App\Producto::where ('codigo_producto', $request->codigo)->get();
+        $articulo= App\Articulo::where('id_articulo','=',$request->codigo)->get(); 
 
-        if(count($producto) > 0){
-            
-            if($producto[0]->stock < $request->cantidad){
-                $error = "No existe stock disponible para realizar la venta. Stock actual del producto corresponde a ". $producto[0]->stock;
+        if(count($articulo) > 0){
+            $producto =  App\Producto::where ('codigo_producto', $articulo[0]->id_producto)->get();
+            if(count($producto) > 0){
+                
+                if($producto[0]->stock < $request->cantidad){
+                    $error = "No existe stock disponible para realizar la venta. Stock actual del producto corresponde a ". $producto[0]->stock;
 
-                return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error'));     
+                    return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error'));     
+                }
+
+                $item = array();
+                array_push($item, count($carrito));
+                array_push($item, $articulo[0]->id_articulo);
+                array_push($item, $producto[0]->nombre);
+                array_push($item, $producto[0]->descripcion);
+                array_push($item, $request->cantidad);
+                array_push($item, $producto[0]->precio_venta);
+                array_push($item, $producto[0]->codigo_producto);
+                
+                $total = $total + (intval($producto[0]->precio_venta) * intval($request->cantidad));
+
+                $request->session()->put('total', $total);
+                $request->session()->push('carrito', $item);
+
+                error_log( print_r($carrito, true));
+                
+                if($producto[0]->stock_critico >= $producto[0]->stock){
+                    $mensaje = "Alerta de stock critco. Stock actual del producto corresponde a ". $producto[0]->stock;
+
+                    return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'mensaje'));     
+                }
+
+                return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
+
+            }else{
+                $error = "Producto Relacionado Articulo No Existe";
+
+                return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error')); 
             }
-
-            $item = array();
-            array_push($item, count($carrito));
-            array_push($item, $producto[0]->codigo_producto);
-            array_push($item, $producto[0]->nombre);
-            array_push($item, $producto[0]->descripcion);
-            array_push($item, $request->cantidad);
-            array_push($item, $producto[0]->precio_venta);
-            
-            $total = $total + (intval($producto[0]->precio_venta) * intval($request->cantidad));
-
-            $request->session()->put('total', $total);
-            $request->session()->push('carrito', $item);
-
-            error_log( print_r($carrito, true));
-
-            
-            if($producto[0]->stock_critico >= $producto[0]->stock){
-                $mensaje = "Alerta de stock critco. Stock actual del producto corresponde a ". $producto[0]->stock;
-
-                return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'mensaje'));     
-            }
-
-            return view('menu_principal.ventas.ventas_agregar', compact('clientes')); 
-
         }else{
-            $error = "Producto Ingresado No Existe";
+            $error = "Articulo Ingresado No Existe";
 
             return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error')); 
         }
@@ -787,21 +803,6 @@ class PagesController extends Controller
         $total = $request->session()->get('total');
         $user = $request->session()->get('user');
 
-        foreach ($carrito as $prod) {
-            foreach ($prod as $items) {
-                
-                error_log('Producto Actualizacion Stock :');
-                error_log( print_r($items, true));
-                
-                $codigo_producto = $items[1];           
-                $cantidad = $items[4];
-
-                $producto =  App\Producto::where ('codigo_producto', $codigo_producto)->get();
-                $producto[0]->stock= ($producto[0]->stock - $cantidad);
-                $producto[0]->save();
-            }
-        }
-
         $usuario = App\Usuario::where('correo', $user)->get();
 
         $now = new DateTime();
@@ -823,6 +824,30 @@ class PagesController extends Controller
                 $new_fiado->save();
             }
 
+            foreach ($carrito as $prod) {
+                foreach ($prod as $items) {
+                    
+                    error_log('Producto Actualizacion Stock :');
+                    error_log( print_r($items, true));
+                    
+                    $codigo_articulo = $items[1];           
+                    $cantidad = $items[4];
+                    $precio_venta = $items[5];
+                    $codigo_producto = $items[6];           
+    
+                    $producto =  App\Producto::where ('codigo_producto', $codigo_producto)->get();
+                    $producto[0]->stock= ($producto[0]->stock - $cantidad);
+                    $producto[0]->save();
+
+                    $new_detalle = new App\Detalle_venta();
+                    $new_detalle->id_venta = $new_venta->id_venta;
+                    $new_detalle->cantidad = $cantidad;
+                    $new_detalle->id_articulo = $codigo_articulo;
+                    $new_detalle->total_linea = ($precio_venta * $cantidad);
+                    $new_detalle->save();    
+                }
+            }
+
         }
 
         $mensaje = "Venta Realizada Correctamente...";
@@ -839,7 +864,29 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         error_log('Id Anulacion : '. $id);
         $fecha = $date;
-        error_log('Fehca : '. $fecha);
+        error_log('Fecha : '. $fecha);
+
+        $detalle_venta = App\Detalle_venta::where('id_venta', $id)->get();
+        if(count($detalle_venta) > 0){
+            foreach ($detalle_venta as $item) {
+                
+                error_log('id_articulo : '. $item->id_articulo);
+
+                $articulo = App\Articulo::where('id_articulo', $item->id_articulo)->get();
+
+                if(count($articulo) > 0){
+                    error_log('id_producto : '. $articulo[0]->id_producto);
+                    $producto = App\Producto::where('codigo_producto', $articulo[0]->id_producto)->get();
+                    $producto[0]->stock = $producto[0]->stock + $item->cantidad;
+                    $producto[0]->save();
+                }
+
+                $item->delete();
+
+            }
+
+            
+        }
 
         $fiados = App\Fiado::where('id_venta', $id)->get();
         if(count($fiados) > 0){
