@@ -7,16 +7,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link href="{{ asset('css/print.min.css') }}"  rel="stylesheet">
     <title>Almacén los Yuyitos</title>
   </head>
   <body style="margin-bottom:55px;">
 
     <div class="container-full-width">
-        @yield('seccion')    
+        @yield('seccion')
     </div>
 
-    
+
     @isset($mensaje)
 
     <div id="myModal" class="modal fade" role="dialog">
@@ -28,25 +28,27 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body" style="height: 140px;">   
-            
-            <img src="{{URL::asset('/images/check.gif')}}" height="160" width="180" style="left: 48%; margin: 6%; padding: 0; position: fixed; top: 0;">
-            <br>
-            <br>
-            <h6 class="modal-title">{{$mensaje}} </h6>
+            <div class="modal-body" style="height: 140px;">
 
-    
+                <div class="row">
+                    <div class="col-md-8">
+                        <h6 class="modal-title" style="margin: 50px 0px 0px 0px;">{{$mensaje}} </h6>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{URL::asset('/images/check.gif')}}" height="160" width="180" style="margin: 0px 0px 0px -30px; position: fixed; ">
+                    </div>
+                </div>
+                <br>
+                <br>
             </div>
             <br>
             <br>
-
-            </div>
         </form>
     </div>
 
     </div>
 
-    <script>    
+    <script>
         $(document).ready(function(){
             $("#myModal").modal('show');
         });
@@ -54,7 +56,7 @@
 
     @endif
 
-       <!--Modal error--> 
+       <!--Modal error-->
     @isset($error)
 
     <div id="myModalError" class="modal fade" role="dialog">
@@ -66,30 +68,28 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body" style="height: 140px;">   
-                
-                <img src="{{URL::asset('/images/x.gif')}}" height="80" width="90" style="left: 53%; margin: 6%; padding: 0; position: fixed; top: 5%;">
+                <div class="modal-body" style="height: 140px;">
+                    <div class="row">
+                        <div class="col-md-8">
+                           <h6 class="modal-title" style="margin: 40px 0px 0px 0px;">{{$error}} </h6>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{URL::asset('/images/x.gif')}}" height="80" width="90" style="margin: 0px 0px 0px 0px; position: fixed; ">
+                        </div>
+                    </div>
                 <br>
                 <br>
-                <h6 class="modal-title">{{$error}} </h6>
-
-        
-                </div>
-                <br>
-                <br>
-
-                </div>
             </form>
         </div>
     </div>
 
-    <script>    
+    <script>
         $(document).ready(function(){
             $("#myModalError").modal('show');
         });
     </script>
 
-    @endif    
+    @endif
 
 <script>
     $(document).ready (function() {
@@ -116,6 +116,8 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('js/print.min.js') }}"></script>
+
   </body>
 
 </html>
