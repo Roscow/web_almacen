@@ -19,6 +19,7 @@
 
     @isset($mensaje)
 
+
     <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -110,6 +111,23 @@
         });
     });
 </script>
+<style>
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+color: DCDADA !important;/*!Important sirve para dar orden inmediata de cambiar el color*/
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+color: DCDADA !important;
+opacity: 1 /* esto es porque Firefox le reduce la opacidad por defecto */;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+color: DCDADA !important;
+opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: DCDADA !important;
+}
+   </style>
+
 
     <!-- Optional JavaScript -->
 

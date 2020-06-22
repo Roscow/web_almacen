@@ -325,7 +325,7 @@ class PagesController extends Controller
         $new_rubro = new app\Rubro;
         $new_rubro->rubro = $request->rubro;
         $new_rubro->save();
-        $mensaje = "nuevo rubro añadido correctamente!!";
+        $mensaje = "Nuevo rubro añadido correctamente!!";
         return view('menu_principal.proveedor.proveedor_agregar_rubro', compact('mensaje','proveedores'));
     }
 
@@ -359,7 +359,7 @@ class PagesController extends Controller
          $nuevo_proveedor->id_direccion = $request->rut_empresa;
 
          $nuevo_proveedor->save();
-         $mensaje = "proveedor ingresado correctamente";
+         $mensaje = "Proveedor ingresado correctamente";
          $proveedores = App\Proveedor::all();
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();
@@ -522,7 +522,7 @@ class PagesController extends Controller
         $producto[0]->stock = ($producto[0]->stock + $request->cantidad);
         $producto[0]->save();
 
-        $mensaje = "articulos agregados";
+        $mensaje = "Articulos agregados";
         $proveedores = App\Proveedor::all();
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();
@@ -537,7 +537,7 @@ class PagesController extends Controller
 
     public function delete_articulo(Request $request){
         $articulo = App\Articulo::where('id_articulo','=',$request->id_articulo)->get();
-        $mensaje='articulo eliminado';
+        $mensaje='Articulo eliminado';
         $articulo[0]->delete();
         return view('menu_principal.stock.articulos.articulo_eliminar', compact('mensaje','proveedores'));
 
@@ -615,7 +615,7 @@ class PagesController extends Controller
         $producto = App\Producto::where('nombre',$prod_nombre)->get();
         $contador = count($producto);
         if( $contador== 0){
-            $mensaje="no hay coincidencias";
+            $mensaje="No hay coincidencias";
             return view('menu_principal.stock.productos.producto_mostrar',compact('mensaje'));
         }
         if( $contador != 0){
@@ -632,7 +632,7 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         $familias = App\Famila_producto::all();
         $tipos = App\Tipo_producto::all();
-        $mensaje = "se ha creado un nuevo tipo de producto";
+        $mensaje = "Se ha creado un nuevo tipo de producto";
         return view('menu_principal.stock.productos.producto_agregar',compact('mensaje','proveedores','familias','tipos','productos'));
 
     }
@@ -644,7 +644,7 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         $familias = App\Famila_producto::all();
         $tipos = App\Tipo_producto::all();
-        $mensaje = "se ha creado una nueva familia de producto";
+        $mensaje = "Se ha creado una nueva familia de producto";
         return view('menu_principal.stock.productos.producto_agregar',compact('mensaje','proveedores','familias','tipos','productos'));
     }
 
@@ -676,12 +676,14 @@ class PagesController extends Controller
                                         substr($tipo[0]->id_tipo,1,1) ;
 
        */
-        $new_prod->codigo_producto =    $proveedor[0]->rut_empresa .
+
+       //Saca los 3 primeros digitos del rut empresa/*
+        $new_prod->codigo_producto =   substr($proveedor[0]->rut_empresa, 0, 3)  .
                                         $familia[0]->id_familia .
                                         $tipo[0]->id_tipo ;
 
         $new_prod->save();
-        $mensaje = "producto  ingresado correctamente";
+        $mensaje = "Producto  ingresado correctamente";
         $proveedores = App\Proveedor::all();
         $familias = App\Famila_producto::all();
         $tipos = App\Tipo_producto::all();
@@ -692,7 +694,7 @@ class PagesController extends Controller
     public function delete_producto(Request $request){
         $producto = App\Producto::where('nombre','=',$request->producto)->get();
         $producto[0]->delete();
-        $mensaje = "producto eliminado correctamente";
+        $mensaje = "Producto eliminado correctamente";
 
         $productos = App\Producto::all();
         return view('menu_principal.stock.productos.producto_eliminar', compact('productos','mensaje'));
