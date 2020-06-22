@@ -10,15 +10,97 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="{{ route('cliente_crear') }}">Cliente</a>
+     <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Cliente
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('cliente_crear') }}" >Agregar</a></li>
+                <li><a class="dropdown-item" href="{{ route('cliente_editar') }}" >Editar</a></li>
+                <li><a class="dropdown-item" href="{{ route('cliente_eliminar') }}" >Eliminar</a></li>
+                <li><a class="dropdown-item" href="{{ route('cliente_fiados') }}" >Ver Fiados</a></li>
+            </ul>
+      </li>
       @if(strcmp(session('type'), 'Administrador') == 0 )
-        <a class="nav-item nav-link" href="{{ route('usuario_crear') }}" >Usuario</a>
+		<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Usuario
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('usuario_crear') }}" >Agregar</a></li>
+                <li><a class="dropdown-item" href="{{ route('usuario_editar') }}" >Editar</a></li>
+                <li><a class="dropdown-item" href="{{ route('usuario_eliminar') }}" >Eliminar</a></li>
+                <li><a class="dropdown-item" href="{{ route('usuario_ver_todos') }}" >Ver Todos</a></li>
+            </ul>
+      </li>
       @endif
-      <a class="nav-item nav-link" href="{{ route('proveedor_agregar') }}">Proveedor</a>
-      <a class="nav-item nav-link" href="{{ route('ventas_agregar') }}">Venta</a>
-      <a class="nav-item nav-link" href="{{ route('producto_agregar') }}">Stock</a>
-      <a class="nav-item nav-link" href="{{ route('pedidos_agregar') }}">Pedidos</a>
-      <a class="nav-item nav-link" href="{{ route('nuevo_reportes') }}">Reportes</a>
+     <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Proveedor
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{ route('proveedor_agregar') }}" >Agregar</a></li>
+                  <li><a class="dropdown-item" href="{{ route('proveedor_editar') }}" >Editar</a></li>
+                  <li><a class="dropdown-item" href="{{ route('proveedor_eliminar') }}" >Eliminar</a></li>
+                  <li><a class="dropdown-item" href="{{ route('proveedor_pedidos') }}" >Ver Pedidos</a></li>
+                  <li><a class="dropdown-item" href="{{ route('proveedor_agregar_rubro') }}" >Nuevo Rubro</a></li>
+              </ul>
+        </li>
+	 <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Venta
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('ventas_agregar') }}" >Nueva</a></li>
+                <li><a class="dropdown-item" href="{{ route('ventas_anular') }}" >Anular</a></li>
+                <li><a class="dropdown-item" href="{{ route('ventas_ver') }}" >Ver</a></li>
+            </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Stock
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Producto</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('producto_agregar') }}" >Agregar</a></li>
+                <li><a class="dropdown-item" href="{{ route('producto_modificar') }}" >Modificar</a></li>
+                <li><a class="dropdown-item" href="{{ route('producto_mostrar') }}" >Buscar</a></li>
+                <li><a class="dropdown-item" href="{{ route('producto_eliminar') }}" >Eliminar</a></li>
+                <li><a class="dropdown-item" href="{{ route('agregar_familia_producto') }}" >Familia Producto</a></li>
+                <li><a class="dropdown-item" href="{{ route('proveedor_pedidos') }}" >Tipo Producto</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Articulo</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('articulo_agregar') }}" >Agregar</a></li>
+                <li><a class="dropdown-item" href="{{ route('articulo_eliminar') }}" >Eliminar</a></li>
+              </ul>
+            </li>
+          </ul>
+      </li>
+
+	 <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Pedidos
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('pedidos_agregar') }}" >Nuevo</a></li>
+                <li><a class="dropdown-item" href="{{ route('pedidos_recepcionar') }}" >Recepcionar</a></li>
+                <li><a class="dropdown-item" href="{{ route('pedidos_ver') }}" >Ver</a></li>
+            </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Reportes
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{ route('nuevo_reportes') }}" >Nuevo</a></li>
+              </ul>
+        </li>
+
     </div>
   </div>
   <a class="navbar-brand" href="{{ route('salirUsuario') }}" style="float: right; font-size: 17px;">
@@ -50,6 +132,24 @@
         </script>
 
         <style>
+            .navbar-nav li:hover > ul.dropdown-menu {
+                display: block;
+            }
+            .dropdown-submenu {
+                position:relative;
+            }
+            .dropdown-submenu>.dropdown-menu {
+                top:0;
+                left:100%;
+                margin-top:-6px;
+            }
+
+            /* rotate caret on hover */
+            .dropdown-menu > li > a:hover:after {
+                text-decoration: underline;
+                transform: rotate(-90deg);
+            }
+
             #hero-container {
                 height: 600px;
             }
@@ -150,9 +250,9 @@
                         @php
                             date_default_timezone_set ("America/Santiago");
                             setlocale(LC_TIME, "spanish");
-                        
+
                             echo mb_convert_case(utf8_encode(strftime("%A, %d de %B %Y %H:%M")), MB_CASE_TITLE, 'UTF-8');
-                        
+
                         @endphp
                     </div>
 
@@ -166,12 +266,12 @@
 
 
 
-<!--<div class="container-full-width" style="margin-top: 70px">       
-        <footer>              
+<!--<div class="container-full-width" style="margin-top: 70px">
+        <footer>
             <div class="card">
                 <div class="card-header">
                     2020 - Portafolio de titulo -Duoc UC - Desarrollado con Laravel
-                </div>            
-            </div>       
+                </div>
+            </div>
         </footer>
 </div>
