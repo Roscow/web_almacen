@@ -130,8 +130,10 @@ class PagesController extends Controller
         $rut= $request->rut;
         $clientes = App\Cliente::all();
         $new_abono = new app\Abono;
-        //$new_abono->id_abono = 1;
-        $new_abono->fecha_pago = $request->fecha ;
+
+        $now = new DateTime();
+        $now->setTimezone(new DateTimeZone('America/Santiago'));
+        $new_abono->fecha_pago = $now ;
         $new_abono->rut_cliente = $request->rut;
         $new_abono->monto = $request->monto;
         $new_abono->save();
@@ -139,7 +141,7 @@ class PagesController extends Controller
         $cliente_aux = App\Cliente::where('rut','=',$rut)->get();
         $cliente_aux[0]->monto_deuda = ($cliente_aux[0]->monto_deuda - $new_abono->monto);
         $cliente_aux[0]->save();
-        $mensaje = "abono ingresado con exito!";
+        $mensaje = "Abono ingresado con exito!";
         return view('menu_principal.cliente.cliente_fiados', compact('clientes','mensaje'));
     }
 
@@ -824,6 +826,10 @@ class PagesController extends Controller
                 $new_fiado->id_venta = $new_venta->id_venta;
                 $new_fiado->total_fiado = $total;
                 $new_fiado->save();
+
+                $clFiado = App\Cliente::where('rut', $request->idcliente)->get();
+                $clFiado[0]->monto_deuda = $clFiado[0]->monto_deuda + $total;
+                $clFiado[0]->save();
             }
 
             foreach ($carrito as $prod) {
