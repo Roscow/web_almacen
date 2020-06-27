@@ -50,6 +50,7 @@ Route::post('abonar','PagesController@abonar')->name('abonar');
 Route::get('pedidos_agregar','PagesController@pedidos_agregar')->name('pedidos_agregar');
 Route::get('pedidos_recepcionar','PagesController@pedidos_recepcionar')->name('pedidos_recepcionar');
 Route::get('pedidos_ver','PagesController@pedidos_ver')->name('pedidos_ver');
+Route::post('seleccionProducto','PagesController@seleccionProducto')->name('seleccionProducto');
 
 
 

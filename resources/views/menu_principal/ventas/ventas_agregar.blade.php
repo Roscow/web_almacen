@@ -9,7 +9,7 @@
 {{ csrf_field() }}
     <div class="form-row">
         <div class="form-group col-md-4">
-            <label for="inputAddress">Código </label>
+            <label for="inputAddress">Código Producto </label>
             <input id="codigo" name="codigo" type="number" class="form-control" id="inputAddress" placeholder=" " required>
         </div>
 
@@ -28,7 +28,7 @@
     <div class="list-group-item pr-div">
         <div class="form-row">
             <div class="form-group col-md-3">
-                <label for="inputAddress">Código </label>
+                <label for="inputAddress">Código Producto </label>
             </div>
 
             <div class="form-group col-md-2">

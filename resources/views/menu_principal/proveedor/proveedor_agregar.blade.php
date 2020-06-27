@@ -42,7 +42,7 @@
             <select name="selectRubro" id="selectRubro" class="form-control">
             <option selected>Elegir rubro...</option>               
                 @foreach ($rubros as $item)
-                    <option value="{{$item->id}}"> {{$item->rubro}}</option>                   
+                    <option value="{{$item->id}}"><?php echo strtolower($item->rubro)?> </option>                   
                 @endforeach            
             </select>
         </div>   

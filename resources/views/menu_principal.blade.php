@@ -69,7 +69,7 @@
                 <li><a class="dropdown-item" href="{{ route('producto_mostrar') }}" >Buscar</a></li>
                 <li><a class="dropdown-item" href="{{ route('producto_eliminar') }}" >Eliminar</a></li>
                 <li><a class="dropdown-item" href="{{ route('agregar_familia_producto') }}" >Familia Producto</a></li>
-                <li><a class="dropdown-item" href="{{ route('proveedor_pedidos') }}" >Tipo Producto</a></li>
+                <li><a class="dropdown-item" href="{{ route('agregar_tipo_producto') }}" >Tipo Producto</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Articulo</a>

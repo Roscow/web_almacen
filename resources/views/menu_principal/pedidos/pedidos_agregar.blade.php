@@ -4,10 +4,10 @@
 
 @section('contenido')
    <h1>Nuevo pedido</h1>   
-<form>    
+<form action="{{route('seleccionProducto')}}" method="POST">  
+@csrf
     <div class="form-row">
-
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-8">
             <label for="inputState">Seleccione proveedor </label>
             <select id="razon_social" name="razon_social"  class="form-control">
             <option selected>Elegir....</option>
@@ -15,40 +15,13 @@
                     <option><p> {{$item->razon_social}}</p></option>                   
                 @endforeach
             </select>
-        </div>    
-
-        <div class="form-group col-md-4">
-            <label for="inputState">Producto</label>
-            <select id="inputState" class="form-control">
-                <option selected>Elegir...</option>
-                <option>...</option>
-            </select>
-        </div>
-
-
-        <div class="form-group col-md-4">
-            <label for="inputAddress">Cantidad</label>
-            <input type="number" class="form-control" id="inputAddress" placeholder="0">
-        </div>              
+        </div>                      
     </div>
-    <button type="submit" class="btn btn-primary">Agregar a lista</button> 
+    <button type="submit" class="btn btn-primary">Seleccionar</button> 
 </form>
-
-<form>
-    <br><br>
-    <h6>Pedido   actual</h6>
-    <p>id:  01212 <br>proveedor: coca-cola   <br>fecha: 23-1-2122   </p>
-    <ul class="list-group">
-        <li class="list-group-item">Coca-cola 2,5  3 unidades</li>
-        <li class="list-group-item">Coca-cola 2,5  3 unidades</li>
-        <li class="list-group-item">Coca-cola 2,5  3 unidades</li>
-        <li class="list-group-item">Coca-cola 2,5  3 unidades</li>
-        <li class="list-group-item">Coca-cola 2,5  3 unidades</li>
-    </ul>
+@yield('SeleccionProducto')
 
 
-    <button type="submit" class="btn btn-primary">Enviar pedido</button> 
-</form>
 
 @endsection
 

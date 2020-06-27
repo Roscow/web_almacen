@@ -43,9 +43,9 @@
             <option selected>Elegir...</option>               
                 @foreach ($rubros as $item)
                     @if($item->id === $proveedores[0]->id_rubro){
-                         <option value="{{$item->id}}" selected> {{$item->rubro}}</option>   
+                         <option value="{{$item->id}}" selected> <?php echo strtolower($item->rubro)?></option>   
                     @else
-                         <option value="{{$item->id}}"> {{$item->rubro}}</option> 
+                         <option value="{{$item->id}}"> <?php echo strtolower($item->rubro)?></option> 
                     @endif                          
                 @endforeach
             </select>
