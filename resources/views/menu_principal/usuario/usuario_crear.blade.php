@@ -44,7 +44,7 @@
 
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputAddress">Numero</label>
+            <label for="inputAddress">Número</label>
             <input type="text" name="telefono" class="form-control" id="inputAddress" placeholder="+56994009300">
         </div> 
 
@@ -62,6 +62,7 @@
             </label>
         </div>  
     </div>
+    <br>
     <button type="submit" class="btn btn-primary">Crear</button>
 </form>
 

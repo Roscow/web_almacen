@@ -17,6 +17,8 @@
           <p>{{str_replace("_", " ",$elemento->nombre1)}} {{str_replace("_", " ",$elemento->nombre2)}} {{str_replace("_", " ",$elemento->apellido1)}} {{str_replace("_", " ",$elemento->apellido2)}} </p> 
         </button>
       </h2>
+      <br>
+
     </div>
 
     <div id="collapse{{$elemento->id_user}}" class="collapse" aria-labelledby="heading{{$elemento->id_user}} data-parent="#accordionExample">
@@ -42,54 +44,7 @@
 
 @endforeach
 
-<!-- el ejemplo 
-  <div class="card">
-    <div class="card-header" id="heading{{$elemento->id}}">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$elemento->id}}" aria-expanded="true" aria-controls="collapseOne">
-          Nombre_usuario1
-        </button>
-      </h2>
-    </div>
 
-    <div id="collapse{{$elemento->id}}" class="collapse show" aria-labelledby="heading{{$elemento->id}}" data-parent="#accordionExample">
-      <div class="card-body">
-      detalles del usuario
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Nombre_usuario2
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-            detalles del usuario
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Nombre_usuario3
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-            detalles del usuario
-      </div>
-    </div>
-  </div>
 </div>
--->
-</div>
+<br>
 @endsection

@@ -35,7 +35,7 @@
     
     <div class="form-row">
         <div class="form-group col-md-8">
-            <label for="exampleFormControlTextarea1">Descripcion</label>
+            <label for="exampleFormControlTextarea1">Descripción</label>
             <textarea name="descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
         </div>
 

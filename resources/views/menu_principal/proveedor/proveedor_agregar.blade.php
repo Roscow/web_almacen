@@ -33,7 +33,7 @@
 
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputAddress">Codigo postal</label>
+            <label for="inputAddress">Código postal</label>
             <input type="number" name="codigo_postal" class="form-control" id="inputcodigo_postal" placeholder="9273353">
         </div> 
 
@@ -56,11 +56,11 @@
     </div>
 
 
-    <h5>* Direccion</h5>
+    <h5>* Dirección</h5>
     <div class="form-row">
 
         <div class="form-group col-md-6">
-            <label for="inputState">Region</label>
+            <label for="inputState">Región</label>
             <select id="selectRegion" name="selectRegion" class="form-control">
             <option selected>Elegir...</option>               
                 @foreach ($regiones as $item)
@@ -73,9 +73,7 @@
             <label for="inputState">Comuna</label>
             <select id="selectComuna" name="selectComuna" class="form-control">
             <option selected>Elegir...</option>       
-            <!--    @foreach ($comunas as $item)
-                    <option> {{$item->comuna}}</option>                   
-                @endforeach-->
+            
             </select>
         </div>
     </div>
@@ -87,7 +85,7 @@
             <input type="text" class="form-control" id="inputCalle" name="calle" placeholder="Esquina blanca" required>
         </div> 
         <div class="form-group col-md-4">
-            <label for="inputAddress">Numero</label>
+            <label for="inputAddress">Número</label>
             <input type="number" class="form-control" id="inputNumero" name="numero" placeholder="022">
         </div> 
         <div class="form-group col-md-4">
