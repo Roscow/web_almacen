@@ -30,9 +30,25 @@
 </form>
 <!--seccion donde se muestra el listado de productos agregados-->
 <h5>Listado de productos en pedido actual</h5>
-        @foreach ($listado as $item)
-           <p> {{$item}}</p>                 
+    <table class="table">
+        <thead>
+        </thead>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+        <tbody>
+        @foreach ($listado as $index=>$item)
+            <tr>
+                <td>{{$index}}</td>
+                <td>{{$item}}</td>
+            </tr>
         @endforeach
+        </tbody>
+    </table>
+
+
+
+
+       
 
 @endsection
 

@@ -470,28 +470,21 @@ class PagesController extends Controller
 
         $listado= array(); 
         if( $request->valorArray == null){
-            array_push($listado, 'valor1');
+            //array_push($listado, 'valor1');
+            //$listado['Producto']= 'cantidad';
+            //array_push($listado, $listado['valor1']=>$request->cantidad);
+           
         }   
         else{
             $listado= unserialize($request->valorArray);
-            array_push($listado, $request->NombreProducto);
-            //return $listado;
-        }    
-            
             //array_push($listado, $request->NombreProducto);
-        //return $request->listadoProductos;
-
+            $listado[$request->NombreProducto]= $request->cantidad;
+            //return $listado;
+        }              
         return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos','nombreEmpresa','listado') );
     }
-/*
-    public function listadoSeleccionProducto (Request $request){  
-        $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();  
-        $codigo_proveedor =  $proveedor[0]->rut_empresa;
-        $proveedores = App\Proveedor::all();
-        $productos = App\Producto::where('rut_empresa','=',$codigo_proveedor)->get();
-        //return $productos;
-        return view('menu_principal.pedidos.listadoSeleccionProducto',compact('proveedores','productos') );
-    }*/
+
+
     public function pedidos_recepcionar(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
