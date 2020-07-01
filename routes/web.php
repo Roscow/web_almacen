@@ -51,6 +51,7 @@ Route::get('pedidos_agregar','PagesController@pedidos_agregar')->name('pedidos_a
 Route::get('pedidos_recepcionar','PagesController@pedidos_recepcionar')->name('pedidos_recepcionar');
 Route::get('pedidos_ver','PagesController@pedidos_ver')->name('pedidos_ver');
 Route::post('seleccionProducto','PagesController@seleccionProducto')->name('seleccionProducto');
+//Route::post('listadoSeleccionPedido','PagesController@listadoSeleccionPedido')->name('listadoSeleccionPedido');
 
 
 

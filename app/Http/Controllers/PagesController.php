@@ -456,20 +456,42 @@ class PagesController extends Controller
     //FUNCIONES PEDIDOS
     public function pedidos_agregar(){
         $proveedores = App\Proveedor::all();
-        $regiones = App\Region::all();
-        $comunas = App\Comuna::all();
-        return view('menu_principal.pedidos.pedidos_agregar', compact('regiones','comunas','proveedores'));
+        //$regiones = App\Region::all();
+        //$comunas = App\Comuna::all();
+        return view('menu_principal.pedidos.pedidos_agregar', compact('proveedores'));
     }
 
     public function seleccionProducto(Request $request){  
+        $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
+        $nombreEmpresa= $request->razon_social;
+        $codigo_proveedor =  $proveedor[0]->rut_empresa;
+        $productos = App\Producto::where('rut_empresa','=',$codigo_proveedor)->get();  
+        $proveedores = App\Proveedor::all();   
+
+        $listado= array(); 
+        if( $request->valorArray == null){
+            array_push($listado, 'valor1');
+        }   
+        else{
+            $listado= unserialize($request->valorArray);
+            array_push($listado, $request->NombreProducto);
+            //return $listado;
+        }    
+            
+            //array_push($listado, $request->NombreProducto);
+        //return $request->listadoProductos;
+
+        return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos','nombreEmpresa','listado') );
+    }
+/*
+    public function listadoSeleccionProducto (Request $request){  
         $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();  
         $codigo_proveedor =  $proveedor[0]->rut_empresa;
         $proveedores = App\Proveedor::all();
         $productos = App\Producto::where('rut_empresa','=',$codigo_proveedor)->get();
         //return $productos;
-        return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos') );
-    }
-
+        return view('menu_principal.pedidos.listadoSeleccionProducto',compact('proveedores','productos') );
+    }*/
     public function pedidos_recepcionar(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
