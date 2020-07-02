@@ -45,6 +45,12 @@
         </tbody>
     </table>
 
+<form action="{{route('creacionPedido2')}}" method="POST">  
+@csrf
+    <input type="hidden"  name="valorArray2"  value='<?php echo serialize($listado) ?>'>
+    <input type="hidden"  name="nombreEmpresa"  value='{{$nombreEmpresa}}'>
+    <button type="submit" class="btn btn-primary">Confirmar</button> 
+</form>
 
 
 

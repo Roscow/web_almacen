@@ -469,19 +469,77 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();   
 
         $listado= array(); 
-        if( $request->valorArray == null){
-            //array_push($listado, 'valor1');
-            //$listado['Producto']= 'cantidad';
-            //array_push($listado, $listado['valor1']=>$request->cantidad);
-           
+        if( $request->valorArray == null){                       
+            //array_push($listado, $listado['valor1']=>$request->cantidad);           
         }   
         else{
             $listado= unserialize($request->valorArray);
             //array_push($listado, $request->NombreProducto);
             $listado[$request->NombreProducto]= $request->cantidad;
-            //return $listado;
         }              
         return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos','nombreEmpresa','listado') );
+    }
+
+
+    public function creacionPedido(Request $request){
+        //$listado = unserialize($request->valorArray2);
+        //creo un nuevo pedido
+        $new_pedido = new App\Pedido;
+        //$new_pedido->fecha_creacion = sysdate();
+        $new_pedido->rut_empresa = $request->nombreEmpresa;
+        $new_pedido->costo_total = 0;
+        $new_pedido->id_estado = 0;
+        $new_pedido->save();
+        //creo cada una de las lineas del detalle de pedido
+        /*
+        foreach($listado as $index =>$item ){
+            $detalle_pedido = new App/Detalle_pedido;
+            $detalle_pedido->id_pedido = ;
+            $suma =suma + costo_linea;
+        }
+        */
+
+        //$pedido->costo_total = $suma;
+        //el id cuando se crea es :
+        //$pedido->id_estado = 'algo';
+        //return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
+    }
+
+    public function creacionPedido2(Request $request){
+        //obtengo listado de productos y cantidades 
+        $listado = unserialize($request->valorArray2);
+
+        //creacion de pedido       
+        $new_pedido = new App\pedido; 
+        $empresa = App\Proveedor::where('razon_social','=',$request->nombreEmpresa)->get();        
+        $new_pedido->rut_empresa = $empresa[0]->rut_empresa;
+        $new_pedido->fecha_creacion = date('Y-m-d') ;
+        
+        $new_pedido->id_estado = 0;
+        $new_pedido->id_pedido = $new_pedido->rut_empresa . date('dmY')  ;
+        $suma= 0; 
+        //creacion de lineas de detalle de  pedido
+        foreach($listado as $index =>$item ){
+            $detalle_pedido = new App\Detalle_pedido;
+            $detalle_pedido->id_pedido = $new_pedido->id_pedido;
+            $producto = App\Producto::where('nombre','=',$index)->get();   
+            $detalle_pedido->codigo_producto = $producto[0]->codigo_producto;
+            $detalle_pedido->cantidad = $item;
+            $detalle_pedido->costo_linea =  $item * $producto[0]->precio_compra;
+            $suma = $suma + $detalle_pedido->costo_linea;
+            //ES NECESARIO AGREGAR LOS ESTADOS EN LA TABLA PARA VER CUAL DEFINIR AQUI  Y QUE HACER CON FECHA RECEPCION
+            $detalle_pedido->id_estado = 0; 
+            $detalle_pedido->fecha_recepcion = date('Y-m-d');
+            //return $detalle_pedido;
+            $detalle_pedido->save();
+        }
+        //return $new_pedido;
+        $new_pedido->costo_total = $suma;
+        $new_pedido->save();
+        //return $suma;
+        $mensaje = "Pedido Realizado Correctamente";
+        $proveedores = App\Proveedor::all();     
+        return view('menu_principal.pedidos.pedidos_agregar', compact('proveedores','mensaje'));
     }
 
 
