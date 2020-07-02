@@ -31,7 +31,11 @@
                                     <td>{{$item->id_pedido}}</td>
                                     <td>{{$item->fecha_creacion}}</td>
                                     <td>${{$item->costo_total}}</td>
-                                    <td>{{$item->id_estado}}</td>
+                                    @foreach ($estados as $est)
+                                        @if ($est->id_estado == $item->id_estado)
+                                            <td>{{$est->estado}}</td>
+                                        @endif
+                                    @endforeach                                      
                                 </tr>
                             </tbody>
                         </table>
@@ -63,7 +67,11 @@
                                                 <td>{{$linea->cantidad}} /uds.</td>
                                                 <td>${{$prod->precio_compra}}</td>
                                                 <td>${{$linea->costo_linea}}</td>
-                                                <td>{{$linea->id_estado}}</td>
+                                                @foreach ($estados as $est)
+                                                    @if ($est->id_estado == $linea->id_estado)
+                                                        <td>{{$est->estado}}</td>
+                                                    @endif
+                                                @endforeach                                                
                                                 <td>{{$linea->fecha_recepcion}}</td>
                                             </tr>
                                             @endif                                           

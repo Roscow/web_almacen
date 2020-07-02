@@ -492,7 +492,7 @@ class PagesController extends Controller
         $new_pedido->fecha_creacion = date('Y-m-d') ;
         //$new_pedido->fecha_creacion = date_create('2020-2-15') ;
         
-        $new_pedido->id_estado = 0;
+        $new_pedido->id_estado = 1;
         $new_pedido->id_pedido = $new_pedido->rut_empresa . date('dmY')  ;
         //$new_pedido->id_pedido = $new_pedido->rut_empresa . date_format(date_create('2020-2-15'),'dmY') ;
         $suma= 0; 
@@ -506,7 +506,7 @@ class PagesController extends Controller
             $detalle_pedido->costo_linea =  $item * $producto[0]->precio_compra;
             $suma = $suma + $detalle_pedido->costo_linea;
             //ES NECESARIO AGREGAR LOS ESTADOS EN LA TABLA PARA VER CUAL DEFINIR AQUI  Y QUE HACER CON FECHA RECEPCION
-            $detalle_pedido->id_estado = 0; 
+            $detalle_pedido->id_estado = 1; 
             $detalle_pedido->fecha_recepcion = date('Y-m-d');
             //return $detalle_pedido;
             $detalle_pedido->save();
@@ -534,7 +534,8 @@ class PagesController extends Controller
         $productos = App\Producto::all();
         //return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
         //return $pedidos;
-        return view('menu_principal.pedidos.listadoPedidos', compact('proveedores','pedidos','detalle_pedidos','productos'));
+        $estados = App\Estado_orden::all();
+        return view('menu_principal.pedidos.listadoPedidos', compact('proveedores','pedidos','detalle_pedidos','productos','estados'));
     }
 
     public function pedidos_ver(){
