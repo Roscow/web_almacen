@@ -19,7 +19,7 @@
     @csrf
         <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
 
-        <button type="submit" class="btn btn-primary">Convertir a pdf</button> 
+        <button type="submit"  class="btn btn-primary">Convertir a pdf</button> 
     </form>
 
 

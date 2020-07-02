@@ -3,6 +3,8 @@
 
 
 @section('recepcionar')
+<form action="{{route('recepcionar')}}" method="POST">  
+@csrf
 <table class="table">
   <thead>
     <tr>
@@ -23,7 +25,7 @@
                     <td>{{$prod->nombre}}</td>
                     <td>{{$item->codigo_producto}}</td>
                     <td>{{$item->cantidad}} /unds.</td>
-                    <td><input type="number" name="correo" class="form-control" id="inputEmail4"></td>
+                    <td><input type="number" name="{{$prod->codigo_producto}}" class="form-control" id="inputEmail4"></td>
                     <td>${{$prod->precio_compra}}</td>
                     @foreach ($estados as $est)
                         @if ($est->id_estado == $item->id_estado)
@@ -32,13 +34,14 @@
                     @endforeach
                         
                 @endif
-            @endforeach                
+            @endforeach  
+
         </tr>
     @endforeach
+    <input type="hidden" name="idPedido" class="form-control" value='{{$item->id_pedido}}'>
   </tbody>
 </table>
-<form action="{{route('recepcionPedido')}}" method="POST">  
-@csrf
+
     <div class="form-row">                           
     </div>
     <button type="submit" class="btn btn-primary">Guardar Cambios</button> 

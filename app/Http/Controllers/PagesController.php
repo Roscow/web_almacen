@@ -547,6 +547,41 @@ class PagesController extends Controller
     }
 
 
+    public function recepcionar(Request $request){
+        $pedidoSelect = App\Pedido::where('id_pedido','=',$request->idPedido)->get();
+        $detallesPedidos = App\Detalle_pedido::where('id_pedido','=',$pedidoSelect[0]->id_pedido)->get();
+        $arrayCompleto = $request;
+
+
+        foreach($detallesPedidos as $item){
+            $lineaDetalle = App\Detalle_pedido::where('id_pedido','=',$pedidoSelect[0]->id_pedido)
+                                                ->where ('codigo_producto','=',$item->codigo_producto)
+                                                ->get();
+
+            //comparo lo que recepcione con lo que deberia haber rececionado
+            if($arrayCompleto[$lineaDetalle[0]->codigo_producto]  >= $lineaDetalle[0]->cantidad ){
+                //se cambia el estado a recibido
+                $estado = App\Estado_orden::where('estado','=','Recibido')->get();
+                $idAux = $estado[0]->id_estado;
+                $lineaDetalle[0]->id_estado = $idAux;
+                //return   $arrayCompleto[$lineaDetalle[0]->codigo_producto]. ' es mayo o igual q '.$lineaDetalle[0]->cantidad .' id es '.$lineaDetalle[0]->id_estado ;                
+            }
+            else{
+
+                 //se cambia el estado a incompleto
+                 $estado = App\Estado_orden::where('estado','=','Incompleto')->get();
+                 $idAux = $estado[0]->id_estado;
+                 $lineaDetalle[0]->id_estado = $idAux;
+                //return   $arrayCompleto[$lineaDetalle[0]->codigo_producto]. ' es menor q '.$lineaDetalle[0]->cantidad.' id es '. $lineaDetalle[0]->id_estado ;
+            }
+            $lineaDetalle[0]->save();
+            //agregar el stock
+            
+        }
+        return 'se completo proceso';       
+    }
+
+
 
 
     public function mostrarPedidos(Request $request){

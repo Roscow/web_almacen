@@ -8,4 +8,6 @@ class Detalle_pedido extends Model
 {
     //
     public $timestamps=false;
+    protected $primaryKey = 'id_pedido';
+
 }

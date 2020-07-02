@@ -55,6 +55,7 @@ Route::post('creacionPedido','PagesController@creacionPedido')->name('creacionPe
 Route::post('mostrarPedidos','PagesController@mostrarPedidos')->name('mostrarPedidos');
 Route::post('seleccionPedido','PagesController@seleccionPedido')->name('seleccionPedido');
 Route::post('recepcionPedido','PagesController@recepcionPedido')->name('recepcionPedido');
+Route::post('recepcionar','PagesController@recepcionar')->name('recepcionar');
 
 
 
