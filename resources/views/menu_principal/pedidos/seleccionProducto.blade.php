@@ -45,7 +45,7 @@
         </tbody>
     </table>
 
-<form action="{{route('creacionPedido2')}}" method="POST">  
+<form action="{{route('creacionPedido')}}" method="POST">  
 @csrf
     <input type="hidden"  name="valorArray2"  value='<?php echo serialize($listado) ?>'>
     <input type="hidden"  name="nombreEmpresa"  value='{{$nombreEmpresa}}'>

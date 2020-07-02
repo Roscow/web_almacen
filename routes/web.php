@@ -52,7 +52,7 @@ Route::get('pedidos_recepcionar','PagesController@pedidos_recepcionar')->name('p
 Route::get('pedidos_ver','PagesController@pedidos_ver')->name('pedidos_ver');
 Route::post('seleccionProducto','PagesController@seleccionProducto')->name('seleccionProducto');
 Route::post('creacionPedido','PagesController@creacionPedido')->name('creacionPedido');
-Route::post('creacionPedido2','PagesController@creacionPedido2')->name('creacionPedido2');
+Route::post('mostrarPedidos','PagesController@mostrarPedidos')->name('mostrarPedidos');
 
 
 

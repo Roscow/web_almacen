@@ -4,11 +4,12 @@
 
 @section('contenido')
 <h1>Pedidos </h1>
-<form>
+<form action="{{route('mostrarPedidos')}}" method="POST">  
+@csrf
     <div class="form-row">        
       <div class="form-group col-md-4">
             <label for="inputState">Seleccione proveedor </label>
-            <select id="razon_social" name="razon_social"  class="form-control">
+            <select id="razon_social" name="nombreProveedor"  class="form-control">
             <option selected>Elegir....</option>
                 @foreach ($proveedores as $item)
                     <option><p> {{$item->razon_social}}</p></option>                   
@@ -16,79 +17,8 @@
             </select>
       </div>        
     </div>
+    <button type="submit" class="btn btn-primary">Seleccionar</button> 
 </form>
+@yield('listado')
 
-
-<div class="accordion" id="accordionExample">
-
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                 29-03-2020
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-      <br><br>
-            <h6>* Detalle del pedido</h6>
-            <p>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>     
-      </div>
-    </div>
-  </div>
-
-
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            29-04-2020
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">       
-      <br><br>
-            <h6>* Detalle del pedido</h6>
-            <p>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>
-           coca-light    2,5 litros    cantidad 3     monto: $15900     deuda: 21900<br><br>     
-      </div>
-    </div>
-  </div>
-
-
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            29-05-2020
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">      
-            fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-            fecha:13-05-2019    fiado    monto: $15900     deuda: 21900<br><br>
-            fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-            fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-            fecha:13-05-2019    fiado    monto: $15900     deuda: 21900<br><br>
-            fecha:13-05-2019    abono    monto: $15900     deuda: 21900<br><br>
-            fecha:13-05-2019    fiado    monto: $15900     deuda: 21900<br><br>
-            fecha:18-07-2017    abono    monto: $1212      deuda: 13900
-      </div>
-    </div>
-  </div>
-</div>
-<br>
 @endsection

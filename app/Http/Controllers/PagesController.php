@@ -482,30 +482,6 @@ class PagesController extends Controller
 
 
     public function creacionPedido(Request $request){
-        //$listado = unserialize($request->valorArray2);
-        //creo un nuevo pedido
-        $new_pedido = new App\Pedido;
-        //$new_pedido->fecha_creacion = sysdate();
-        $new_pedido->rut_empresa = $request->nombreEmpresa;
-        $new_pedido->costo_total = 0;
-        $new_pedido->id_estado = 0;
-        $new_pedido->save();
-        //creo cada una de las lineas del detalle de pedido
-        /*
-        foreach($listado as $index =>$item ){
-            $detalle_pedido = new App/Detalle_pedido;
-            $detalle_pedido->id_pedido = ;
-            $suma =suma + costo_linea;
-        }
-        */
-
-        //$pedido->costo_total = $suma;
-        //el id cuando se crea es :
-        //$pedido->id_estado = 'algo';
-        //return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
-    }
-
-    public function creacionPedido2(Request $request){
         //obtengo listado de productos y cantidades 
         $listado = unserialize($request->valorArray2);
 
@@ -542,10 +518,21 @@ class PagesController extends Controller
         return view('menu_principal.pedidos.pedidos_agregar', compact('proveedores','mensaje'));
     }
 
-
     public function pedidos_recepcionar(){
         $proveedores = App\Proveedor::all();
         return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
+    }
+
+
+    public function mostrarPedidos(Request $request){
+        $proveedores = App\Proveedor::all();
+        $empresa = App\Proveedor::where('razon_social','=',$request->nombreProveedor)->get();
+        $pedidos = App\Pedido::where('rut_empresa','=',$empresa[0]->rut_empresa )->get();
+        $detalle_pedidos = App\Detalle_pedido::all();
+        $productos = App\Producto::all();
+        //return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
+        //return $pedidos;
+        return view('menu_principal.pedidos.listadoPedidos', compact('proveedores','pedidos','detalle_pedidos','productos'));
     }
 
     public function pedidos_ver(){
