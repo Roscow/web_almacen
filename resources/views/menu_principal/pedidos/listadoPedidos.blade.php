@@ -5,16 +5,16 @@
     <div class="accordion" id="accordionExample">
         @foreach ($pedidos as $item)
             <div class="card">
-                <div class="card-header" id="headingOne">
+                <div class="card-header" id="heading{{$item->id_pedido}}">
                     <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{$item->id_pedido}}" aria-expanded="true" aria-controls="collapse{{$item->id_pedido}}">
                         {{ date($item->fecha_creacion)}}
                     </button>
                     </h2>
                 </div>
             
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="collapse{{$item->id_pedido}}" class="collapse" aria-labelledby="heading{{$item->id_pedido}}" data-parent="#accordionExample">
                     <div class="card-body">
                         <h6>Pedido</h6>
                         <table class="table">

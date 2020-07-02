@@ -490,9 +490,11 @@ class PagesController extends Controller
         $empresa = App\Proveedor::where('razon_social','=',$request->nombreEmpresa)->get();        
         $new_pedido->rut_empresa = $empresa[0]->rut_empresa;
         $new_pedido->fecha_creacion = date('Y-m-d') ;
+        //$new_pedido->fecha_creacion = date_create('2020-2-15') ;
         
         $new_pedido->id_estado = 0;
         $new_pedido->id_pedido = $new_pedido->rut_empresa . date('dmY')  ;
+        //$new_pedido->id_pedido = $new_pedido->rut_empresa . date_format(date_create('2020-2-15'),'dmY') ;
         $suma= 0; 
         //creacion de lineas de detalle de  pedido
         foreach($listado as $index =>$item ){
