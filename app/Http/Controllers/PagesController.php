@@ -525,6 +525,29 @@ class PagesController extends Controller
         return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
     }
 
+    public function seleccionPedido(Request $request){             
+        $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get(); 
+        $pedidos = App\Pedido::where('rut_empresa','=',$proveedor[0]->rut_empresa)->get();
+        $proveedores = App\Proveedor::all();        
+        return view('menu_principal.pedidos.seleccionPedido', compact('proveedores','pedidos'));        
+    }
+
+    public function recepcionPedido(Request $request){ 
+        $id = $request->idPedido;
+        $pedido = App\Pedido::where('id_pedido','=',$id)->get();        
+        $pedidoSelect = $pedido[0];
+        //$proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get(); 
+        $pedidos = App\Pedido::all();
+        $detalle_pedido = App\Detalle_pedido::where('id_pedido','=',$id)->get();
+        $proveedores = App\Proveedor::all(); 
+        $productos = App\Producto::all();     
+        $estados = App\Estado_orden::all();  
+        return view('menu_principal.pedidos.recepcionPedido', compact('proveedores','pedidos','pedidoSelect','detalle_pedido','productos','estados'));        
+        //return $pedidoSelect;
+    }
+
+
+
 
     public function mostrarPedidos(Request $request){
         $proveedores = App\Proveedor::all();

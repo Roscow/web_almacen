@@ -53,6 +53,8 @@ Route::get('pedidos_ver','PagesController@pedidos_ver')->name('pedidos_ver');
 Route::post('seleccionProducto','PagesController@seleccionProducto')->name('seleccionProducto');
 Route::post('creacionPedido','PagesController@creacionPedido')->name('creacionPedido');
 Route::post('mostrarPedidos','PagesController@mostrarPedidos')->name('mostrarPedidos');
+Route::post('seleccionPedido','PagesController@seleccionPedido')->name('seleccionPedido');
+Route::post('recepcionPedido','PagesController@recepcionPedido')->name('recepcionPedido');
 
 
 
