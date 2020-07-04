@@ -9,7 +9,7 @@
             <div class="form-row">            
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Rubro</label>
-                    <input type="text" name="rubro" class="form-control" id="inputEmail4">
+                    <input type="text" name="rubro" class="form-control" id="inputEmail4" required >
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Agregar</button>

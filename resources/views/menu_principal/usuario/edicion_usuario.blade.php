@@ -11,43 +11,47 @@
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Correo</label>
-            <input type="email" class="form-control" id="correo" name="correo" value="{{$usuario[0]->correo}}" placeholder="ejemplo@correo.cl">
+            <input type="email" class="form-control" id="correo" name="correo" value="{{$usuario[0]->correo}}" placeholder="ejemplo@correo.cl" required>
         </div>   
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Fecha de nacimiento</label>
-            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{$year}}-{{$month}}-{{$day}}">
+            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{$year}}-{{$month}}-{{$day}}" required >
         </div>          
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Nombre</label>
-            <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{$usuario[0]->nombre1}}" placeholder="Juan">
+            <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{$usuario[0]->nombre1}}" placeholder="Juan" 
+            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Nombre</label>
-            <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{$usuario[0]->nombre2}}" placeholder="Andres">
+            <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{$usuario[0]->nombre2}}" placeholder="Andres" 
+            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required >
         </div>    
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Apellido</label>
-            <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{$usuario[0]->apellido1}}" placeholder="Valdes">
+            <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{$usuario[0]->apellido1}}" placeholder="Valdes" 
+            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Apellido</label>
-            <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{$usuario[0]->apellido2}}" placeholder="Barria">
+            <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{$usuario[0]->apellido2}}" placeholder="Barria" 
+            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div>    
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Numero</label>
-            <input type="text" class="form-control" id="numero" name="numero" value="{{$usuario[0]->telefono}}" placeholder="1231231">
+            <input type="number" class="form-control" id="numero" name="numero" value="{{$usuario[0]->telefono}}" placeholder="1231231" required>
         </div>    
 
          

@@ -10,24 +10,28 @@
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Nombre</label>
-            <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{$cliente[0]->nombre1}}" placeholder="" required>
+            <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{$cliente[0]->nombre1}}" placeholder="" onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Nombre</label>
-            <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{$cliente[0]->nombre2}}" placeholder="">
+            <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{$cliente[0]->nombre2}}" placeholder="" onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div>    
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Primer Apellido</label>
-            <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{$cliente[0]->apellido1}}" placeholder="" required>
+            <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{$cliente[0]->apellido1}}" placeholder="" onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Segundo Apellido</label>
-            <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{$cliente[0]->apellido2}}" placeholder="">
+            <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{$cliente[0]->apellido2}}" placeholder="" onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div>    
     </div>
 
@@ -78,21 +82,24 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="calle" name="calle" value="{{$direccion[0]->calle}}" placeholder="">
+            <input type="text" class="form-control" id="calle" name="calle" value="{{$direccion[0]->calle}}" placeholder="" onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Numero</label>
-            <input type="number" class="form-control" id="numeroCalle" name="numeroCalle" value="{{$direccion[0]->numero}}" placeholder="">
+            <input type="number" class="form-control" id="numeroCalle" name="numeroCalle" value="{{$direccion[0]->numero}}" placeholder="" required >
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
-            <input type="text" class="form-control" id="depto" name="depto" value="{{$direccion[0]->departamento}}" placeholder="">
+            <input type="text" class="form-control" id="depto" name="depto" value="{{$direccion[0]->departamento}}" placeholder="" required >
         </div> 
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>    
+    <br>
+    <br>
 </form>
 
 

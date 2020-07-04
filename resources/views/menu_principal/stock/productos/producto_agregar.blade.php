@@ -14,8 +14,8 @@
              
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione tipo</label>
-            <select value="" name="tipo" id="inputState" class="form-control" required>
-            <option selected>Elegir...</option>
+            <select name="tipo" id="inputState" class="form-control" required>
+            <option value=""  selected>Elegir...</option>
                 @foreach ($tipos as $item)
                     <option>{{$item->tipo}}</option>
                 @endforeach             

@@ -9,7 +9,7 @@
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputAddress">Fecha de creación</label>
-            <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Juan">
+            <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Juan" required >
         </div>    
     </div>
     <button type="submit" class="btn btn-primary">ir</button>  

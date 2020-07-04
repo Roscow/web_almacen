@@ -421,7 +421,8 @@ class PagesController extends Controller
         $regiones = App\Region::all();
         $comunas = App\Comuna::where ('id_region', $region[0]->id_region)->get();
         $rubros = App\Rubro::all();
-        return view('menu_principal.proveedor.edicion_proveedor', compact('proveedores','regiones','comunas','region','comuna', 'direccion', 'rubros'));
+        $actualizar = true;
+        return view('menu_principal.proveedor.edicion_proveedor', compact('proveedores','regiones','comunas','region','comuna', 'direccion', 'rubros', 'actualizar'));
     }
 
     public function actulizar_proveedor(Request $request){

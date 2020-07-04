@@ -9,8 +9,8 @@
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione usuario a editar</label>
-            <select id="inputState" name="usuario" class="form-control">
-                <option selected>Elegir...</option>
+            <select id="inputState" name="usuario" class="form-control" required>
+                <option  value="" selected>Elegir...</option>
                 @foreach ($usuarios as $item)                  
                     <option><p>{{$item->nombre1}} {{$item->nombre2}} {{$item->apellido1}} {{$item->apellido2}}</p></option>                  
                 @endforeach

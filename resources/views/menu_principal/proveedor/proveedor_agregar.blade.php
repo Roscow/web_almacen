@@ -15,14 +15,14 @@
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Razon social (nombre)</label>
-            <input type="text" name="razon_social" class="form-control" id="inputrazon_social" placeholder="Coca-cola">
+            <input type="text" name="razon_social" class="form-control" id="inputrazon_social" placeholder="Coca-cola" required>
         </div>           
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">telefono</label>
-            <input type="numeric" name="telefono" class="form-control" id="inputtelefono" placeholder="123123123" required>
+            <input type="number" name="telefono" class="form-control" id="inputtelefono" placeholder="123123123" required>
         </div> 
 
         <div class="form-group col-md-6">
@@ -34,15 +34,15 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Código postal</label>
-            <input type="number" name="codigo_postal" class="form-control" id="inputcodigo_postal" placeholder="9273353">
+            <input type="number" name="codigo_postal" class="form-control" id="inputcodigo_postal" placeholder="9273353" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputState">Rubro</label>
-            <select name="selectRubro" id="selectRubro" class="form-control">
-            <option selected>Elegir rubro...</option>               
+            <select name="selectRubro" id="selectRubro" class="form-control" required>
+            <option value="" selected>Elegir rubro...</option >               
                 @foreach ($rubros as $item)
-                    <option value="{{$item->id}}"><?php echo strtolower($item->rubro)?> </option>                   
+                    <option value=  "{{$item->id}}"><?php echo strtolower($item->rubro)?> </option >                   
                 @endforeach            
             </select>
         </div>   
@@ -51,7 +51,8 @@
     <div class="form-row">        
         <div class="form-group col-md-12">
             <label for="inputAddress">Nombre contacto</label>
-            <input type="text" name="nombre_contacto" class="form-control" id="inputnombre_contacto" placeholder="Juan carlos " required>
+            <input type="text" name="nombre_contacto" class="form-control" id="inputnombre_contacto" placeholder="Juan carlos " 
+            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div>    
     </div>
 
@@ -61,8 +62,8 @@
 
         <div class="form-group col-md-6">
             <label for="inputState">Región</label>
-            <select id="selectRegion" name="selectRegion" class="form-control">
-            <option selected>Elegir...</option>               
+            <select id="selectRegion" name="selectRegion" class="form-control" required>
+            <option value="" selected>Elegir...</option>               
                 @foreach ($regiones as $item)
                     <option value="{{$item->id_region}}"> {{$item->region}}</option>                   
                 @endforeach
@@ -71,8 +72,8 @@
 
         <div class="form-group col-md-6">
             <label for="inputState">Comuna</label>
-            <select id="selectComuna" name="selectComuna" class="form-control">
-            <option selected>Elegir...</option>       
+            <select id="selectComuna" name="selectComuna" class="form-control" required>
+            <option value="" selected>Elegir...</option>       
             
             </select>
         </div>
@@ -82,11 +83,12 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Calle</label>
-            <input type="text" class="form-control" id="inputCalle" name="calle" placeholder="Esquina blanca" required>
+            <input type="text" class="form-control" id="inputCalle" name="calle" placeholder="Esquina blanca"  
+            onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
         </div> 
         <div class="form-group col-md-4">
             <label for="inputAddress">Número</label>
-            <input type="number" class="form-control" id="inputNumero" name="numero" placeholder="022">
+            <input type="number" class="form-control" id="inputNumero" name="numero" placeholder="022" required>
         </div> 
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
