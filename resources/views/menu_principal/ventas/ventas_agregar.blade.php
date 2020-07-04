@@ -53,35 +53,35 @@
         </div>
     </div>
     <div class="list-group-item pr-div">
-        @foreach ( session('carrito') as $items)
-            @if(count(array($items)) > 0)
+        @if(count(session('ocarrito')->items) > 0)
+            @foreach ( session('ocarrito')->items as $items)
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        <label for="inputAddress">{{$items[1]}}</label>
+                        <label for="inputAddress">{{$items->id_articulo}}</label>
                     </div>
 
                     <div class="form-group col-md-2">
-                        <label for="inputAddress">{{$items[2]}}</label>
+                        <label for="inputAddress">{{$items->nombre}}</label>
                     </div>
 
                     <div class="form-group col-md-2">
-                        <label for="inputAddress">{{$items[3]}}</label>
+                        <label for="inputAddress">{{$items->descripcion}}</label>
                     </div>
 
                     <div class="form-group col-md-1">
-                        <label for="inputAddress">{{$items[4]}}</label>
+                        <label for="inputAddress">{{$items->cantidad}}</label>
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="inputAddress">{{$items[5]}}</label>
+                        <label for="inputAddress">{{$items->precio_venta}}</label>
                     </div>
                     @if(!isset($imprimir))
                     <div class="form-group col-md-2">
-                          <label for="inputAddress"><a href="{{ url('ventas_agregar_quitar/'.$items[0].'/') }}" class="btn btn-info btn-xs" role="button">Quitar</a></label>
+                          <label for="inputAddress"><a href="{{ url('ventas_agregar_quitar/'.$items->id_articulo.'/') }}" class="btn btn-info btn-xs" role="button">Quitar</a></label>
                     </div>
                     @endif
                 </div>
-            @endif
-        @endforeach
+            @endforeach
+        @endif
 
     </div>
     <div class="list-group-item pr-div">
@@ -104,7 +104,7 @@
                 <label for="inputAddress">Total :</label>
             </div>
             <div class="form-group col-md-2">
-                <label for="inputAddress">{{session('total')}}</label>
+                <label for="inputAddress">{{session('ocarrito')->total}}</label>
             </div>
         </div>
     </div>
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    @if(session('total') > 0)
+    @if(session('ocarrito')->total > 0)
         <button type="submit" class="btn btn-primary">Confirmar venta</button>
      @endif
 

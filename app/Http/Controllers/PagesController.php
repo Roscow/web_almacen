@@ -146,12 +146,12 @@ class PagesController extends Controller
             $new_abono->rut_cliente = $request->rut;
             $new_abono->monto = $request->monto;
             $new_abono->save();
-            //hacer descuento en el monto del cliente        
+            //hacer descuento en el monto del cliente
             $cliente_aux[0]->monto_deuda = ($cliente_aux[0]->monto_deuda - $new_abono->monto);
             $cliente_aux[0]->save();
             $mensaje = "Abono ingresado con exito!";
             return view('menu_principal.cliente.cliente_fiados', compact('clientes','mensaje'));
-        }        
+        }
     }
 
 
@@ -473,52 +473,52 @@ class PagesController extends Controller
         return view('menu_principal.pedidos.pedidos_agregar', compact('proveedores'));
     }
 
-    public function seleccionProducto(Request $request){  
+    public function seleccionProducto(Request $request){
         $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
         $nombreEmpresa= $request->razon_social;
         $codigo_proveedor =  $proveedor[0]->rut_empresa;
-        $productos = App\Producto::where('rut_empresa','=',$codigo_proveedor)->get();  
-        $proveedores = App\Proveedor::all();   
+        $productos = App\Producto::where('rut_empresa','=',$codigo_proveedor)->get();
+        $proveedores = App\Proveedor::all();
 
-        $listado= array(); 
-        if( $request->valorArray == null){                       
-            //array_push($listado, $listado['valor1']=>$request->cantidad);           
-        }   
+        $listado= array();
+        if( $request->valorArray == null){
+            //array_push($listado, $listado['valor1']=>$request->cantidad);
+        }
         else{
             $listado= unserialize($request->valorArray);
             //array_push($listado, $request->NombreProducto);
             $listado[$request->NombreProducto]= $request->cantidad;
-        }              
+        }
         return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos','nombreEmpresa','listado') );
     }
 
 
     public function creacionPedido(Request $request){
-        //obtengo listado de productos y cantidades 
+        //obtengo listado de productos y cantidades
         $listado = unserialize($request->valorArray2);
 
-        //creacion de pedido       
-        $new_pedido = new App\pedido; 
-        $empresa = App\Proveedor::where('razon_social','=',$request->nombreEmpresa)->get();        
+        //creacion de pedido
+        $new_pedido = new App\pedido;
+        $empresa = App\Proveedor::where('razon_social','=',$request->nombreEmpresa)->get();
         $new_pedido->rut_empresa = $empresa[0]->rut_empresa;
         $new_pedido->fecha_creacion = date('Y-m-d') ;
         //$new_pedido->fecha_creacion = date_create('2020-2-15') ;
-        
+
         $new_pedido->id_estado = 1;
         $new_pedido->id_pedido = $new_pedido->rut_empresa . date('dmY')  ;
         //$new_pedido->id_pedido = $new_pedido->rut_empresa . date_format(date_create('2020-2-15'),'dmY') ;
-        $suma= 0; 
+        $suma= 0;
         //creacion de lineas de detalle de  pedido
         foreach($listado as $index =>$item ){
             $detalle_pedido = new App\Detalle_pedido;
             $detalle_pedido->id_pedido = $new_pedido->id_pedido;
-            $producto = App\Producto::where('nombre','=',$index)->get();   
+            $producto = App\Producto::where('nombre','=',$index)->get();
             $detalle_pedido->codigo_producto = $producto[0]->codigo_producto;
             $detalle_pedido->cantidad = $item;
             $detalle_pedido->costo_linea =  $item * $producto[0]->precio_compra;
             $suma = $suma + $detalle_pedido->costo_linea;
             //ES NECESARIO AGREGAR LOS ESTADOS EN LA TABLA PARA VER CUAL DEFINIR AQUI  Y QUE HACER CON FECHA RECEPCION
-            $detalle_pedido->id_estado = 1; 
+            $detalle_pedido->id_estado = 1;
             $detalle_pedido->fecha_recepcion = date('Y-m-d');
             //return $detalle_pedido;
             $detalle_pedido->save();
@@ -528,7 +528,7 @@ class PagesController extends Controller
         $new_pedido->save();
         //return $suma;
         $mensaje = "Pedido Realizado Correctamente";
-        $proveedores = App\Proveedor::all();     
+        $proveedores = App\Proveedor::all();
         return view('menu_principal.pedidos.pedidos_agregar', compact('proveedores','mensaje'));
     }
 
@@ -537,24 +537,24 @@ class PagesController extends Controller
         return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores'));
     }
 
-    public function seleccionPedido(Request $request){             
-        $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get(); 
+    public function seleccionPedido(Request $request){
+        $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
         $pedidos = App\Pedido::where('rut_empresa','=',$proveedor[0]->rut_empresa)->get();
-        $proveedores = App\Proveedor::all();        
-        return view('menu_principal.pedidos.seleccionPedido', compact('proveedores','pedidos'));        
+        $proveedores = App\Proveedor::all();
+        return view('menu_principal.pedidos.seleccionPedido', compact('proveedores','pedidos'));
     }
 
-    public function recepcionPedido(Request $request){ 
+    public function recepcionPedido(Request $request){
         $id = $request->idPedido;
-        $pedido = App\Pedido::where('id_pedido','=',$id)->get();        
+        $pedido = App\Pedido::where('id_pedido','=',$id)->get();
         $pedidoSelect = $pedido[0];
-        //$proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get(); 
+        //$proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
         $pedidos = App\Pedido::all();
         $detalle_pedido = App\Detalle_pedido::where('id_pedido','=',$id)->get();
-        $proveedores = App\Proveedor::all(); 
-        $productos = App\Producto::all();     
-        $estados = App\Estado_orden::all();  
-        return view('menu_principal.pedidos.recepcionPedido', compact('proveedores','pedidos','pedidoSelect','detalle_pedido','productos','estados'));        
+        $proveedores = App\Proveedor::all();
+        $productos = App\Producto::all();
+        $estados = App\Estado_orden::all();
+        return view('menu_principal.pedidos.recepcionPedido', compact('proveedores','pedidos','pedidoSelect','detalle_pedido','productos','estados'));
         //return $pedidoSelect;
     }
 
@@ -576,7 +576,7 @@ class PagesController extends Controller
                 $estado = App\Estado_orden::where('estado','=','Recibido')->get();
                 $idAux = $estado[0]->id_estado;
                 $lineaDetalle[0]->id_estado = $idAux;
-                //return   $arrayCompleto[$lineaDetalle[0]->codigo_producto]. ' es mayo o igual q '.$lineaDetalle[0]->cantidad .' id es '.$lineaDetalle[0]->id_estado ;                
+                //return   $arrayCompleto[$lineaDetalle[0]->codigo_producto]. ' es mayo o igual q '.$lineaDetalle[0]->cantidad .' id es '.$lineaDetalle[0]->id_estado ;
             }
             else{
 
@@ -588,9 +588,9 @@ class PagesController extends Controller
             }
             $lineaDetalle[0]->save();
             //agregar el stock
-            
+
         }
-        return 'se completo proceso';       
+        return 'se completo proceso';
     }
 
 
@@ -851,25 +851,20 @@ class PagesController extends Controller
     //FUNCIONES DE VENTAS
     public function ventas_agregar(Request $request){
         $clientes = App\Cliente::all();
-        $carrito = collect();
-        $request->session()->put('carrito', $carrito);
-        $carrito = array($request->session()->get('carrito'));
-        error_log( print_r($carrito, true));
-        $request->session()->put('total', 0);
+
+
+        $ocarrito = new App\Carrito();
+        $ocarrito->total = 0;
+        $request->session()->put('ocarrito', $ocarrito);
+
         return view('menu_principal.ventas.ventas_agregar', compact('clientes'));
     }
 
     public function ventas_agregar_quitar($id, Request $request){
         $clientes = App\Cliente::all();
 
-        unset($request->session()->get('carrito')[$id]);
-
-        $total = 0;
-        foreach ($request->session()->get('carrito') as $prod) {
-            $total = $total + (intval($prod[5]) * intval($prod[4]));
-        }
-
-        $request->session()->put('total', $total);
+        $request->session()->get('ocarrito')->total = $request->session()->get('ocarrito')->total - ($request->session()->get('ocarrito')->items[$id]->precio_venta * $request->session()->get('ocarrito')->items[$id]->cantidad);
+        unset($request->session()->get('ocarrito')->items[$id]);
 
         return view('menu_principal.ventas.ventas_agregar', compact('clientes'));
     }
@@ -879,39 +874,35 @@ class PagesController extends Controller
 
         $clientes = App\Cliente::all();
 
-        $carrito = $request->session()->get('carrito');
-
-        error_log( print_r($carrito, true));
-
-        $total = $request->session()->get('total');
-
         $articulo= App\Articulo::where('id_articulo','=',$request->codigo)->get();
 
         if(count($articulo) > 0){
             $producto =  App\Producto::where ('codigo_producto', $articulo[0]->id_producto)->get();
             if(count($producto) > 0){
-
                 if($producto[0]->stock < $request->cantidad){
                     $error = "No existe stock disponible para realizar la venta. Stock actual del producto corresponde a ". $producto[0]->stock;
-
                     return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'error'));
                 }
 
-                $item = array();
-                array_push($item, count($carrito));
-                array_push($item, $articulo[0]->id_articulo);
-                array_push($item, $producto[0]->nombre);
-                array_push($item, $producto[0]->descripcion);
-                array_push($item, $request->cantidad);
-                array_push($item, $producto[0]->precio_venta);
-                array_push($item, $producto[0]->codigo_producto);
+                $ocarrito = $request->session()->get('ocarrito');
 
-                $total = $total + (intval($producto[0]->precio_venta) * intval($request->cantidad));
+                if (isset($ocarrito->items[$articulo[0]->id_articulo])) {
+                  $ocarrito->items[$articulo[0]->id_articulo]->cantidad = $ocarrito->items[$articulo[0]->id_articulo]->cantidad + $request->cantidad;
+                }else{
+                  $oitem = new App\CarritoItem();
+                  $oitem->id = count($ocarrito->items);
+                  $oitem->id_articulo =$articulo[0]->id_articulo;
+                  $oitem->nombre =$producto[0]->nombre;
+                  $oitem->descripcion =$producto[0]->descripcion;
+                  $oitem->cantidad =$request->cantidad;
+                  $oitem->precio_venta =$producto[0]->precio_venta;
+                  $oitem->codigo_producto =$producto[0]->codigo_producto;
+                  $ocarrito->items[$articulo[0]->id_articulo] = $oitem;
+                }
+                $ocarrito->total = $ocarrito->total + (intval($producto[0]->precio_venta) * intval($request->cantidad));
 
-                $request->session()->put('total', $total);
-                $request->session()->push('carrito', $item);
-
-                error_log( print_r($carrito, true));
+                $request->session()->put('ocarrito', $ocarrito);
+                error_log( print_r($request->session()->get('ocarrito'), true));
 
                 if($producto[0]->stock_critico >= $producto[0]->stock){
                     $mensaje = "Alerta de stock critco. Stock actual del producto corresponde a ". $producto[0]->stock;
@@ -946,8 +937,7 @@ class PagesController extends Controller
         }
 
         // Obtener Datos de Ventas de Session
-        $carrito =  array($request->session()->get('carrito'));
-        $total = $request->session()->get('total');
+        $ocarrito =  $request->session()->get('ocarrito');
         $user = $request->session()->get('user');
 
         $usuario = App\Usuario::where('correo', $user)->get();
@@ -957,56 +947,45 @@ class PagesController extends Controller
 
         $new_venta = new App\Venta();
         $new_venta->fecha = $now;
-        $new_venta->total = $total;
+        $new_venta->total = $ocarrito->total;
         $new_venta->vendedor = $usuario[0]->id_user;
-        if($new_venta->save()){
 
+        if($new_venta->save()){
             error_log('Fiado : ' . $request->gridCheck);
             if(strcmp($request->gridCheck, 'on') == 0){
                 $new_fiado = new App\Fiado();
                 $new_fiado->fecha_fiado = $now;
                 $new_fiado->rut_cliente = $request->idcliente;
                 $new_fiado->id_venta = $new_venta->id_venta;
-                $new_fiado->total_fiado = $total;
+                $new_fiado->total_fiado = $ocarrito->total;
                 $new_fiado->save();
 
                 $clFiado = App\Cliente::where('rut', $request->idcliente)->get();
-                $clFiado[0]->monto_deuda = $clFiado[0]->monto_deuda + $total;
+                $clFiado[0]->monto_deuda = $clFiado[0]->monto_deuda + $ocarrito->total;
                 $clFiado[0]->save();
             }
 
-            foreach ($carrito as $prod) {
-                foreach ($prod as $items) {
+            foreach ($ocarrito->items as $items) {
 
-                    error_log('Producto Actualizacion Stock :');
-                    error_log( print_r($items, true));
+                error_log('Producto Actualizacion Stock :');
+                error_log( print_r($items, true));
 
-                    $codigo_articulo = $items[1];
-                    $cantidad = $items[4];
-                    $precio_venta = $items[5];
-                    $codigo_producto = $items[6];
+                $producto =  App\Producto::where ('codigo_producto', $items->codigo_producto)->get();
+                $producto[0]->stock= ($producto[0]->stock - $items->cantidad);
+                $producto[0]->save();
 
-                    $producto =  App\Producto::where ('codigo_producto', $codigo_producto)->get();
-                    $producto[0]->stock= ($producto[0]->stock - $cantidad);
-                    $producto[0]->save();
-
-                    $new_detalle = new App\Detalle_venta();
-                    $new_detalle->id_venta = $new_venta->id_venta;
-                    $new_detalle->cantidad = $cantidad;
-                    $new_detalle->id_articulo = $codigo_articulo;
-                    $new_detalle->total_linea = ($precio_venta * $cantidad);
-                    $new_detalle->save();
-                }
+                $new_detalle = new App\Detalle_venta();
+                $new_detalle->id_venta = $new_venta->id_venta;
+                $new_detalle->cantidad = $items->cantidad;
+                $new_detalle->id_articulo = $items->id_articulo;
+                $new_detalle->total_linea = ($items->precio_venta * $items->cantidad);
+                $new_detalle->save();
             }
 
         }
 
         $mensaje = "Venta Realizada Correctamente...";
         $imprimir = true;
-
-        //$carrito = collect();
-        //$request->session()->put('carrito', $carrito);
-        //$request->session()->put('total', 0);
 
         return view('menu_principal.ventas.ventas_agregar', compact('clientes', 'mensaje', 'imprimir'));
 
