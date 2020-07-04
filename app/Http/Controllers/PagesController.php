@@ -189,7 +189,8 @@ class PagesController extends Controller
         $var_rut= $cliente[0]->rut;
         $direccion = new App\Direccion;
         $direccion  = App\Direccion::where('id_direccion','=',$var_rut)->get() ;
-        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','direccion','year','month','day','region','comuna'));
+        $actualizar = true;
+        return view('menu_principal.cliente.edicion_cliente', compact('cliente','regiones','comunas','clientes','direccion','year','month','day','region','comuna','actualizar'));
         //return $fecha;
     }
 
@@ -250,7 +251,8 @@ class PagesController extends Controller
          $year = date("Y", $fechaComoEntero);
          $month = date("m", $fechaComoEntero);
          $day = date("d", $fechaComoEntero);
-         return view('menu_principal.usuario.edicion_usuario', compact('usuario','usuarios','year','month','day'));
+         $actualizar = true;
+         return view('menu_principal.usuario.edicion_usuario', compact('usuario','usuarios','year','month','day','actualizar'));
 
     }
 
@@ -703,7 +705,8 @@ class PagesController extends Controller
         $producto = App\Producto::where ('nombre', $request->producto)->get();
         $familias = App\Famila_producto::all();
         $tipos = App\Tipo_producto::all();
-        return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familias','tipos','productos','producto'));
+        $actualizar = true;
+        return view('menu_principal.stock.productos.edicion_producto', compact('proveedores','familias','tipos','productos','producto', 'actualizar'));
     }
 
     public function actualizar_producto(Request $request){

@@ -9,7 +9,7 @@
     <div class="form-row">                         
         <div class="form-group col-md-4">
             <label for="inputAddress">Codigo</label>
-            <input name="id_articulo" type="text" class="form-control" id="inputAddress" placeholder="01231231">
+            <input name="id_articulo" type="number" class="form-control" id="inputAddress" placeholder="01231231" required >
         </div> 
 
     </div>

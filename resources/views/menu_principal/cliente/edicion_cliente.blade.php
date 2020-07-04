@@ -93,7 +93,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Depto</label>
-            <input type="text" class="form-control" id="depto" name="depto" value="{{$direccion[0]->departamento}}" placeholder="" required >
+            <input type="text" class="form-control" id="depto" name="depto" value="{{$direccion[0]->departamento}}" placeholder="" >
         </div> 
     </div>
 

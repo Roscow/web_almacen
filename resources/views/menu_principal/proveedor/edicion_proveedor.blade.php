@@ -30,7 +30,7 @@
         </div>  
         
         <div class="form-group col-md-6">
-            <label for="inputAddress">Codigo postal</label>
+            <label for="inputAddress">Código postal</label>
             <input type="number" class="form-control" id="codigo_postal" name="codigo_postal" value="{{$proveedores[0]->codigo_postal}}" placeholder="8765000"  required >
         </div>
     </div>
@@ -63,11 +63,11 @@
         </div>    
     </div>
 
-    <h5>* Direccion</h5>
+    <h5>* Dirección</h5>
     <div class="form-row">
 
         <div class="form-group col-md-6">
-            <label for="inputState">Region</label>
+            <label for="inputState">Región</label>
             <select id="selectRegion" name="selectRegion" class="form-control" required >
             <option  value="" selected>Elegir...</option>               
                 @foreach ($regiones as $item)
@@ -106,7 +106,7 @@
         </div> 
 
         <div class="form-group col-md-4">
-            <label for="inputAddress">Numero</label>
+            <label for="inputAddress">Número</label>
             <input type="number" class="form-control" id="numero" name="numeroCalle" value="{{$direccion[0]->numero}}" placeholder="022" required >
         </div> 
 

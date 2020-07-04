@@ -9,8 +9,8 @@
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione producto </label>
-            <select name="producto" id="inputState" class="form-control">
-                <option selected>Elegir...</option>
+            <select name="producto" id="inputState" class="form-control" required >
+                <option value="" selected>Elegir...</option>
                 @foreach ($productos as $item)
                     <option>{{$item->nombre}}</option>
                 @endforeach 
@@ -19,12 +19,12 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Fecha de vencimiento</label>
-            <input type="date" name="vencimiento" class="form-control" id="inputAddress" placeholder="esquina blanca">
+            <input type="date" name="vencimiento" class="form-control" id="inputAddress" placeholder="20/20/2020" required >
         </div> 
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Cantidad</label>
-            <input name="cantidad" type="numeric" class="form-control" id="inputAddress" placeholder="0">
+            <input name="cantidad" type="number" class="form-control" id="inputAddress" placeholder="0" required >
         </div> 
 
     </div>

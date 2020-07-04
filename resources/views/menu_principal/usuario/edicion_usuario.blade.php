@@ -2,7 +2,7 @@
 
 
 @section('edicion_usuario')
-<p>Datos usuario</p>
+<h5>* Datos usuario</h5>
     <form action="{{route('actualizar_usuario')}}" method="POST">
     {{csrf_field() }}
 

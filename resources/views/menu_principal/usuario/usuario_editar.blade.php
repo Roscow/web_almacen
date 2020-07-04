@@ -3,7 +3,9 @@
 
 
 @section('contenido')
-    <h1>Editar usuario</h1>   
+    <h1>Editar usuario</h1>  
+     
+@if (!isset($actualizar))     
 <form action="{{route('edicion_usuario')}}" method="POST">    
 @csrf
     <div class="form-row">        
@@ -19,6 +21,7 @@
     </div>
     <button type="submit" class="btn btn-primary" >Seleccionar</button>
 </form>
+@endif
 
 <div class="container"> 
      @yield('edicion_usuario')

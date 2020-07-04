@@ -9,8 +9,8 @@
     <div class="form-row">        
         <div class="form-group col-md-4">
             <label for="inputState">Seleccione producto a eliminar</label>
-            <select name="producto" id="inputState" class="form-control">
-            <option selected>Elegir...</option>
+            <select name="producto" id="inputState" class="form-control" required >
+            <option value="" selected>Elegir...</option>
                 @foreach ($productos as $item)
                     <option>{{$item->nombre}}</option>
                 @endforeach 

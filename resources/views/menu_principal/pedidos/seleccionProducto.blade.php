@@ -10,8 +10,8 @@
             <label for="inputState">Seleccionar Producto </label>
             <input type="hidden"  name="razon_social"  value="{{$nombreEmpresa}}">
             
-            <select id="productos" name="NombreProducto"  class="form-control">
-            <option selected>Elegir....</option>
+            <select id="productos" name="NombreProducto"  class="form-control" required >
+            <option value="" selected>Elegir....</option>
                 @foreach ($productos as $item)
                     <option><p> {{$item->nombre}}</p></option>                   
                 @endforeach
@@ -20,7 +20,7 @@
 <?php ?>
          <div class="form-group col-md-4">
             <label for="inputAddress">Cantidad</label>
-            <input type="number" name="cantidad" class="form-control" id="inputAddress" placeholder="0">
+            <input type="number" name="cantidad" class="form-control" id="inputAddress" placeholder="0" required >
             <input type="hidden"  name="valorArray"  value='<?php echo serialize($listado) ?>'>
 
             

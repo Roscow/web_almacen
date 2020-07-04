@@ -3,6 +3,7 @@
 
 @section('contenido')
    <h1>Editar cliente</h1>   
+@if (!isset($actualizar))  
 <form action="{{route('edicion_cliente2')}}" method="POST">
 @csrf
 
@@ -20,7 +21,7 @@
     <!--<a class="btn btn-primary" href="{{route('edicion_cliente2')}}">Seleccionar</a>-->
     <button type="submit" class="btn btn-primary">Seleccionar</button>
 </form>
-
+@endif
 <div class="container">
         @yield('edicion')
 </div>

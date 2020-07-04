@@ -4,6 +4,7 @@
 
 @section('contenido')
    <h1>Modificar producto</h1>   
+@if (!isset($actualizar)) 
 <form action="{{ route('edicion_producto')}}" method="POST">    
 @csrf
     <div class="form-row">        
@@ -19,6 +20,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Seleccionar</button>
 </form>
+@endif
 @yield('edicion_producto')
 
 @endsection

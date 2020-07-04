@@ -9,8 +9,8 @@
     <div class="form-row">
         <div class="form-group col-md-8">
             <label for="inputState">Seleccione pedido por id</label>
-            <select id="razon_social" name="idPedido"  class="form-control">
-            <option selected>Elegir....</option>
+            <select id="razon_social" name="idPedido"  class="form-control" required >
+            <option value="" selected>Elegir....</option>
                 @foreach ($pedidos as $item)
                     <option><p> {{$item->id_pedido}}</p></option>                   
                 @endforeach

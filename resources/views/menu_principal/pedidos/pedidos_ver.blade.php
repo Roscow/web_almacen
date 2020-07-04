@@ -9,8 +9,8 @@
     <div class="form-row">        
       <div class="form-group col-md-4">
             <label for="inputState">Seleccione proveedor </label>
-            <select id="razon_social" name="nombreProveedor"  class="form-control">
-            <option selected>Elegir....</option>
+            <select id="razon_social" name="nombreProveedor"  class="form-control"required >
+            <option value ="" selected>Elegir....</option>
                 @foreach ($proveedores as $item)
                     <option><p> {{$item->razon_social}}</p></option>                   
                 @endforeach
