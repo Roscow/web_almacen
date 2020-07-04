@@ -15,7 +15,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Cantidad </label>
-            <input id="cantidad" name="cantidad" type="number" class="form-control" id="inputAddress" placeholder="0" required>
+            <input id="cantidad" name="cantidad" type="number" class="form-control" id="inputAddress" placeholder="0" min="1" max="20"  required>
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Agregar</button>

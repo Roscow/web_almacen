@@ -24,7 +24,7 @@
 
         <div class="form-group col-md-4">
             <label for="inputAddress">Cantidad</label>
-            <input name="cantidad" type="number" class="form-control" id="inputAddress" placeholder="0" required >
+            <input name="cantidad" type="number" class="form-control" id="inputAddress" placeholder="0" min="1" max="200" required >
         </div> 
 
     </div>

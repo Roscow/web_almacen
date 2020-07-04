@@ -5,6 +5,7 @@
 @section('contenido')
 <h1>Ver fiados </h1>
 
+@if (!isset($actualizar)) 
 <form action="{{route('detalle_cliente')}}" method="POST">
 @csrf
     <div class="form-row">
@@ -20,7 +21,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Seleccionar</button>
 </form>
-
+@endif
   <div class="container">
         @yield('detalle')
 </div>

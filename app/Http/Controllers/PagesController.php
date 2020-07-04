@@ -78,7 +78,7 @@ class PagesController extends Controller
         $new_cliente->id_direccion = $request->rut;
         $new_cliente->save();
         $mensaje = "Cliente ingresado con exito!";
-        return view('menu_principal.cliente.cliente_crear', compact('comunas','regiones','clientes','mensaje'));
+        return view('menu_principal.cliente.cliente_crear', compact('comunas','regiones','mensaje'));
 
     }
 
@@ -121,7 +121,8 @@ class PagesController extends Controller
         $fiados = new app\Fiado;
         $fiados = App\Fiado::where('rut_cliente','=',$rut)->get();
         $monto_actual = $cliente[0]->monto_deuda;
-        return view('menu_principal.cliente.detalle_cliente', compact('clientes','regiones','comunas','abonos','fiados','monto_actual','rut'));
+        $actualizar = true;
+        return view('menu_principal.cliente.detalle_cliente', compact('clientes','regiones','comunas','abonos','fiados','monto_actual','rut','actualizar'));
         //return $abonos;
 
     }
@@ -303,7 +304,7 @@ class PagesController extends Controller
         //$nuevo_tipo->id_tipo = 3;   eloquent autoincrementa solo
         $nuevo_usuario->save();
         $mensaje = "Usuario ingresado con exito!";
-        return view('menu_principal.usuario.usuario_crear', compact('usuarios','mensaje'));
+        return view('menu_principal.usuario.usuario_crear', compact('mensaje'));
     }
 
 
