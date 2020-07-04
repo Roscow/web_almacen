@@ -1162,11 +1162,8 @@ class PagesController extends Controller
 
 	public function nuevo_reporte(){
 
-        //aqui mandar los años de forma dinamica 
 
-        //1- obtener el año actual
         $yearActual = date('Y');
-        //2- mandar los ultimos 5 años en un array
         $contador = 5;
         $resta=0;
         $listadoAños = array();
@@ -1175,6 +1172,7 @@ class PagesController extends Controller
             $resta = $resta +1;
             $contador = $contador-1;
         }
+
         return view('menu_principal.nuevo_reporte' , compact('listadoAños'));
         //return $listadoAños;
     }
@@ -1185,8 +1183,16 @@ class PagesController extends Controller
         //aqui generar las consultas
         // la de productos mas vendidos
         //$producMasVendido = App\Producto::where('id_user', '=',$item->vendedor)->get();
-
-        return view('menu_principal.reporte_ver', compact('year','month'));
+        $yearActual = date('Y');
+        $contador = 5;
+        $resta=0;
+        $listadoAños = array();
+        while($contador > 0 ){
+            array_push($listadoAños,($yearActual-$resta));
+            $resta = $resta +1;
+            $contador = $contador-1;
+        }
+        return view('menu_principal.reporte_ver', compact('year','month','listadoAños'));
     }
 
 

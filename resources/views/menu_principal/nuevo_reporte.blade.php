@@ -34,7 +34,7 @@
                 <select name="year" id="inputState" class="form-control" required>
                     <option value="" selected>Elegir...</option>
                     @foreach ($listadoAños as $item)
-                        <option value="" >{{$item}}</option>
+                        <option value="{{$item}}" >{{$item}}</option>
                     @endforeach
 
 
