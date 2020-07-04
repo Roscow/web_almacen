@@ -49,7 +49,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Número</label>
-            <input type="number" name="telefono" class="form-control" id="inputAddress" placeholder="56994009300" required max_length="9">
+            <input type="number" name="telefono" class="form-control" id="inputAddress" placeholder="56994009300" required maxlength="9">
         </div> 
 
         <div class="form-group col-md-6">
