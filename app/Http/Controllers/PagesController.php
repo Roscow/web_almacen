@@ -1161,8 +1161,6 @@ class PagesController extends Controller
     }
 
 	public function nuevo_reporte(){
-
-
         $yearActual = date('Y');
         $contador = 5;
         $resta=0;

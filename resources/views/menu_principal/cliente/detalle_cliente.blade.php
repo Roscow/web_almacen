@@ -20,7 +20,7 @@
           <div class="list-group-item pr-div">
               <div class="form-row">
                   <div class="form-group col-md-4">
-                      <label for="inputAddress"><h6>Fecha Emisio</h6> </label>
+                      <label for="inputAddress"><h6>Fecha Emision</h6> </label>
                   </div>
 
                   <div class="form-group col-md-4">
