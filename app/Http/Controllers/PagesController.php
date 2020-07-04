@@ -1161,7 +1161,22 @@ class PagesController extends Controller
     }
 
 	public function nuevo_reporte(){
-        return view('menu_principal.nuevo_reporte');
+
+        //aqui mandar los años de forma dinamica 
+
+        //1- obtener el año actual
+        $yearActual = date('Y');
+        //2- mandar los ultimos 5 años en un array
+        $contador = 5;
+        $resta=0;
+        $listadoAños = array();
+        while($contador > 0 ){
+            array_push($listadoAños,($yearActual-$resta));
+            $resta = $resta +1;
+            $contador = $contador-1;
+        }
+        return view('menu_principal.nuevo_reporte' , compact('listadoAños'));
+        //return $listadoAños;
     }
 
     public function reporte_ver(Request $request){

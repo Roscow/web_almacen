@@ -33,6 +33,12 @@
                 <label for="inputState">Seleccione año </label>
                 <select name="year" id="inputState" class="form-control" required>
                     <option value="" selected>Elegir...</option>
+                    @foreach ($listadoAños as $item)
+                        <option value="" >{{$item}}</option>
+                    @endforeach
+
+
+<!--
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option> 
@@ -43,7 +49,7 @@
                     <option value="2013">2013</option> 
                     <option value="2012">2012</option> 
                     <option value="2011">2011</option> 
-                    <option value="2010">2010</option> 
+                    <option value="2010">2010</option> -->
                 </select>
             </div>  
         </div>
