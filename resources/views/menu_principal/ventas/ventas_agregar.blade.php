@@ -140,7 +140,9 @@
         </div>
     </div>
 
-     <button type="submit" class="btn btn-primary">Confirmar venta</button>
+    @if(session('total') > 0)
+        <button type="submit" class="btn btn-primary">Confirmar venta</button>
+     @endif
 
   </form>
 @else
