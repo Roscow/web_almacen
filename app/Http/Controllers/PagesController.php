@@ -129,21 +129,29 @@ class PagesController extends Controller
 
     public function abonar(Request $request){
         $rut= $request->rut;
-        $clientes = App\Cliente::all();
-        $new_abono = new app\Abono;
-
-        $now = new DateTime();
-        $now->setTimezone(new DateTimeZone('America/Santiago'));
-        $new_abono->fecha_pago = $now ;
-        $new_abono->rut_cliente = $request->rut;
-        $new_abono->monto = $request->monto;
-        $new_abono->save();
-        //hacer descuento en el monto del cliente
         $cliente_aux = App\Cliente::where('rut','=',$rut)->get();
-        $cliente_aux[0]->monto_deuda = ($cliente_aux[0]->monto_deuda - $new_abono->monto);
-        $cliente_aux[0]->save();
-        $mensaje = "Abono ingresado con exito!";
-        return view('menu_principal.cliente.cliente_fiados', compact('clientes','mensaje'));
+        $clientes = App\Cliente::all();
+        $deuda = $cliente_aux[0]->monto_deuda;
+
+        //verificar que no se pueda ingresar abono si es mayor que la deuda
+        if( $request->monto > $deuda){
+            $mensaje = "error, abono es mayor que la deuda";
+            return view('menu_principal.cliente.cliente_fiados', compact('clientes','mensaje'));
+        }
+        else{
+            $new_abono = new app\Abono;
+            $now = new DateTime();
+            $now->setTimezone(new DateTimeZone('America/Santiago'));
+            $new_abono->fecha_pago = $now ;
+            $new_abono->rut_cliente = $request->rut;
+            $new_abono->monto = $request->monto;
+            $new_abono->save();
+            //hacer descuento en el monto del cliente        
+            $cliente_aux[0]->monto_deuda = ($cliente_aux[0]->monto_deuda - $new_abono->monto);
+            $cliente_aux[0]->save();
+            $mensaje = "Abono ingresado con exito!";
+            return view('menu_principal.cliente.cliente_fiados', compact('clientes','mensaje'));
+        }        
     }
 
 
