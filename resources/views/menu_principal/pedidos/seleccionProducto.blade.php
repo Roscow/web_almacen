@@ -20,7 +20,7 @@
 <?php ?>
          <div class="form-group col-md-4">
             <label for="inputAddress">Cantidad</label>
-            <input type="number" name="cantidad" class="form-control" id="inputAddress" placeholder="0" required >
+            <input type="number" name="cantidad" class="form-control" id="inputAddress" placeholder="0" required min="1" >
             <input type="hidden"  name="valorArray"  value='<?php echo serialize($listado) ?>'>
 
             
