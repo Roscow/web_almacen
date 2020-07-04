@@ -43,7 +43,7 @@
                   <li><a class="dropdown-item" href="{{ route('proveedor_agregar') }}" >Agregar</a></li>
                   <li><a class="dropdown-item" href="{{ route('proveedor_editar') }}" >Editar</a></li>
                   <li><a class="dropdown-item" href="{{ route('proveedor_eliminar') }}" >Eliminar</a></li>
-                  <li><a class="dropdown-item" href="{{ route('proveedor_pedidos') }}" >Ver Pedidos</a></li>
+                  <li><a class="dropdown-item" href="{{ route('pedidos_ver') }}" >Ver Pedidos</a></li>
                   <li><a class="dropdown-item" href="{{ route('proveedor_agregar_rubro') }}" >Nuevo Rubro</a></li>
               </ul>
         </li>
