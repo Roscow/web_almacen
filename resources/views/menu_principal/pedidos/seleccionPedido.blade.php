@@ -3,8 +3,8 @@
 
 
 @section('seleccionPedido')
-
 <form action="{{route('recepcionPedido')}}" method="POST">  
+    
 @csrf
     <div class="form-row">
         <div class="form-group col-md-8">
@@ -21,7 +21,6 @@
 </form>
 
 @yield('recepcionar')
-
 
 @endsection
 

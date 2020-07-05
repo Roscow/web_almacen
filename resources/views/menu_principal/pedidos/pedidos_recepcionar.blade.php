@@ -5,6 +5,7 @@
 @section('contenido')
    <h1>Recepcionar pedido</h1>   
    <form action="{{route('seleccionPedido')}}" method="POST">  
+   @if (!isset($actualizar))     
 @csrf
     <div class="form-row">
         <div class="form-group col-md-8">
@@ -19,6 +20,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Seleccionar</button> 
 </form>
+@endif
 @yield('seleccionPedido')
 
 

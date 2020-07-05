@@ -543,7 +543,8 @@ class PagesController extends Controller
         $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
         $pedidos = App\Pedido::where('rut_empresa','=',$proveedor[0]->rut_empresa)->get();
         $proveedores = App\Proveedor::all();
-        return view('menu_principal.pedidos.seleccionPedido', compact('proveedores','pedidos'));
+        $actualizar = true;
+        return view('menu_principal.pedidos.seleccionPedido', compact('proveedores','pedidos','actualizar' ));
     }
 
     public function recepcionPedido(Request $request){
@@ -557,7 +558,7 @@ class PagesController extends Controller
         $productos = App\Producto::all();
         $estados = App\Estado_orden::all();
         return view('menu_principal.pedidos.recepcionPedido', compact('proveedores','pedidos','pedidoSelect','detalle_pedido','productos','estados'));
-        //return $pedidoSelect;
+        //return $pedidoSelect; 
     }
 
 
