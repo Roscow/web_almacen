@@ -306,7 +306,7 @@ class PagesController extends Controller
         //$nuevo_usuario->nombre2 = $request->nombre2;
         //$nuevo_usuario->apellido1 = $request->apellido1;
         //$nuevo_usuario->apellido2 = $request->apellido2;
-        $nuevo_usuario->rut = $request->rut;
+        $nuevo_usuario->rut = str_replace(".","", str_replace("-","", $request->rut));
         $nuevo_usuario->telefono = $request->telefono;
         $nuevo_usuario->usser =  $request->nombre1;
         //$nuevo_tipo->id_tipo = 3;   eloquent autoincrementa solo

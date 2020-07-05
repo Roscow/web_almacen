@@ -4,12 +4,12 @@
 
 @section('contenido')
    <h1>Crear usuario</h1>   
-<form action="{{route('insert_usuario')}}" method="POST">
+<form action="{{route('insert_usuario')}}" method="POST" onsubmit=" return validaterut(rut)">
 @csrf
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut</label>
-            <input type="text" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" required>
+            <input type="text" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" onblur="validaterut(this)" required>
         </div>
 
         <div class="form-group col-md-6">
