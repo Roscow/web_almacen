@@ -23,7 +23,7 @@ class LoginController extends Controller
     public function salirUsuario(Request $request)
     {
         error_log('Sesion Terminada Exitosamente. ');
-     
+
         $mensaje = "Sesion Terminada Exitosamente....";
 
         $request->session()->forget('user');
@@ -31,8 +31,8 @@ class LoginController extends Controller
         $request->session()->flush();
 
         $request->session()->regenerate();
-        
-        return view('login', compact('mensaje')); 
+
+        return view('login', compact('mensaje'));
 
     }
 
@@ -43,16 +43,16 @@ class LoginController extends Controller
 
         error_log('Valida Usuario');
 
-        $usuario = App\Usuario::where('correo','=', $request->input('email'))->get();                
+        $usuario = App\Usuario::where('correo','=', $request->input('email'))->get();
         error_log('usuario ' . $usuario);
 
         if(count($usuario) > 0 && strcmp($usuario[0]->contraseña, $request->input('password')) == 0){
 
-            $tipo_usuario = App\Tipo_usuario::where('id_tipo_user','=', $usuario[0]->id_tipo_user)->get();                
+            $tipo_usuario = App\Tipo_usuario::where('id_tipo_user','=', $usuario[0]->id_tipo_user)->get();
             error_log('tipo_usuario ' . $tipo_usuario);
 
             $clientes = App\Cliente::all();
-           
+
             error_log('name: ' . $usuario[0]->nombre1);
             error_log('user: ' . $usuario[0]->correo);
             error_log('type: ' . $tipo_usuario[0]->tipo);
@@ -61,20 +61,18 @@ class LoginController extends Controller
             $request->session()->put('user', $usuario[0]->correo);
             $request->session()->put('type', $tipo_usuario[0]->tipo);
 
-            $carrito = collect();
-            $request->session()->put('carrito', $carrito);
-            $carrito = array($request->session()->get('carrito'));
-            error_log( print_r($carrito, true));
-            $request->session()->put('total', 0);
+            $ocarrito = new App\Carrito();
+            $ocarrito->total = 0;
+            $request->session()->put('ocarrito', $ocarrito);
 
-            return view('menu_principal.ventas.ventas_agregar',  compact('clientes')); 
+            return view('menu_principal.ventas.ventas_agregar',  compact('clientes'));
 
         }else{
 
             $error = "Acceso Denegado, Usuario o Contraseña Invalidas";
 
             return view('login', compact('error'));
-        }    
+        }
 
     }
 
