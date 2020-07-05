@@ -135,7 +135,7 @@ class PagesController extends Controller
 
         //verificar que no se pueda ingresar abono si es mayor que la deuda
         if( $request->monto > $deuda){
-            $mensaje = "error, abono es mayor que la deuda";
+            $mensaje = "Error, abono es mayor que la deuda";
             return view('menu_principal.cliente.cliente_fiados', compact('clientes','mensaje'));
         }
         else{

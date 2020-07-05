@@ -76,7 +76,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputEmail4">Monto</label>
-                    <input type="number" name="monto" class="form-control" id="inputEmail4">
+                    <input type="number" name="monto" class="form-control" min="1" id="inputEmail4">
                 </div>
 
                 <input type="hidden" id="rut" name="rut" value="{{$rut}}">
