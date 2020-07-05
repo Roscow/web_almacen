@@ -110,6 +110,34 @@
             }
         });
     });
+
+    function validaterut(rutCompleto) {
+
+		    if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto.value)){
+                alert('Formato Rut Invalido !!!');
+                return false;
+                
+            }
+			
+		    var tmp 	= rutCompleto.value.split('-');
+		    var digv	= tmp[1]; 
+		    var rut 	= tmp[0];
+		    if ( digv == 'K' ) digv = 'k' ;
+		    if(!(dv(rut) == digv) ){
+                alert('Rut Invalido !!!');
+                return false;
+            }
+
+        return true;
+	}
+    
+	function dv(T){
+	    	var M=0,S=1;
+		    for(;T;T=Math.floor(T/10))
+			S=(S+T%10*(9-M++%6))%11;
+		    return S?S-1:'k';
+	}
+
 </script>
 <style>
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */

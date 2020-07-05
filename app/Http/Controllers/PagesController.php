@@ -64,7 +64,7 @@ class PagesController extends Controller
         $new_direccion->save();
 
         $new_cliente = new App\Cliente;
-        $new_cliente->rut = $request->rut;
+        $new_cliente->rut =  str_replace(".", "", str_replace("-", "", $request->rut));
         $new_cliente->telefono = $request->telefono;
         $new_cliente->nombre1 = str_replace(" ", "_", $request->nombre1);
         $new_cliente->nombre2 = str_replace(" ", "_", $request->nombre2);
