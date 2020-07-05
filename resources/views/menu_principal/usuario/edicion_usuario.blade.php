@@ -51,7 +51,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Numero</label>
-            <input type="number" class="form-control" id="numero" name="numero" value="{{$usuario[0]->telefono}}" placeholder="1231231" required>
+            <input type="text" class="form-control" id="numero" name="numero" value="{{$usuario[0]->telefono}}" placeholder="1231231"  maxlength="9" onkeypress="return soloNumeros(event)" onpaste="return false" required>
         </div>    
 
          

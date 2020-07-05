@@ -1,7 +1,6 @@
 <!--al cambiar de direcctorio el raiz cambia-->
 @extends('menu_principal/menu_cliente')
 
-<script src="jotaese/cliente_crear.js"></script>
 
 @section('contenido')
    <h1>Crear cliente</h1>

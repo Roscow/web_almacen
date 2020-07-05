@@ -21,8 +21,8 @@
 
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputAddress">telefono</label>
-            <input type="number" name="telefono" class="form-control" id="inputtelefono" placeholder="123123123" required>
+            <label for="inputAddress">teléfono</label>
+            <input type="text" name="telefono" class="form-control" id="inputtelefono" maxlength="9" placeholder="123123123" onkeypress="return soloNumeros(event)" onpaste="return false" required>
         </div> 
 
         <div class="form-group col-md-6">
@@ -34,7 +34,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Código postal</label>
-            <input type="number" name="codigo_postal" class="form-control" id="inputcodigo_postal" placeholder="9273353" required>
+            <input type="text" name="codigo_postal" class="form-control" id="inputcodigo_postal" maxlength="7" placeholder="9273353" onkeypress="return soloNumeros(event)" onpaste="return false" required>
         </div> 
 
         <div class="form-group col-md-6">
