@@ -489,7 +489,8 @@ class PagesController extends Controller
             //array_push($listado, $request->NombreProducto);
             $listado[$request->NombreProducto]= $request->cantidad;
         }
-        return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos','nombreEmpresa','listado') );
+        $actualizar = true;
+        return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos','nombreEmpresa','listado','actualizar') );
     }
 
 
@@ -529,6 +530,7 @@ class PagesController extends Controller
         //return $suma;
         $mensaje = "Pedido Realizado Correctamente";
         $proveedores = App\Proveedor::all();
+        
         return view('menu_principal.pedidos.pedidos_agregar', compact('proveedores','mensaje'));
     }
 
