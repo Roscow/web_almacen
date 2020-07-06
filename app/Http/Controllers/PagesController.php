@@ -510,8 +510,9 @@ class PagesController extends Controller
         $new_pedido->fecha_creacion = date('Y-m-d') ;
         //$new_pedido->fecha_creacion = date_create('2020-2-15') ;
 
+        $pedidos = App\Pedido::where('rut_empresa','=',$empresa[0]->rut_empresa)->get();
         $new_pedido->id_estado = 1;
-        $new_pedido->id_pedido = $new_pedido->rut_empresa . date('dmY')  ;
+        $new_pedido->id_pedido = $new_pedido->rut_empresa . count($pedidos). date('dmY')  ;
         //$new_pedido->id_pedido = $new_pedido->rut_empresa . date_format(date_create('2020-2-15'),'dmY') ;
         $suma= 0;
         //creacion de lineas de detalle de  pedido
