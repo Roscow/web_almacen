@@ -575,7 +575,6 @@ class PagesController extends Controller
         $detallesPedidos = App\Detalle_pedido::where('id_pedido','=',$pedidoSelect[0]->id_pedido)->get();
         $arrayCompleto = $request;
 
-
         foreach($detallesPedidos as $item){
             $lineaDetalle = App\Detalle_pedido::where('id_pedido','=',$pedidoSelect[0]->id_pedido)
                                                 ->where ('codigo_producto','=',$item->codigo_producto)
@@ -601,7 +600,9 @@ class PagesController extends Controller
             //agregar el stock
 
         }
-        return 'se completo proceso';
+        $proveedores = App\Proveedor::all();
+        $mensaje = "Proceso de Recepcion Realizada";
+        return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores', 'mensaje'));
     }
 
 
