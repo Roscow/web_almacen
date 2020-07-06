@@ -500,6 +500,9 @@ class PagesController extends Controller
 
     public function creacionPedido(Request $request){
         //obtengo listado de productos y cantidades
+         $now = new DateTime();
+         $now->setTimezone(new DateTimeZone('America/Santiago'));
+
         $listado = unserialize($request->valorArray2);
         error_log( print_r($listado, true));
 
@@ -507,7 +510,7 @@ class PagesController extends Controller
         $new_pedido = new App\Pedido;
         $empresa = App\Proveedor::where('razon_social','=',$request->nombreEmpresa)->get();
         $new_pedido->rut_empresa = $empresa[0]->rut_empresa;
-        $new_pedido->fecha_creacion = date('Y-m-d') ;
+        $new_pedido->fecha_creacion = $now;
         //$new_pedido->fecha_creacion = date_create('2020-2-15') ;
 
         $pedidos = App\Pedido::where('rut_empresa','=',$empresa[0]->rut_empresa)->get();
@@ -526,7 +529,7 @@ class PagesController extends Controller
             $suma = $suma + $detalle_pedido->costo_linea;
             //ES NECESARIO AGREGAR LOS ESTADOS EN LA TABLA PARA VER CUAL DEFINIR AQUI  Y QUE HACER CON FECHA RECEPCION
             $detalle_pedido->id_estado = 1;
-            $detalle_pedido->fecha_recepcion = date('Y-m-d');
+            $detalle_pedido->fecha_recepcion = $now;
             //return $detalle_pedido;
             $detalle_pedido->save();
         }
@@ -587,23 +590,27 @@ class PagesController extends Controller
                 $estado = App\Estado_orden::where('estado','=','Recibido')->get();
                 $idAux = $estado[0]->id_estado;
                 $lineaDetalle[0]->id_estado = $idAux;
+                $lineaDetalle[0]->save();
                 //return   $arrayCompleto[$lineaDetalle[0]->codigo_producto]. ' es mayo o igual q '.$lineaDetalle[0]->cantidad .' id es '.$lineaDetalle[0]->id_estado ;
-            }
-            else{
-
+            }else{
                  //se cambia el estado a incompleto
                  $estado = App\Estado_orden::where('estado','=','Incompleto')->get();
                  $idAux = $estado[0]->id_estado;
                  $lineaDetalle[0]->id_estado = $idAux;
+                 $lineaDetalle[0]->save();
                  $incompleto = true;
                 //return   $arrayCompleto[$lineaDetalle[0]->codigo_producto]. ' es menor q '.$lineaDetalle[0]->cantidad.' id es '. $lineaDetalle[0]->id_estado ;
             }
-            $lineaDetalle[0]->save();
+
             //agregar el stock
         }
 
         if($incompleto){
             $estado = App\Estado_orden::where('estado','=','Incompleto')->get();
+            $pedidoSelect[0]->id_estado = $estado[0]->id_estado;
+            $pedidoSelect[0]->save();
+        }else{
+            $estado = App\Estado_orden::where('estado','=','Recibido')->get();
             $pedidoSelect[0]->id_estado = $estado[0]->id_estado;
             $pedidoSelect[0]->save();
         }
