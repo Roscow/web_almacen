@@ -487,7 +487,11 @@ class PagesController extends Controller
         else{
             $listado= unserialize($request->valorArray);
             //array_push($listado, $request->NombreProducto);
-            $listado[$request->NombreProducto]= $request->cantidad;
+             if (isset($listado[$request->NombreProducto])) {
+                 $listado[$request->NombreProducto]= $request->cantidad + $listado[$request->NombreProducto];
+              }else{
+                $listado[$request->NombreProducto]= $request->cantidad;
+              }
         }
         $actualizar = true;
         return view('menu_principal.pedidos.seleccionProducto',compact('proveedores','productos','nombreEmpresa','listado','actualizar') );
@@ -497,6 +501,7 @@ class PagesController extends Controller
     public function creacionPedido(Request $request){
         //obtengo listado de productos y cantidades
         $listado = unserialize($request->valorArray2);
+        error_log( print_r($listado, true));
 
         //creacion de pedido
         $new_pedido = new App\pedido;
@@ -530,7 +535,7 @@ class PagesController extends Controller
         //return $suma;
         $mensaje = "Pedido Realizado Correctamente";
         $proveedores = App\Proveedor::all();
-        
+
         return view('menu_principal.pedidos.pedidos_agregar', compact('proveedores','mensaje'));
     }
 
@@ -543,12 +548,12 @@ class PagesController extends Controller
         $proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
         $pedidos = App\Pedido::where('rut_empresa','=',$proveedor[0]->rut_empresa)->get();
         $proveedores = App\Proveedor::all();
-        $actualizar = true;
-        return view('menu_principal.pedidos.seleccionPedido', compact('proveedores','pedidos','actualizar' ));
+        $actualizar1 = true;
+        return view('menu_principal.pedidos.seleccionPedido', compact('proveedores','pedidos','actualizar1' ));
     }
 
     public function recepcionPedido(Request $request){
-        $id = $request->idPedido;
+        $id = $request->idpedido;
         $pedido = App\Pedido::where('id_pedido','=',$id)->get();
         $pedidoSelect = $pedido[0];
         //$proveedor = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
@@ -557,8 +562,10 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         $productos = App\Producto::all();
         $estados = App\Estado_orden::all();
-        return view('menu_principal.pedidos.recepcionPedido', compact('proveedores','pedidos','pedidoSelect','detalle_pedido','productos','estados'));
-        //return $pedidoSelect; 
+        $actualizar1 = true;
+        $actualizar2 = true;
+        return view('menu_principal.pedidos.recepcionPedido', compact('proveedores','pedidos','pedidoSelect','detalle_pedido','productos','estados', 'actualizar1', 'actualizar2'));
+        //return $pedidoSelect;
     }
 
 
@@ -601,7 +608,7 @@ class PagesController extends Controller
 
     public function mostrarPedidos(Request $request){
         $proveedores = App\Proveedor::all();
-        $empresa = App\Proveedor::where('razon_social','=',$request->nombreProveedor)->get();
+        $empresa = App\Proveedor::where('razon_social','=',$request->razon_social)->get();
         $pedidos = App\Pedido::where('rut_empresa','=',$empresa[0]->rut_empresa )->get();
         $detalle_pedidos = App\Detalle_pedido::all();
         $productos = App\Producto::all();

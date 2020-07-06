@@ -3,9 +3,9 @@
 
 
 @section('contenido')
-   <h1>Recepcionar pedido</h1>   
-   <form action="{{route('seleccionPedido')}}" method="POST">  
-   @if (!isset($actualizar))     
+   <h1>Recepcionar pedido</h1>
+@if (!isset($actualizar1))
+<form action="{{route('seleccionPedido')}}" method="POST">
 @csrf
     <div class="form-row">
         <div class="form-group col-md-8">
@@ -13,12 +13,12 @@
             <select id="razon_social" name="razon_social"  class="form-control" required >
             <option value ="" selected>Elegir....</option>
                 @foreach ($proveedores as $item)
-                    <option><p> {{$item->razon_social}}</p></option>                   
+                    <option><p> {{$item->razon_social}}</p></option>
                 @endforeach
             </select>
-        </div>                      
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Seleccionar</button> 
+    <button type="submit" class="btn btn-primary">Seleccionar</button>
 </form>
 @endif
 @yield('seleccionPedido')
