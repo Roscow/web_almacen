@@ -722,7 +722,7 @@ class PagesController extends Controller
     }
 
     public function actualizar_producto(Request $request){
-        $producto = App\producto::where ('nombre','=', $request->prod)->get();
+        $producto = App\Producto::where ('nombre','=', $request->prod)->get();
         $producto[0]->nombre = $request->nombre;
         $producto[0]->descripcion = $request->descripcion;
         $producto[0]->precio_compra = $request->precio_compra;
