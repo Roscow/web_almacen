@@ -575,6 +575,7 @@ class PagesController extends Controller
         $detallesPedidos = App\Detalle_pedido::where('id_pedido','=',$pedidoSelect[0]->id_pedido)->get();
         $arrayCompleto = $request;
 
+        $incompleto = false;
         foreach($detallesPedidos as $item){
             $lineaDetalle = App\Detalle_pedido::where('id_pedido','=',$pedidoSelect[0]->id_pedido)
                                                 ->where ('codigo_producto','=',$item->codigo_producto)
@@ -594,12 +595,19 @@ class PagesController extends Controller
                  $estado = App\Estado_orden::where('estado','=','Incompleto')->get();
                  $idAux = $estado[0]->id_estado;
                  $lineaDetalle[0]->id_estado = $idAux;
+                 $incompleto = true;
                 //return   $arrayCompleto[$lineaDetalle[0]->codigo_producto]. ' es menor q '.$lineaDetalle[0]->cantidad.' id es '. $lineaDetalle[0]->id_estado ;
             }
             $lineaDetalle[0]->save();
             //agregar el stock
-
         }
+
+        if($incompleto){
+            $estado = App\Estado_orden::where('estado','=','Incompleto')->get();
+            $pedidoSelect[0]->id_estado = $estado[0]->id_estado;
+            $pedidoSelect[0]->save();
+        }
+
         $proveedores = App\Proveedor::all();
         $mensaje = "Proceso de Recepcion Realizada";
         return view('menu_principal.pedidos.pedidos_recepcionar', compact('proveedores', 'mensaje'));
