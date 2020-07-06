@@ -504,7 +504,7 @@ class PagesController extends Controller
         error_log( print_r($listado, true));
 
         //creacion de pedido
-        $new_pedido = new App\pedido;
+        $new_pedido = new App\Pedido;
         $empresa = App\Proveedor::where('razon_social','=',$request->nombreEmpresa)->get();
         $new_pedido->rut_empresa = $empresa[0]->rut_empresa;
         $new_pedido->fecha_creacion = date('Y-m-d') ;
