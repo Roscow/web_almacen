@@ -20,8 +20,8 @@
                         <table class="table">
                             <thead> 
                                 <tr>
-                                    <th>id</th>
-                                    <th>Fecha Creacion</th>                                    
+                                    <th>Id</th>
+                                    <th>Fecha Creación</th>                                    
                                     <th>Costo Total</th>
                                     <th>Estado</th>                                                                                                          
                                 </tr>
@@ -47,12 +47,12 @@
                             <thead> 
                                 <tr>
                                     <th>Nombre Producto</th>
-                                    <th>Codigo Producto</th>
+                                    <th>Código Producto</th>
                                     <th>Cantidad</th>
                                     <th>Precio Compra</th>
-                                    <th>Costo linea</th>
+                                    <th>Costo línea</th>
                                     <th>Estado</th>
-                                    <th>Fecha Recepcion</th>                                    
+                                    <th>Fecha Recepción</th>                                    
                                 </tr>
                             </thead>
 
