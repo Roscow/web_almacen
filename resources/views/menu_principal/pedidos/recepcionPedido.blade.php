@@ -25,7 +25,7 @@
                     <td>{{$prod->nombre}}</td>
                     <td>{{$item->codigo_producto}}</td>
                     <td>{{$item->cantidad}} /unds.</td>
-                    <td><input type="number" name="{{$prod->codigo_producto}}" class="form-control" id="inputEmail4"></td>
+                    <td><input type="number" name="{{$prod->codigo_producto}}" class="form-control" id="inputEmail4" required></td>
                     <td>$ {{$prod->precio_compra}}</td>
                     @foreach ($estados as $est)
                         @if ($est->id_estado == $item->id_estado)
