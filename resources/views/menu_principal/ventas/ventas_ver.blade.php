@@ -64,7 +64,7 @@
 </div>
 
     <button type="button" class="btn btn-primary" onclick="printJS({ printable: 'printJS-form', type: 'html', header: 'Almacen Web - Boleta de Venta', style: '.pr-div { border: 0.2px solid #c3c3c3; padding-top:20px;  padding-left:50px;}' })" style="margin:20px 0px 20px 0px" >
-        Imprimir Boleta
+        Imprimir Ventas
      </button>
 
     <br>
