@@ -17,7 +17,7 @@
         $var3='<br>';
         foreach($stockCritico as $prod){
             foreach($productos as $prods){
-                if($prods->codigo_producto == $prods->codigo_producto){
+                if($prod->codigo_producto == $prods->codigo_producto){
                     $var3= $var3 ."Producto: ". $prods->nombre ." Stock actual: ".$prod->stock." "." Stock critico: ".$prod->stock_critico ."<br>";
                 }                
             }            
