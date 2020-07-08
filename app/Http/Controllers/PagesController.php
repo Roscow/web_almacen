@@ -709,6 +709,7 @@ class PagesController extends Controller
     public function delete_articulo(Request $request){
         $articulo = App\Articulo::where('id_articulo','=',$request->id_articulo)->get();
         $mensaje='Articulo eliminado';
+        $proveedores = App\Proveedor::all();
         $articulo[0]->delete();
         return view('menu_principal.stock.articulos.articulo_eliminar', compact('mensaje','proveedores'));
 
