@@ -3,12 +3,22 @@
 @section('contenido')
     <?php
 
-
+        //articulos por vencer
         $var2='<br>';
         foreach($articulosPorVencer as $arts){
             foreach($productos as $prods){
                 if($prods->codigo_producto == $arts->id_producto){
                     $var2= $var2 . $prods->nombre ." ".$arts->fecha_vencimiento. "<br>";
+                }                
+            }            
+        }
+
+        //productos con stock critico
+        $var3='<br>';
+        foreach($stockCritico as $prod){
+            foreach($productos as $prods){
+                if($prods->codigo_producto == $prods->codigo_producto){
+                    $var2= $var2 . $prods->nombre ." ".$prod->stock." ". "<br>";
                 }                
             }            
         }
@@ -24,7 +34,7 @@
         "<br>Proveedor con mas pedidos: ". 
         "<br>--------------------------------------------".
         "<br>Articulos que vencen en el mes actual:". $var2.
-        "<br>Productos con stock critico".
+        "<br>Productos con stock critico". $var3.
         "<br>";
         echo  $var1;
     ?>

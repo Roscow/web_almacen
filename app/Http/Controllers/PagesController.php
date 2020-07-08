@@ -1201,6 +1201,7 @@ class PagesController extends Controller
     public function reporte_ver(Request $request){
         $month= $request->month;
         $year= $request->year;
+        $productos = App\Producto::all();
         //aqui generar las consultas
         // la de productos mas vendidos
         //$producMasVendido = App\Producto::where('id_user', '=',$item->vendedor)->get();
@@ -1221,15 +1222,22 @@ class PagesController extends Controller
         
         //return 'cantidad ventas: ' .$cantidadVentas;
 
-        //articulos por vencer 
         $mesActual=date('m');
         $añoActual=date('Y');
+        
+        //articulos por vencer 
         $articulosPorVencer = App\Articulo::whereYear('fecha_vencimiento',$añoActual)
                                             ->whereMonth('fecha_vencimiento','=',$mesActual)->get();
-        //return $articulosPorVencer;
-        $productos = App\Producto::all();
+        //productos con stock critico
+        $stockCritico = App\Producto::whereRaw('stock > stock_critico')->get();
 
-        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos'));
+
+        //return $stockCritico;
+
+
+        
+
+        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico'));
     }
 
 
