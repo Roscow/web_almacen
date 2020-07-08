@@ -8,7 +8,7 @@
         foreach($articulosPorVencer as $arts){
             foreach($productos as $prods){
                 if($prods->codigo_producto == $arts->id_producto){
-                    $var2= $var2 . $prods->nombre ." ".$arts->fecha_vencimiento. "<br>";
+                    $var2= $var2 ."Producto: ". $prods->nombre ." Vence: ".$arts->fecha_vencimiento. "<br>";
                 }                
             }            
         }
@@ -18,7 +18,7 @@
         foreach($stockCritico as $prod){
             foreach($productos as $prods){
                 if($prods->codigo_producto == $prods->codigo_producto){
-                    $var3= $var3 . $prods->nombre ." ".$prod->stock." ". "<br>";
+                    $var3= $var3 ."Producto: ". $prods->nombre ." Stock actual: ".$prod->stock." "." Stock critico: ".$prod->stock_critico ."<br>";
                 }                
             }            
         }
