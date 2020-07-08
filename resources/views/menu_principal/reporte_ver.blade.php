@@ -8,7 +8,7 @@
         foreach($articulosPorVencer as $arts){
             foreach($productos as $prods){
                 if($prods->codigo_producto == $arts->id_producto){
-                    $var2= $var2 ."Producto: ". $prods->nombre ." Vence: ".$arts->fecha_vencimiento. "<br>";
+                    $var2= $var2 ."Producto: ". $prods->nombre ." Vence: ".date_format(new DateTime($arts->fecha_vencimiento),'d-m-Y'). "<br>";
                 }                
             }            
         }
