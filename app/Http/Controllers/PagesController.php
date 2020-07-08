@@ -1215,10 +1215,15 @@ class PagesController extends Controller
         }
 
         //producto mas vendido
-        $ventasPeriodo = App\Venta::whereYear('fecha','$year')->get();
-        return $ventasPeriodo;
+        $ventasPeriodo = App\Venta::whereYear('fecha',$year)
+                                    ->whereMonth('fecha','=',$month)->get();
+        $cantidadVentas = count($ventasPeriodo);
+        
+        //return 'cantidad ventas: ' .$cantidadVentas;
 
-        //return view('menu_principal.reporte_ver', compact('year','month','listadoAños'));
+        //
+
+        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas'));
     }
 
 

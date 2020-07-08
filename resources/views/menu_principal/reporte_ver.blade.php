@@ -5,12 +5,12 @@
     $var1 = "<h1>Almacen los yuyitos</h1>" . 
     "<h5>Reporte</h5>".
     "Periodo de analisis: $month de $year<br>".
+    "<br>N° ventas en el periodo: ". $cantidadVentas .
     "<br>Productos mas vendidos:".
-    "<br>N° ventas en el periodo:". 
     "<br>Usuario que mas ventas realizo:". 
-    "<br>Proveedor al que mas se le pidio". 
-    "<br> articulos por vencer en los prox 15 dias:". 
-    "<br> productos con stock critico".
+    "<br>Proveedor con mas pedidos: ". 
+    "<br>Articulos por vencer en los prox 15 dias:". 
+    "<br>Productos con stock critico".
     "<br>";
     echo  $var1;
     ?>
