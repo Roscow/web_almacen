@@ -3,7 +3,9 @@
 
 
 @section('SeleccionProducto')
+
 <form action="{{route('seleccionProducto')}}" method="POST">  
+
 @csrf
     <div class="form-row">
         <div class="form-group col-md-4">

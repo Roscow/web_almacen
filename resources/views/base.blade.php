@@ -110,6 +110,34 @@
             }
         });
     });
+
+    function validaterut(rutCompleto) {
+
+		    if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto.value)){
+                alert('Formato Rut Invalido !!!');
+                return false;
+                
+            }
+			
+		    var tmp 	= rutCompleto.value.split('-');
+		    var digv	= tmp[1]; 
+		    var rut 	= tmp[0];
+		    if ( digv == 'K' ) digv = 'k' ;
+		    if(!(dv(rut) == digv) ){
+                alert('Rut Invalido !!!');
+                return false;
+            }
+
+        return true;
+	}
+    
+	function dv(T){
+	    	var M=0,S=1;
+		    for(;T;T=Math.floor(T/10))
+			S=(S+T%10*(9-M++%6))%11;
+		    return S?S-1:'k';
+	}
+
 </script>
 <style>
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -132,6 +160,7 @@ color: DCDADA !important;
     <!-- Optional JavaScript -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jotaese/cliente_crear.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('js/print.min.js') }}"></script>

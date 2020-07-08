@@ -54,24 +54,24 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Precio de compra</label>
-            <input type="number" name="precio_compra" class="form-control" id="inputAddress" placeholder="0" required>
+            <input type="number" name="precio_compra" class="form-control" id="inputAddress" min="1" placeholder="0" required>
         </div>
 
         <div class="form-group col-md-6">
             <label for="inputEmail4">Precio de venta</label>
-            <input type="number" name="precio_venta" class="form-control" id="inputEmail4" placeholder="0" required>
+            <input type="number" name="precio_venta" class="form-control" id="inputEmail4" min="1" placeholder="0" required>
         </div>           
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Stock</label>
-            <input type="number" name="stock" class="form-control" id="inputAddress" placeholder="0" required>
+            <input type="number" name="stock" class="form-control" id="inputAddress" min="1" placeholder="0" required>
         </div> 
 
         <div class="form-group col-md-6">
             <label for="inputAddress">Stock critico</label>
-            <input type="number" name="stock_critico" class="form-control" id="inputAddress" placeholder="0" required>
+            <input type="number" name="stock_critico" class="form-control" id="inputAddress" min="1" placeholder="0" required>
         </div>    
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>

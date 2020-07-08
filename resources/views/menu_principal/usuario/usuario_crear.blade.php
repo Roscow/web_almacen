@@ -4,12 +4,12 @@
 
 @section('contenido')
    <h1>Crear usuario</h1>   
-<form action="{{route('insert_usuario')}}" method="POST">
+<form action="{{route('insert_usuario')}}" method="POST" onsubmit=" return validaterut(rut)">
 @csrf
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut</label>
-            <input type="text" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" required>
+            <input type="text" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" onblur="validaterut(this)" required>
         </div>
 
         <div class="form-group col-md-6">
@@ -49,7 +49,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Número</label>
-            <input type="number" name="telefono" class="form-control" id="inputAddress" placeholder="56994009300" required maxlength="9">
+            <input type="text" name="telefono" class="form-control" id="inputAddress" placeholder="56994009300" maxlength="9" onkeypress="return soloNumeros(event)" onpaste="return false"  required>
         </div> 
 
         <div class="form-group col-md-6">

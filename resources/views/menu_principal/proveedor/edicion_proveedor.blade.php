@@ -19,7 +19,7 @@
         
         <div class="form-group col-md-6">
             <label for="inputAddress">telefono</label>
-            <input type="number" class="form-control" id="telefono" name="telefono" value="{{$proveedores[0]->telefono}}" placeholder="123123123" required >
+            <input type="text" class="form-control" id="telefono" name="telefono" value="{{$proveedores[0]->telefono}}" maxlength="9"  placeholder="123123123" onkeypress="return soloNumeros(event)" onpaste="return false" required >
         </div>
     </div>
 
@@ -31,7 +31,7 @@
         
         <div class="form-group col-md-6">
             <label for="inputAddress">Código postal</label>
-            <input type="number" class="form-control" id="codigo_postal" name="codigo_postal" value="{{$proveedores[0]->codigo_postal}}" placeholder="8765000"  required >
+            <input type="text" class="form-control" id="codigo_postal" name="codigo_postal"  maxlength="7" value="{{$proveedores[0]->codigo_postal}}" onkeypress="return soloNumeros(event)" onpaste="return false" placeholder="8765000"  required >
         </div>
     </div>
 

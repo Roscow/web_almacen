@@ -3,7 +3,7 @@
 
 
 @section('contenido')
-<h1>nuevo rubro de proveedor</h1>   
+<h1>Nuevo rubro de proveedor</h1>   
 <form action="{{route('nuevo_rubro')}}" method="POST" >  
 @csrf  
             <div class="form-row">            

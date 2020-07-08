@@ -1,17 +1,21 @@
 <!--al cambiar de direcctorio el raiz cambia-->
 @extends('menu_principal/menu_cliente')
 
-<script src="jotaese/cliente_crear.js"></script>
 
 @section('contenido')
    <h1>Crear cliente</h1>
+<<<<<<< HEAD
 <form action="{{route('insert_cliente')}}" method="POST" name="forma" onsubmit=" return crearCliente()">
     @csrf
+=======
+<form action="{{route('insert_cliente')}}" method="POST" name="forma" onsubmit=" return validaterut(rut)">
+@csrf
+>>>>>>> 1529f9ad2bb160736f742c325d6648780df73475
     <h5>* Datos cliente</h5>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputAddress">Rut</label >
-            <input type="text" name="rut" class="form-control" id="inputAddress" placeholder="17250874-k" required maxlength="12" >
+            <input type="text" name="rut" class="form-control" id="inputRut" placeholder="17250874-k" required maxlength="12" onblur="validaterut(this)">
         </div>
 
         <div class="form-group col-md-6">
