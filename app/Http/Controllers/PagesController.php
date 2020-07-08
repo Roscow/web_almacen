@@ -804,6 +804,7 @@ class PagesController extends Controller
         $proveedores = App\Proveedor::all();
         $familias = App\Famila_producto::all();
         $tipos = App\Tipo_producto::all();
+        $productos = App\Producto::all();
         $mensaje = "Se ha creado un nuevo tipo de producto";
         return view('menu_principal.stock.productos.producto_agregar',compact('mensaje','proveedores','familias','tipos','productos'));
 
