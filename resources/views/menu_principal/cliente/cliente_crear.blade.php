@@ -6,7 +6,7 @@
 @section('contenido')
    <h1>Crear cliente</h1>
 <form action="{{route('insert_cliente')}}" method="POST" name="forma" onsubmit=" return crearCliente()">
-@csrf
+    @csrf
     <h5>* Datos cliente</h5>
     <div class="form-row">
         <div class="form-group col-md-6">

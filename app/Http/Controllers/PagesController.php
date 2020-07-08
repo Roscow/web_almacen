@@ -47,6 +47,12 @@ class PagesController extends Controller
 
 
     public function insert_cliente(Request $request){
+        //validar el rut
+        $request->validate([
+            'rut' =>'required',
+        ]);
+
+
         $regiones = App\Region::all();
         $comunas = App\Comuna::all();
         $new_direccion = new App\Direccion;
