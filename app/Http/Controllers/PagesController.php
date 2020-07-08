@@ -1213,7 +1213,12 @@ class PagesController extends Controller
             $resta = $resta +1;
             $contador = $contador-1;
         }
-        return view('menu_principal.reporte_ver', compact('year','month','listadoAños'));
+
+        //producto mas vendido
+        $ventasPeriodo = App\Venta::whereYear('fecha','$year')->get();
+        return $ventasPeriodo;
+
+        //return view('menu_principal.reporte_ver', compact('year','month','listadoAños'));
     }
 
 
