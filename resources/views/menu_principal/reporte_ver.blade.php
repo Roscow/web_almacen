@@ -33,8 +33,8 @@
         "<br>Usuario que mas ventas realizo:". 
         "<br>Proveedor con mas pedidos: ". 
         "<br>--------------------------------------------".
-        "<br>Articulos que vencen en el mes actual:". $var2.
-        "<br>Productos con stock critico". $var3.
+        "<br><h4>Articulos que vencen en el mes actual:</h4>". $var2.
+        "<br><h4>Productos con stock critico</h4>". $var3.
         "<br>";
         echo  $var1;
     ?>

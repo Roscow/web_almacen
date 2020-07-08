@@ -1229,7 +1229,7 @@ class PagesController extends Controller
         $articulosPorVencer = App\Articulo::whereYear('fecha_vencimiento',$añoActual)
                                             ->whereMonth('fecha_vencimiento','=',$mesActual)->get();
         //productos con stock critico
-        $stockCritico = App\Producto::whereRaw('stock > stock_critico')->get();
+        $stockCritico = App\Producto::whereRaw('stock <= stock_critico')->get();
 
 
         //return $stockCritico;
