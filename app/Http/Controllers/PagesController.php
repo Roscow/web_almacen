@@ -1221,9 +1221,15 @@ class PagesController extends Controller
         
         //return 'cantidad ventas: ' .$cantidadVentas;
 
-        //
+        //articulos por vencer 
+        $mesActual=date('m');
+        $añoActual=date('Y');
+        $articulosPorVencer = App\Articulo::whereYear('fecha_vencimiento',$añoActual)
+                                            ->whereMonth('fecha_vencimiento','=',$mesActual)->get();
+        //return $articulosPorVencer;
+        $productos = App\Producto::all();
 
-        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas'));
+        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos'));
     }
 
 
