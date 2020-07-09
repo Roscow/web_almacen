@@ -1245,7 +1245,7 @@ class PagesController extends Controller
             }
         }
 
-        return $ventasPeriodo;
+        return $listadoProdVendidos;
 
         //return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico'));
     }
