@@ -65,16 +65,17 @@
         "<br>";
         echo  $var1;
 
-        $texto_word= str_replace("<br>",' ',$var1) ;
-        $texto_word= str_replace("</br>",' ',$var1) ;
-        $texto_word= str_replace("<h4>",' ',$var1) ;
-        $texto_word= str_replace("</h4>",' ',$var1) ;
-        $texto_word= str_replace("<h1>",' ',$var1) ;
-        $texto_word= str_replace("</h1>",' ',$var1) ;
-        $texto_word= str_replace("<h5>",' ',$var1) ;
-        $texto_word= str_replace("</h5>",' ',$var1) ;
+        //$var1= str_replace('<br>',utf8_encode(chr(10)),$var1) ;
+        $var1= str_replace('<br>','                                                                   ',$var1) ;
+        $var1= str_replace('h1','                                                                         ',$var1) ;
+        $var1= str_replace('h6','                                                                ',$var1) ;
+        $var1= str_replace('h4','                                                                 ',$var1) ;
+        $var1= str_replace('h5','                                                                    ',$var1) ;
+        $var1= str_replace('<',' ',$var1) ;
+        $var1= str_replace('>',' ',$var1) ;
+        $var1= str_replace('/',' ',$var1) ;
+ 
 
-        $prueba = strval('probando');
         
     ?>
 
@@ -87,7 +88,9 @@
 
     <form action="{{route('genera_word')}}" method="POST">
     @csrf
-        <input type="hidden" name="inputHidden" type="hidden" value="{{$prueba}}">
+        <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
+        <input type="hidden" name="mes" type="hidden" value="{{$month}}">
+        <input type="hidden" name="año" type="hidden" value="{{$year}}">
 
         <button type="submit"  class="btn btn-primary">Convertir a word</button> 
     </form>

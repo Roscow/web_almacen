@@ -1302,9 +1302,11 @@ class PagesController extends Controller
     public function genera_word(Request $request) {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $texto_word = $request->inputHidden;
+        $mes = $request->mes;
+        $año = $request->año;
         $section = $phpWord->addSection();
         $text = $section->addText($texto_word);
-        $filename = "reporte.docx";
+        $filename = "reporte_".$mes."_".$año.".docx";
         header("Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document"); 
         header('Content-Disposition: attachment; filename=' . $filename);
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
