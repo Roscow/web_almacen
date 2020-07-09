@@ -46,7 +46,7 @@
         foreach($listadoPedidos  as $rutEmpr => $pedidos){  
             foreach($proveedores as $prov){
                 if($prov->rut_empresa == $rutEmpr){
-                    $var6= $var6 ."rut: ". $rutEmpr. " Proveedor: ". $prov->razon_social ." Cantidad: ".$pedidos."<br>";  
+                    $var6= $var6 ."rut: ". $rutEmpr. ",  Proveedor: ". $prov->razon_social .",  N° Pedidos: ".$pedidos."<br>";  
                 }
             }
         }  
@@ -64,6 +64,10 @@
         "<br><h4>Productos con stock critico</h4>". $var3.
         "<br>";
         echo  $var1;
+
+        $texto_word= str_replace("<br>"," ",$var1);
+        $texto_word= str_replace("</br>"," ",$var1);
+        $texto_word= str_replace("<br>"," ",$var1);
     ?>
 
     <form action="{{route('prueba2')}}" method="POST">
@@ -72,6 +76,12 @@
 
         <button type="submit"  class="btn btn-primary">Convertir a pdf</button> 
     </form>
+    
+    <form action="{{route('genera_word')}}" method="POST">
+    @csrf
+        <input type="hidden" name="inputHidden" type="hidden" value="{{$texto_word}}">
 
+        <button type="submit"  class="btn btn-primary">Convertir a word</button> 
+    </form>
 
     @endsection
