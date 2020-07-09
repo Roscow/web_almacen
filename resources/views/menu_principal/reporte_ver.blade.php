@@ -8,7 +8,7 @@
         foreach($articulosPorVencer as $arts){
             foreach($productos as $prods){
                 if($prods->codigo_producto == $arts->id_producto){
-                    $var2= $var2 ."Producto: ". $prods->nombre ." Vence: ".date_format(new DateTime($arts->fecha_vencimiento),'d-m-Y'). "<br>";
+                    $var2= $var2."ID: ".$prods->codigo_producto .", Producto: ". $prods->nombre .", Vence: ".date_format(new DateTime($arts->fecha_vencimiento),'d-m-Y'). "<br>";
                 }                
             }            
         }
@@ -18,7 +18,7 @@
         foreach($stockCritico as $prod){
             foreach($productos as $prods){
                 if($prod->codigo_producto == $prods->codigo_producto){
-                    $var3= $var3 ."Producto: ". $prods->nombre ." Stock actual: ".$prod->stock." "." Stock critico: ".$prod->stock_critico ."<br>";
+                    $var3= $var3 ."Id: ". $prods->codigo_producto.", Producto: ". $prods->nombre .", Stock actual: ".$prod->stock." ".", Stock critico: ".$prod->stock_critico ."<br>";
                 }                
             }            
         }
@@ -27,7 +27,7 @@
         $vendedoresOrdenado = $listadoVentaVendedor;
         arsort($vendedoresOrdenado);
         foreach($vendedoresOrdenado  as $vendedor => $numVentas){            
-            $var4= $var4 ."Vendedor: ". $vendedor ." N° ventas: ".$numVentas."<br>";                    
+            $var4= $var4 ."Vendedor: ". $vendedor .", N° ventas: ".$numVentas."<br>";                    
         }
 
         $var5='<br>';
@@ -36,7 +36,7 @@
         foreach($productosOrdenado  as $nomProd => $cantidad){  {
             foreach($productos as $prod){
                 if($prod->codigo_producto == $nomProd){
-                    $var5= $var5 ."Producto: ". $prod->nombre ." Cantidad: ".$cantidad."<br>";  
+                    $var5= $var5 ."id: ". $prod->codigo_producto. " Producto: ". $prod->nombre ." Cantidad: ".$cantidad."<br>";  
                 }
             }
         }          
@@ -50,7 +50,7 @@
         "<br><h4>Numero de  ventas en el periodo: </h4>". $cantidadVentas .
         "<br><h4>Productos mas vendidos:</h4>".$var5.
         "<br><h4>Usuario que mas ventas realizo:</h4>". $var4.
-        "<br>Proveedor con mas pedidos: ". 
+        "<br><h4>Proveedor con mas pedidos:</h4> ". 
         "<br>--------------------------------------------".
         "<br><h4>Articulos que vencen en el mes actual:</h4>". $var2.
         "<br><h4>Productos con stock critico</h4>". $var3.
