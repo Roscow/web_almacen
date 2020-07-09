@@ -1231,13 +1231,23 @@ class PagesController extends Controller
         //productos con stock critico
         $stockCritico = App\Producto::whereRaw('stock <= stock_critico')->get();
 
+        $listadoProdVendidos = array();
+        //producto mas vendido
+        foreach($ventasPeriodo as $vent){
+            $detalle = App\Detalle_venta::where('id_venta','=',$vent->id_venta);
+            foreach($detalle as $detVenta){               
+                if (isset($listadoProdVendidos[$detVenta->id_articulo])==false){
+                    $listadoProdVendidos[$detVenta->id_articulo]= $detVenta->cantidad;
+                }
+                else{
+                    $listadoProdVendidos[$detVenta->id_articulo]= $listadoProdVendidos[$detVenta->id_articulo] + $detVenta->cantidad;
+                }
+            }
+        }
 
-        //return $stockCritico;
+        return $ventasPeriodo;
 
-
-        
-
-        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico'));
+        //return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico'));
     }
 
 
