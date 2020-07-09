@@ -1231,7 +1231,7 @@ class PagesController extends Controller
         //productos con stock critico
         $stockCritico = App\Producto::whereRaw('stock <= stock_critico')->get();
 
-        $listadoProdVendidos = array();
+        
         
 
         //mejor vendedor
@@ -1256,7 +1256,7 @@ class PagesController extends Controller
         }
 
         //producto mas vendido
-        
+        $listadoProdVendidos = array();
         foreach($ventasPeriodo as $vent){
             $detalle = App\Detalle_venta::where('id_venta','=',$vent->id_venta)->get();
             foreach($detalle as $detVenta){               
@@ -1269,10 +1269,24 @@ class PagesController extends Controller
             }
            
         }
-        
+        //proveedor que mas pedidos se le hicieron
+        $pedidosMes =  App\Pedido::whereYear('fecha_creacion',$year)
+        ->whereMonth('fecha_creacion','=',$month)->get();
 
-        //return $listadoProdVendidos;
-        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico','listadoVentaVendedor','listadoProdVendidos'));
+        $listadoPedidos = array();
+        foreach($pedidosMes as $ped){
+            if (isset($listadoPedidos[$ped->rut_empresa])==false){
+                $listadoPedidos[$ped->rut_empresa]= 1;
+            }
+            else{
+                $listadoPedidos[$ped->rut_empresa]= $listadoPedidos[$ped->rut_empresa]+ 1;
+            }
+        }
+        $proveedores = App\Proveedor::all();
+
+
+        //return $listadoPedidos;
+        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico','listadoVentaVendedor','listadoProdVendidos','proveedores','listadoPedidos'));
     }
 
 
