@@ -25,17 +25,30 @@
 
         $var4='<br>';
         $vendedoresOrdenado = $listadoVentaVendedor;
+        arsort($vendedoresOrdenado);
         foreach($vendedoresOrdenado  as $vendedor => $numVentas){            
             $var4= $var4 ."Vendedor: ". $vendedor ." N° ventas: ".$numVentas."<br>";                    
         }
 
+        $var5='<br>';
+        $productosOrdenado =$listadoProdVendidos;
+        arsort($productosOrdenado);
+        foreach($productosOrdenado  as $nomProd => $cantidad){  {
+            foreach($productos as $prod){
+                if($prod->codigo_producto == $nomProd){
+                    $var5= $var5 ."Producto: ". $prod->nombre ." Cantidad: ".$cantidad."<br>";  
+                }
+            }
+        }          
+                              
+        }
 
 
         $var1 = "<h1>Almacen los yuyitos</h1>" . 
         "<h5>Reporte</h5>".
         "Periodo de analisis: $month de $year<br>".
-        "<br>N° ventas en el periodo: ". $cantidadVentas .
-        "<br>Productos mas vendidos:".
+        "<br><h4>Numero de  ventas en el periodo: </h4>". $cantidadVentas .
+        "<br><h4>Productos mas vendidos:</h4>".$var5.
         "<br><h4>Usuario que mas ventas realizo:</h4>". $var4.
         "<br>Proveedor con mas pedidos: ". 
         "<br>--------------------------------------------".
