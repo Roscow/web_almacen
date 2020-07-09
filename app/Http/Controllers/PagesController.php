@@ -1233,6 +1233,7 @@ class PagesController extends Controller
 
         $listadoProdVendidos = array();
         //producto mas vendido
+        /*
         foreach($ventasPeriodo as $vent){
             $detalle = App\Detalle_venta::where('id_venta','=',$vent->id_venta);
             foreach($detalle as $detVenta){               
@@ -1244,9 +1245,25 @@ class PagesController extends Controller
                 }
             }
         }
+        */
+
+        //mejor vendedor
+        $vendedores = App\Usuario::all();
+        $listadoVentaVendedor = array();
+        foreach($ventasPeriodo as $vent){
+            foreach($vendedores as $vendrs){
+                if($vent->vendedor == $vendrs->id_user ){
+                    if( isset($listadoVentaVendedor[$vendrs->rut])==false ) {
+                        $listadoVentaVendedor[$vendrs->rut]=1;
+                    }
+                    else{
+                        $listadoVentaVendedor[$vendrs->rut]=$listadoVentaVendedor[$vendrs->rut] + 1 ;
+                    }
+                }
+            }
+        }
 
         return $listadoProdVendidos;
-
         //return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico'));
     }
 
