@@ -23,6 +23,12 @@
             }            
         }
 
+        $var4='<br>';
+        $vendedoresOrdenado = $listadoVentaVendedor;
+        foreach($vendedoresOrdenado  as $vendedor => $numVentas){            
+            $var4= $var4 ."Vendedor: ". $vendedor ." N° ventas: ".$numVentas."<br>";                    
+        }
+
 
 
         $var1 = "<h1>Almacen los yuyitos</h1>" . 
@@ -30,7 +36,7 @@
         "Periodo de analisis: $month de $year<br>".
         "<br>N° ventas en el periodo: ". $cantidadVentas .
         "<br>Productos mas vendidos:".
-        "<br>Usuario que mas ventas realizo:". 
+        "<br><h4>Usuario que mas ventas realizo:</h4>". $var4.
         "<br>Proveedor con mas pedidos: ". 
         "<br>--------------------------------------------".
         "<br><h4>Articulos que vencen en el mes actual:</h4>". $var2.

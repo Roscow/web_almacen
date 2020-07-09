@@ -1253,18 +1253,23 @@ class PagesController extends Controller
         foreach($ventasPeriodo as $vent){
             foreach($vendedores as $vendrs){
                 if($vent->vendedor == $vendrs->id_user ){
-                    if( isset($listadoVentaVendedor[$vendrs->rut])==false ) {
-                        $listadoVentaVendedor[$vendrs->rut]=1;
+                    if( isset($listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2])== false ) {
+                        //$listadoVentaVendedor[$vendrs->rut]=1;
+                        $listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2]=1;
+                        //return 'es falso';
                     }
                     else{
-                        $listadoVentaVendedor[$vendrs->rut]=$listadoVentaVendedor[$vendrs->rut] + 1 ;
+                        //$listadoVentaVendedor[$vendrs->rut]=$listadoVentaVendedor[$vendrs->rut] + 1 ;
+                        $listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2] =
+                        $listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2] + 1;
+                        //return 'es verdadero';
                     }
                 }
             }
         }
 
-        return $listadoProdVendidos;
-        //return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico'));
+        //return $listadoVentaVendedor;
+        return view('menu_principal.reporte_ver', compact('year','month','listadoAños','cantidadVentas','articulosPorVencer','productos','stockCritico','listadoVentaVendedor'));
     }
 
 
