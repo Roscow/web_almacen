@@ -65,9 +65,17 @@
         "<br>";
         echo  $var1;
 
-        $texto_word= str_replace("<br>"," ",$var1);
-        $texto_word= str_replace("</br>"," ",$var1);
-        $texto_word= str_replace("<br>"," ",$var1);
+        $texto_word= str_replace("<br>",' ',$var1) ;
+        $texto_word= str_replace("</br>",' ',$var1) ;
+        $texto_word= str_replace("<h4>",' ',$var1) ;
+        $texto_word= str_replace("</h4>",' ',$var1) ;
+        $texto_word= str_replace("<h1>",' ',$var1) ;
+        $texto_word= str_replace("</h1>",' ',$var1) ;
+        $texto_word= str_replace("<h5>",' ',$var1) ;
+        $texto_word= str_replace("</h5>",' ',$var1) ;
+
+        $prueba = strval('probando');
+        
     ?>
 
     <form action="{{route('prueba2')}}" method="POST">
@@ -76,10 +84,10 @@
 
         <button type="submit"  class="btn btn-primary">Convertir a pdf</button> 
     </form>
-    
+
     <form action="{{route('genera_word')}}" method="POST">
     @csrf
-        <input type="hidden" name="inputHidden" type="hidden" value="{{$texto_word}}">
+        <input type="hidden" name="inputHidden" type="hidden" value="{{$prueba}}">
 
         <button type="submit"  class="btn btn-primary">Convertir a word</button> 
     </form>
