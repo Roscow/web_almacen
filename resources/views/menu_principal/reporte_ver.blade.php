@@ -78,30 +78,36 @@
 
         
     ?>
+ <div class="form-row">
+        <div class="form-group col-md-2">
+            <form action="{{route('prueba2')}}" method="POST">
+            @csrf
+                <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
 
-    <form action="{{route('prueba2')}}" method="POST">
-    @csrf
-        <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
+                <button type="submit"  class="btn btn-primary">Exportar a pdf</button> 
+            </form>
+        </div>
 
-        <button type="submit"  class="btn btn-primary">Exportar a pdf</button> 
-    </form>
+        <div class="form-group col-md-2">
+            <form action="{{route('genera_word')}}" method="POST">
+            @csrf
+                <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
+                <input type="hidden" name="mes" type="hidden" value="{{$month}}">
+                <input type="hidden" name="año" type="hidden" value="{{$year}}">
 
-    <form action="{{route('genera_word')}}" method="POST">
-    @csrf
-        <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
-        <input type="hidden" name="mes" type="hidden" value="{{$month}}">
-        <input type="hidden" name="año" type="hidden" value="{{$year}}">
+                <button type="submit"  class="btn btn-primary">Exportar a doc</button> 
+            </form>
+        </div>
 
-        <button type="submit"  class="btn btn-primary">Exportar a doc</button> 
-    </form>
+        <div class="form-group col-md-2">
+            <form action="{{route('genera_xls')}}" method="POST">
+            @csrf
+                <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
+                <input type="hidden" name="mes" type="hidden" value="{{$month}}">
+                <input type="hidden" name="año" type="hidden" value="{{$year}}">
 
-    <form action="{{route('genera_xls')}}" method="POST">
-    @csrf
-        <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
-        <input type="hidden" name="mes" type="hidden" value="{{$month}}">
-        <input type="hidden" name="año" type="hidden" value="{{$year}}">
-
-        <button type="submit"  class="btn btn-primary">Exportar a xls</button> 
-    </form>
-
+                <button type="submit"  class="btn btn-primary">Exportar a xls</button> 
+            </form>
+        </div>
+</div>
     @endsection
