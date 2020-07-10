@@ -1324,7 +1324,30 @@ class PagesController extends Controller
 
 
     public function genera_xls2(Request $request){
-        return view('menu_principal.tabla');
+        $mes= $request->mes;
+        $año = $request->año;
+        $productos = App\Producto::all();
+        //numero de ventas 
+        $ventasPeriodo = App\Venta::whereYear('fecha',$año)->whereMonth('fecha','=',$mes)->get();
+        $cantidadVentas = count($ventasPeriodo);
+
+        //producto mas vendido
+        $listadoProdVendidos = array();
+        foreach($ventasPeriodo as $vent){
+            $detalle = App\Detalle_venta::where('id_venta','=',$vent->id_venta)->get();
+            foreach($detalle as $detVenta){               
+                if (isset($listadoProdVendidos[$detVenta->id_articulo])==false){
+                    $listadoProdVendidos[$detVenta->id_articulo]= $detVenta->cantidad;
+                }
+                else{
+                    $listadoProdVendidos[$detVenta->id_articulo]= $listadoProdVendidos[$detVenta->id_articulo] + $detVenta->cantidad;
+                }
+            }
+           
+        }
+        arsort($listadoProdVendidos);
+
+        return view('menu_principal.tabla',compact('mes','año','cantidadVentas','listadoProdVendidos','productos'));
     }
 
 
