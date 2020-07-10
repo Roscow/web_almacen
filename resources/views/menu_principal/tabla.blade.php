@@ -71,9 +71,11 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     @foreach($listadoPedidos  as $rutEmpr => $pedidos)  
             @foreach($proveedores as $prov)
                 @if($prov->rut_empresa == $rutEmpr)
+                <tr>
                     <td>{{$rutEmpr}}</td>
                     <td>{{$prov->razon_social}}</td>
                     <td>{{$pedidos}}</td> 
+                </tr>
                 @endif
             @endforeach
     @endforeach
@@ -92,9 +94,11 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     @foreach($articulosPorVencer as $arts)
         @foreach($productos as $prods)
             @if($prods->codigo_producto == $arts->id_producto)
+            <tr>
                 <td>{{$prods->codigo_producto}}</td>
                 <td>{{$prods->nombre}}</td>
                 <td>{{date_format(new DateTime($arts->fecha_vencimiento),'d-m-Y')}}</td>
+            </tr>
             @endif                
         @endforeach          
     @endforeach
@@ -113,10 +117,12 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     @foreach($stockCritico as $prod)
             @foreach($productos as $prods)
                 @if($prod->codigo_producto == $prods->codigo_producto)
+                <tr>
                     <td>{{$prods->codigo_producto}}</td>
                     <td>{{$prods->nombre}}</td>
                     <td>{{$prod->stock}}</td>
                     <td>{{$prod->stock_critico}}</td>
+                </tr>
                 @endif                 
             @endforeach            
     @endforeach
