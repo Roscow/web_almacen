@@ -89,7 +89,7 @@
         </div>
 
         <div class="form-group col-lg-2">
-            <form action="{{route('genera_word')}}" method="POST">
+            <form action="{{route('genera_word2')}}" method="POST">
             @csrf
                 <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
                 <input type="hidden" name="mes" type="hidden" value="{{$month}}">

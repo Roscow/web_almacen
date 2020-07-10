@@ -1401,6 +1401,17 @@ class PagesController extends Controller
         return view('menu_principal.tabla',compact('mes','año','cantidadVentas','listadoProdVendidos','productos','vendedores','listadoVentaVendedor','proveedores','listadoPedidos','articulosPorVencer','stockCritico'));
     }
 
-
+    public function genera_word2(request $request){
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $mes= $request->mes;
+        $año = $request->año;
+        $texto = $request->inputHidden;
+        $section = $phpWord->addSection();
+        $text = $section->addText($texto);
+        header('Content-type: application/vnd.ms-word;charset=iso-8859-15');
+        header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.docx');
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $objWriter->save('php://output');
+    }
 
 }

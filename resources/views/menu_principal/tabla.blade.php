@@ -26,9 +26,9 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     </tr>
 
     <tr>               
-        <td>id</td>
-        <td>nombre</td>
-        <td>ventas</td>
+        <td >id</td>
+        <td >nombre</td>
+        <td >ventas</td>
     </tr> 
 
     @foreach($listadoProdVendidos  as $nomProd => $cantidad)  
@@ -47,8 +47,8 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
         <td style="background-color: yellow">Usuario que mas ventas realizo</td>
     </tr>
     <tr>               
-        <td>Vendedor</td>
-        <td>N° ventas</td>
+        <td >Vendedor</td>
+        <td >N° ventas</td>
     </tr> 
     
     @foreach ($listadoVentaVendedor as $vendedor => $numVentas)
@@ -63,9 +63,9 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     </tr>
 
     <tr>               
-        <td>rut</td>
-        <td>nombre</td>
-        <td>N° pedidos</td>
+        <td >rut</td>
+        <td >nombre</td>
+        <td >N° pedidos</td>
     </tr> 
 
     @foreach($listadoPedidos  as $rutEmpr => $pedidos)  
@@ -85,9 +85,9 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     </tr>
 
     <tr>               
-        <td>ID</td>
-        <td>nombre</td>
-        <td>Fecha vencimiento</td>
+        <td >ID</td>
+        <td >nombre</td>
+        <td >Fecha vencimiento</td>
     </tr> 
 
        
@@ -108,10 +108,10 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     </tr>
 
     <tr>               
-        <td>ID</td>
-        <td>nombre</td>
-        <td>Stock actual</td>
-        <td>Stock critico</td>
+        <td >ID</td>
+        <td >nombre</td>
+        <td >Stock actual</td>
+        <td >Stock critico</td>
     </tr>
 
     @foreach($stockCritico as $prod)
