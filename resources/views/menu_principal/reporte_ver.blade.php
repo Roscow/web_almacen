@@ -9,8 +9,8 @@
             foreach($productos as $prods){
                 if($prods->codigo_producto == $arts->id_producto){
                     $var2= $var2."ID: ".$prods->codigo_producto .", Producto: ". $prods->nombre .", Vence: ".date_format(new DateTime($arts->fecha_vencimiento),'d-m-Y'). "<br>";
-                }                
-            }            
+                }
+            }
         }
 
         //productos con stock critico
@@ -19,40 +19,40 @@
             foreach($productos as $prods){
                 if($prod->codigo_producto == $prods->codigo_producto){
                     $var3= $var3 ."Id: ". $prods->codigo_producto.", Producto: ". $prods->nombre .", Stock actual: ".$prod->stock." ".", Stock critico: ".$prod->stock_critico ."<br>";
-                }                
-            }            
+                }
+            }
         }
 
         $var4='<br>';
         $vendedoresOrdenado = $listadoVentaVendedor;
         arsort($vendedoresOrdenado);
-        foreach($vendedoresOrdenado  as $vendedor => $numVentas){            
-            $var4= $var4 ."Vendedor: ". $vendedor .", N° ventas: ".$numVentas."<br>";                    
+        foreach($vendedoresOrdenado  as $vendedor => $numVentas){
+            $var4= $var4 ."Vendedor: ". $vendedor .", N° ventas: ".$numVentas."<br>";
         }
 
         $var5='<br>';
         $productosOrdenado =$listadoProdVendidos;
         arsort($productosOrdenado);
-        foreach($productosOrdenado  as $nomProd => $cantidad){  
+        foreach($productosOrdenado  as $nomProd => $cantidad){
             foreach($productos as $prod){
                 if($prod->codigo_producto == $nomProd){
-                    $var5= $var5 ."id: ". $prod->codigo_producto. " Producto: ". $prod->nombre ." Cantidad: ".$cantidad."<br>";  
+                    $var5= $var5 ."id: ". $prod->codigo_producto. " Producto: ". $prod->nombre ." Cantidad: ".$cantidad."<br>";
                 }
             }
-        }          
-                              
+        }
+
         $var6='<br>';
         arsort($listadoPedidos);
-        foreach($listadoPedidos  as $rutEmpr => $pedidos){  
+        foreach($listadoPedidos  as $rutEmpr => $pedidos){
             foreach($proveedores as $prov){
                 if($prov->rut_empresa == $rutEmpr){
-                    $var6= $var6 ."rut: ". $rutEmpr. ",  Proveedor: ". $prov->razon_social .",  N° Pedidos: ".$pedidos."<br>";  
+                    $var6= $var6 ."rut: ". $rutEmpr. ",  Proveedor: ". $prov->razon_social .",  N° Pedidos: ".$pedidos."<br>";
                 }
             }
-        }  
+        }
 
 
-        $var1 = "<h1>Almacen los yuyitos</h1>" . 
+        $var1 = "<h1>Almacen los yuyitos</h1>" .
         "<h5>Reporte</h5>".
         "Periodo de analisis: $month de $year<br>".
         "<br><h4>Numero de  ventas en el periodo: </h4>". $cantidadVentas .
@@ -74,9 +74,9 @@
         $var1= str_replace('<',' ',$var1) ;
         $var1= str_replace('>',' ',$var1) ;
         $var1= str_replace('/',' ',$var1) ;
- 
 
-        
+
+
     ?>
  <div class="form-row">
         <div class="form-group col-lg-2">
@@ -84,7 +84,7 @@
             @csrf
                 <input type="hidden" name="inputHidden" type="hidden" value="{{$varPdf}}">
 
-                <button type="submit"  class="btn btn-primary">Exportar a pdf</button> 
+                <button type="submit"  class="btn btn-primary">Exportar a pdf</button>
             </form>
         </div>
 
@@ -95,10 +95,10 @@
                 <input type="hidden" name="mes" type="hidden" value="{{$month}}">
                 <input type="hidden" name="año" type="hidden" value="{{$year}}">
 
-                <button type="submit"  class="btn btn-primary">Exportar a doc</button> 
+                <button type="submit"  class="btn btn-primary">Exportar a doc</button>
             </form>
         </div>
-       
+
 
         <div class="form-group col-lg-2">
             <form action="{{route('genera_xls2')}}" method="POST">
@@ -107,7 +107,7 @@
                 <input type="hidden" name="mes" type="hidden" value="{{$month}}">
                 <input type="hidden" name="año" type="hidden" value="{{$year}}">
 
-                <button type="submit"  class="btn btn-primary">Exportar a xls</button> 
+                <button type="submit"  class="btn btn-primary">Exportar a xls</button>
             </form>
         </div>
 </div>

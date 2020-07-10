@@ -5,7 +5,7 @@
 <div class="wrapper">
   <div class="container-logo">
   <div class="roundedImage">&nbsp;</div>
-</div > 
+</div >
 
 <form action="{{route('validaUsuario')}}" method="POST">
 {{ csrf_field() }}
@@ -13,7 +13,8 @@
   <input type="password" id="password" name="password" placeholder="Contraseña" required>
   <!-- Trigger the modal with a button -->
   <a href="{{ route('recuperar_password') }}" data-toggle="modal" data-target="#myModalLogin"><font color = "white">Recuperar contraseña?</font> </a>
-
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{-- ESPACIADO --}}
+  <a href="manual/Manual de Usuario.pdf" download="Manual de Usuario.pdf"><font color = "white">Descargar manual de usuario</font> </a>
   <!--<a href="{{ route('menu_principal') }}" class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar </a>-->
   <button type="submit"  class="btn btn-primary buttonlogin" role="button" aria-pressed="true">Ingresar</button>
   </form>
@@ -68,7 +69,7 @@
 }
 
 body{
-	
+
 	font-size: 16px;
 }
 
