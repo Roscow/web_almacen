@@ -58,17 +58,66 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
             </tr> 
     @endforeach
 
+    <tr>
+        <td>Proveedor con mas pedidos</td>
+    </tr>
 
+    <tr>               
+        <td>rut</td>
+        <td>nombre</td>
+        <td>N° pedidos</td>
+    </tr> 
 
+    @foreach($listadoPedidos  as $rutEmpr => $pedidos)  
+            @foreach($proveedores as $prov)
+                @if($prov->rut_empresa == $rutEmpr)
+                    <td>{{$rutEmpr}}</td>
+                    <td>{{$prov->razon_social}}</td>
+                    <td>{{$pedidos}}</td> 
+                @endif
+            @endforeach
+    @endforeach
 
     <tr>
-        <td>Datos</td>
-        <td>Datos</td>
-        <td>Datos</td>
+        <td>Articulos que vencen en el mes actual</td>
     </tr>
+
+    <tr>               
+        <td>ID</td>
+        <td>nombre</td>
+        <td>Fecha vencimiento</td>
+    </tr> 
+
+       
+    @foreach($articulosPorVencer as $arts)
+        @foreach($productos as $prods)
+            @if($prods->codigo_producto == $arts->id_producto)
+                <td>{{$prods->codigo_producto}}</td>
+                <td>{{$prods->nombre}}</td>
+                <td>{{date_format(new DateTime($arts->fecha_vencimiento),'d-m-Y')}}</td>
+            @endif                
+        @endforeach          
+    @endforeach
+
     <tr>
-        <td>Datos</td>
-        <td>Datos</td>
-        <td>Datos</td>
+        <td>Productos con stock critico</td>
     </tr>
+
+    <tr>               
+        <td>ID</td>
+        <td>nombre</td>
+        <td>Stock actual</td>
+        <td>Stock critico</td>
+    </tr>
+
+    @foreach($stockCritico as $prod)
+            @foreach($productos as $prods)
+                @if($prod->codigo_producto == $prods->codigo_producto)
+                    <td>{{$prods->codigo_producto}}</td>
+                    <td>{{$prods->nombre}}</td>
+                    <td>{{$prod->stock}}</td>
+                    <td>{{$prod->stock_critico}}</td>
+                @endif                 
+            @endforeach            
+    @endforeach
 </table>

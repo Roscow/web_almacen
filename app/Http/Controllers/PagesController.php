@@ -1327,6 +1327,7 @@ class PagesController extends Controller
         $mes= $request->mes;
         $año = $request->año;
         $productos = App\Producto::all();
+        $proveedores = App\Proveedor::all();
         //numero de ventas 
         $ventasPeriodo = App\Venta::whereYear('fecha',$año)->whereMonth('fecha','=',$mes)->get();
         $cantidadVentas = count($ventasPeriodo);
@@ -1369,7 +1370,35 @@ class PagesController extends Controller
         }
         arsort($listadoVentaVendedor);
 
-        return view('menu_principal.tabla',compact('mes','año','cantidadVentas','listadoProdVendidos','productos','vendedores','listadoVentaVendedor'));
+        //pedidos por proveedor
+        $pedidosMes =  App\Pedido::whereYear('fecha_creacion',$año)->whereMonth('fecha_creacion','=',$mes)->get();
+
+        $listadoPedidos = array();
+        foreach($pedidosMes as $ped){
+            if (isset($listadoPedidos[$ped->rut_empresa])==false){
+                $listadoPedidos[$ped->rut_empresa]= 1;
+            }
+            else{
+                $listadoPedidos[$ped->rut_empresa]= $listadoPedidos[$ped->rut_empresa]+ 1;
+            }
+        }
+        arsort($listadoPedidos);
+       
+        
+        $mesActual=date('m');
+        $añoActual=date('Y');
+        
+        //articulos por vencer 
+        $articulosPorVencer = App\Articulo::whereYear('fecha_vencimiento',$añoActual)
+                                            ->whereMonth('fecha_vencimiento','=',$mesActual)->get();
+        //productos con stock critico
+        $stockCritico = App\Producto::whereRaw('stock <= stock_critico')->get();
+        
+
+
+
+
+        return view('menu_principal.tabla',compact('mes','año','cantidadVentas','listadoProdVendidos','productos','vendedores','listadoVentaVendedor','proveedores','listadoPedidos','articulosPorVencer','stockCritico'));
     }
 
 
