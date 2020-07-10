@@ -64,7 +64,7 @@
         "<br><h4>Productos con stock critico</h4>". $var3.
         "<br>";
         echo  $var1;
-
+        $varPdf = $var1;
         //$var1= str_replace('<br>',utf8_encode(chr(10)),$var1) ;
         $var1= str_replace('<br>','                                                                   ',$var1) ;
         $var1= str_replace('h1','                                                                         ',$var1) ;
@@ -79,16 +79,16 @@
         
     ?>
  <div class="form-row">
-        <div class="form-group col-md-2">
+        <div class="form-group col-lg-2">
             <form action="{{route('prueba2')}}" method="POST">
             @csrf
-                <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
+                <input type="hidden" name="inputHidden" type="hidden" value="{{$varPdf}}">
 
                 <button type="submit"  class="btn btn-primary">Exportar a pdf</button> 
             </form>
         </div>
 
-        <div class="form-group col-md-2">
+        <div class="form-group col-lg-2">
             <form action="{{route('genera_word')}}" method="POST">
             @csrf
                 <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
@@ -98,9 +98,10 @@
                 <button type="submit"  class="btn btn-primary">Exportar a doc</button> 
             </form>
         </div>
+       
 
-        <div class="form-group col-md-2">
-            <form action="{{route('genera_xls')}}" method="POST">
+        <div class="form-group col-lg-2">
+            <form action="{{route('genera_xls2')}}" method="POST">
             @csrf
                 <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
                 <input type="hidden" name="mes" type="hidden" value="{{$month}}">

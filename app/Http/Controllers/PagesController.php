@@ -1314,10 +1314,17 @@ class PagesController extends Controller
     }
 
     public function genera_xls(Request $request){
+        $mes = $request->mes;
+        $año = $request->año;
         
         header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
-        header('Content-Disposition: attachment; filename=nombre_archivo.xls');
+        header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls');
+        
+    }
 
+
+    public function genera_xls2(Request $request){
+        return view('menu_principal.tabla');
     }
 
 
