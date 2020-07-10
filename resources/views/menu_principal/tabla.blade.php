@@ -22,7 +22,7 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     </tr>
 
     <tr>
-        <td>productos mas vendidos</td>
+        <td style="background-color: yellow">productos mas vendidos</td>
     </tr>
 
     <tr>               
@@ -44,7 +44,7 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     @endforeach
 
     <tr>
-        <td>Usuario que mas ventas realizo</td>
+        <td style="background-color: yellow">Usuario que mas ventas realizo</td>
     </tr>
     <tr>               
         <td>Vendedor</td>
@@ -59,7 +59,7 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     @endforeach
 
     <tr>
-        <td>Proveedor con mas pedidos</td>
+        <td style="background-color: yellow">Proveedor con mas pedidos</td>
     </tr>
 
     <tr>               
@@ -81,7 +81,7 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     @endforeach
 
     <tr>
-        <td>Articulos que vencen en el mes actual</td>
+        <td style="background-color: yellow">Articulos que vencen en el mes actual</td>
     </tr>
 
     <tr>               
@@ -104,7 +104,7 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     @endforeach
 
     <tr>
-        <td>Productos con stock critico</td>
+        <td style="background-color: yellow">Productos con stock critico</td>
     </tr>
 
     <tr>               
