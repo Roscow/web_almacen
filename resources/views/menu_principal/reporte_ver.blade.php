@@ -83,7 +83,7 @@
     @csrf
         <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
 
-        <button type="submit"  class="btn btn-primary">Convertir a pdf</button> 
+        <button type="submit"  class="btn btn-primary">Exportar a pdf</button> 
     </form>
 
     <form action="{{route('genera_word')}}" method="POST">
@@ -92,7 +92,16 @@
         <input type="hidden" name="mes" type="hidden" value="{{$month}}">
         <input type="hidden" name="año" type="hidden" value="{{$year}}">
 
-        <button type="submit"  class="btn btn-primary">Convertir a word</button> 
+        <button type="submit"  class="btn btn-primary">Exportar a doc</button> 
+    </form>
+
+    <form action="{{route('genera_xls')}}" method="POST">
+    @csrf
+        <input type="hidden" name="inputHidden" type="hidden" value="{{$var1}}">
+        <input type="hidden" name="mes" type="hidden" value="{{$month}}">
+        <input type="hidden" name="año" type="hidden" value="{{$year}}">
+
+        <button type="submit"  class="btn btn-primary">Exportar a xls</button> 
     </form>
 
     @endsection

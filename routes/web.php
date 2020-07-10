@@ -141,3 +141,4 @@ Route::get('prueba', function(){
 
 Route::post('prueba2','PagesController@prueba2')->name('prueba2');
 Route::post('genera_word','PagesController@genera_word')->name('genera_word');
+Route::post('genera_xls','PagesController@genera_xls')->name('genera_xls');

@@ -1313,6 +1313,12 @@ class PagesController extends Controller
         $objWriter->save('php://output');
     }
 
+    public function genera_xls(Request $request){
+        
+        header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
+        header('Content-Disposition: attachment; filename=nombre_archivo.xls');
+
+    }
 
 
 
