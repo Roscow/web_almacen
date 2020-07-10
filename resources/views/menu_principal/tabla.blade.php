@@ -26,9 +26,9 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
     </tr>
 
     <tr>               
-            <td>id</td>
-            <td>nombre</td>
-            <td>ventas</td>
+        <td>id</td>
+        <td>nombre</td>
+        <td>ventas</td>
     </tr> 
 
     @foreach($listadoProdVendidos  as $nomProd => $cantidad)  
@@ -42,6 +42,24 @@ header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls
             @endif
         @endforeach
     @endforeach
+
+    <tr>
+        <td>Usuario que mas ventas realizo</td>
+    </tr>
+    <tr>               
+        <td>Vendedor</td>
+        <td>N° ventas</td>
+    </tr> 
+    
+    @foreach ($listadoVentaVendedor as $vendedor => $numVentas)
+            <tr>                               
+                <td>{{$vendedor}}</td>
+                <td>{{$numVentas}}</td>
+            </tr> 
+    @endforeach
+
+
+
 
     <tr>
         <td>Datos</td>

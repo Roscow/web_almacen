@@ -1342,12 +1342,34 @@ class PagesController extends Controller
                 else{
                     $listadoProdVendidos[$detVenta->id_articulo]= $listadoProdVendidos[$detVenta->id_articulo] + $detVenta->cantidad;
                 }
-            }
-           
+            }           
         }
         arsort($listadoProdVendidos);
 
-        return view('menu_principal.tabla',compact('mes','año','cantidadVentas','listadoProdVendidos','productos'));
+
+        //ventas por usuario
+        $vendedores = App\Usuario::all();
+        $listadoVentaVendedor = array();
+        foreach($ventasPeriodo as $vent){
+            foreach($vendedores as $vendrs){
+                if($vent->vendedor == $vendrs->id_user ){
+                    if( isset($listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2])== false ) {
+                        //$listadoVentaVendedor[$vendrs->rut]=1;
+                        $listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2]=1;
+                        //return 'es falso';
+                    }
+                    else{
+                        //$listadoVentaVendedor[$vendrs->rut]=$listadoVentaVendedor[$vendrs->rut] + 1 ;
+                        $listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2] =
+                        $listadoVentaVendedor[$vendrs->nombre1.' '.$vendrs->nombre2.' '.$vendrs->apellido1.' '.$vendrs->apellido2] + 1;
+                        //return 'es verdadero';
+                    }
+                }
+            }
+        }
+        arsort($listadoVentaVendedor);
+
+        return view('menu_principal.tabla',compact('mes','año','cantidadVentas','listadoProdVendidos','productos','vendedores','listadoVentaVendedor'));
     }
 
 
