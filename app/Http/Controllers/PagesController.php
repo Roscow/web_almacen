@@ -1394,12 +1394,16 @@ class PagesController extends Controller
         //productos con stock critico
         $stockCritico = App\Producto::whereRaw('stock <= stock_critico')->get();
 
-
-
-
-
-        return view('menu_principal.tabla',compact('mes','año','cantidadVentas','listadoProdVendidos','productos','vendedores','listadoVentaVendedor','proveedores','listadoPedidos','articulosPorVencer','stockCritico'));
+         $utilFormatExcel = new App\UtilFormatExcel();
+         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Html();
+         $spreadsheet = $utilFormatExcel->formatSpreadsheet($reader, $productos, $listadoProdVendidos, $listadoVentaVendedor, $listadoPedidos, $articulosPorVencer, $stockCritico , $cantidadVentas, $mes, $año);
+         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+         header('Content-Disposition: attachment;filename="Reporte_Excel.xlsx"');
+         header('Cache-Control: max-age=0');
+         $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+         $writer->save('php://output');
     }
+
 
     public function genera_word2(request $request){
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
