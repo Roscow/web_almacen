@@ -277,6 +277,7 @@ class UtilFormatExcel {
          }
 
          self::cellColor($spreadsheet,'A'.$indice, 'FFFF00');
+         self::cellFontBold($spreadsheet,'A'.$indice);
          self::cellBorders($spreadsheet,'A'.$indice);
          $indice++;
          self::cellBorders($spreadsheet,'A'.$indice.':D'.$indice);
