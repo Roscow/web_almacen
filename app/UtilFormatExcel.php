@@ -6,7 +6,7 @@ use DateTimeZone;
 
 class UtilFormatExcel {
 
-    public function formatSpreadsheet($reader, $productos, $listadoProdVendidos, $listadoVentaVendedor, $listadoPedidos, $articulosPorVencer, $stockCritico, $cantidadVentas, $mes, $año ){
+    public function formatSpreadsheet($reader, $productos, $proveedores, $listadoProdVendidos, $listadoVentaVendedor, $listadoPedidos, $articulosPorVencer, $stockCritico, $cantidadVentas, $mes, $año ){
 
         $listadoProdVendidosHtml = '';
         $listadoProdVendidosCount = 0;

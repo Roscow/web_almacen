@@ -1396,7 +1396,7 @@ class PagesController extends Controller
 
          $utilFormatExcel = new App\UtilFormatExcel();
          $reader = new \PhpOffice\PhpSpreadsheet\Reader\Html();
-         $spreadsheet = $utilFormatExcel->formatSpreadsheet($reader, $productos, $listadoProdVendidos, $listadoVentaVendedor, $listadoPedidos, $articulosPorVencer, $stockCritico , $cantidadVentas, $mes, $año);
+         $spreadsheet = $utilFormatExcel->formatSpreadsheet($reader, $productos, $proveedores, $listadoProdVendidos, $listadoVentaVendedor, $listadoPedidos, $articulosPorVencer, $stockCritico , $cantidadVentas, $mes, $año);
          header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
          header('Content-Disposition: attachment;filename="Reporte_Excel.xlsx"');
          header('Cache-Control: max-age=0');
