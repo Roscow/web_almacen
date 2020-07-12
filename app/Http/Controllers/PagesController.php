@@ -1219,20 +1219,20 @@ class PagesController extends Controller
         $ventasPeriodo = App\Venta::whereYear('fecha',$year)
                                     ->whereMonth('fecha','=',$month)->get();
         $cantidadVentas = count($ventasPeriodo);
-        
+
         //return 'cantidad ventas: ' .$cantidadVentas;
 
         $mesActual=date('m');
         $añoActual=date('Y');
-        
-        //articulos por vencer 
+
+        //articulos por vencer
         $articulosPorVencer = App\Articulo::whereYear('fecha_vencimiento',$añoActual)
                                             ->whereMonth('fecha_vencimiento','=',$mesActual)->get();
         //productos con stock critico
         $stockCritico = App\Producto::whereRaw('stock <= stock_critico')->get();
 
-        
-        
+
+
 
         //mejor vendedor
         $vendedores = App\Usuario::all();
@@ -1259,7 +1259,7 @@ class PagesController extends Controller
         $listadoProdVendidos = array();
         foreach($ventasPeriodo as $vent){
             $detalle = App\Detalle_venta::where('id_venta','=',$vent->id_venta)->get();
-            foreach($detalle as $detVenta){               
+            foreach($detalle as $detVenta){
                 if (isset($listadoProdVendidos[$detVenta->id_articulo])==false){
                     $listadoProdVendidos[$detVenta->id_articulo]= $detVenta->cantidad;
                 }
@@ -1267,7 +1267,7 @@ class PagesController extends Controller
                     $listadoProdVendidos[$detVenta->id_articulo]= $listadoProdVendidos[$detVenta->id_articulo] + $detVenta->cantidad;
                 }
             }
-           
+
         }
         //proveedor que mas pedidos se le hicieron
         $pedidosMes =  App\Pedido::whereYear('fecha_creacion',$year)
@@ -1307,7 +1307,7 @@ class PagesController extends Controller
         $section = $phpWord->addSection();
         $text = $section->addText($texto_word);
         $filename = "reporte_".$mes."_".$año.".docx";
-        header("Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document"); 
+        header("Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document");
         header('Content-Disposition: attachment; filename=' . $filename);
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save('php://output');
@@ -1316,10 +1316,10 @@ class PagesController extends Controller
     public function genera_xls(Request $request){
         $mes = $request->mes;
         $año = $request->año;
-        
+
         header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
         header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.xls');
-        
+
     }
 
 
@@ -1328,7 +1328,7 @@ class PagesController extends Controller
         $año = $request->año;
         $productos = App\Producto::all();
         $proveedores = App\Proveedor::all();
-        //numero de ventas 
+        //numero de ventas
         $ventasPeriodo = App\Venta::whereYear('fecha',$año)->whereMonth('fecha','=',$mes)->get();
         $cantidadVentas = count($ventasPeriodo);
 
@@ -1336,14 +1336,14 @@ class PagesController extends Controller
         $listadoProdVendidos = array();
         foreach($ventasPeriodo as $vent){
             $detalle = App\Detalle_venta::where('id_venta','=',$vent->id_venta)->get();
-            foreach($detalle as $detVenta){               
+            foreach($detalle as $detVenta){
                 if (isset($listadoProdVendidos[$detVenta->id_articulo])==false){
                     $listadoProdVendidos[$detVenta->id_articulo]= $detVenta->cantidad;
                 }
                 else{
                     $listadoProdVendidos[$detVenta->id_articulo]= $listadoProdVendidos[$detVenta->id_articulo] + $detVenta->cantidad;
                 }
-            }           
+            }
         }
         arsort($listadoProdVendidos);
 
@@ -1383,17 +1383,17 @@ class PagesController extends Controller
             }
         }
         arsort($listadoPedidos);
-       
-        
+
+
         $mesActual=date('m');
         $añoActual=date('Y');
-        
-        //articulos por vencer 
+
+        //articulos por vencer
         $articulosPorVencer = App\Articulo::whereYear('fecha_vencimiento',$añoActual)
                                             ->whereMonth('fecha_vencimiento','=',$mesActual)->get();
         //productos con stock critico
         $stockCritico = App\Producto::whereRaw('stock <= stock_critico')->get();
-        
+
 
 
 
@@ -1407,7 +1407,7 @@ class PagesController extends Controller
         $año = $request->año;
         $texto = $request->inputHidden;
         $section = $phpWord->addSection();
-        $text = $section->addText($texto);
+        $text = $section->addText(htmlspecialchars($texto));
         header('Content-type: application/vnd.ms-word;charset=iso-8859-15');
         header('Content-Disposition: attachment; filename=reporte_'.$mes.'_'.$año.'.docx');
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
