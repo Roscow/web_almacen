@@ -172,6 +172,8 @@ class UtilFormatExcel {
             '.$articulosPorVencerhtml.'
         </table>';
 
+        $htmlString = str_replace(' & ', ' &amp; ', $htmlString);
+
         $spreadsheet = $reader->loadFromString($htmlString);
 
          $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(79.86);
