@@ -84,12 +84,12 @@ class LoginController extends Controller
         error_log('Envio Correo');
         $to_name = 'Usuario';
         $to_email = $request->input('username');
-        $data = array('name'=>"Usuario", "url" => "http://localhost:8000/recuperar_password");
+        $data = array('name'=>"Usuario", "url" => "http://almacenlosyuyitos.ml/recuperar_password");
 
         Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) {
             $message->to($to_email, $to_name)
                     ->subject('Proceso Cambio de Password');
-            $message->from('makarena.212@gmail.com','Los Yuyitos');
+            $message->from('juanita.yuyitos@gmail.com','Los Yuyitos');
         });
         error_log('Termino Envio Correo');
 
